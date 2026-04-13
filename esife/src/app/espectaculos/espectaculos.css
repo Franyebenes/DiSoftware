@@ -1,0 +1,177 @@
+/* Fondo general con imagen que cubre toda la página */
+.page-container {
+  min-height: 100vh;
+  background-image: url("/assets/images/FondoEspectaculos.png");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 50px;
+}
+
+.header-wrapper {
+  background: white; /* cabecera limpia sobre imagen */
+  padding: 25px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cabecera h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding: 16px 32px;
+  border-radius: 12px;
+  margin: 0;
+  border: none;
+}
+
+/* Botón Actualizar */
+.btn-refresh {
+  background: #1e3a8a;
+  color: white;
+  border: 2px solid #0c4a6e; /* borde oscuro para contraste */
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.btn-refresh:hover {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+
+/* Tarjeta Escenario */
+.escenario-card {
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.escenario-header-bg {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.escenario-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  display: block;
+}
+
+/* Badge de Eventos y Botón Ver */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.event-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.btn-view {
+  background: #1e40af;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* FILA DE ESPECTÁCULO (REDISEÑADA) */
+.espectaculos-list {
+  background: #f8fafc;
+  padding: 20px;
+}
+
+.espectaculo-row {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s;
+}
+
+.espectaculo-row:hover {
+  transform: scale(1.01);
+}
+
+.artista-name {
+  font-size: 1.4rem; /* Más grande como pedías */
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.fecha-label {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* BOTÓN DISPONIBILIDAD BONITO */
+.btn-check {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px; /* Estilo píldora */
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  transition: all 0.3s;
+}
+
+.btn-check:hover {
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+  filter: brightness(1.1);
+}
+
+.btn-buy {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.total-count {
+  font-weight: 700;
+  color: #64748b;
+}
+
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

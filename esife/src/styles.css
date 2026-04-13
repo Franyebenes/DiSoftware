@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+.cabecera{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btnVerEscenarios{
+    border-radius: 25px;
+    color: aquamarine;
+}
+
+.lista_contenedor{
+    width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.lista_contenedor ol,
+.lista_contenedor ul{
+    padding-left: 25px;
+}

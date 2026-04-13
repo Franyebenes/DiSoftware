@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="header-wrapper">
+    <div class="main-container">
+      <div class="cabecera">
+        <h1>Finalizar Compra</h1>
+        <button class="btn-back" (click)="irAtras()">Volver</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="compra-card">
+      
+      <div class="section-header">
+        <span class="step-number">1</span>
+        <h2>Importe de la entrada</h2>
+      </div>
+
+      <div class="input-group">
+        <label for="importe">Confirmar cantidad</label>
+        <div class="input-with-symbol">
+          <input type="number" id="importe" [(ngModel)]="importe" placeholder="0.00">
+          <span class="symbol">€</span>
+        </div>
+      </div>
+
+      <button class="btn-pay-main" (click)="irAlPago()" [disabled]="!importe || importe <= 0">
+        Confirmar e ir al pago
+      </button>
+
+      <hr class="divider">
+
+      <div class="section-header">
+        <span class="step-number">2</span>
+        <h2>Datos de pago</h2>
+      </div>
+
+      <form id="payment-form" class="stripe-form"> 
+        
+        <div class="stripe-container">
+          <div id="card-element"></div> 
+        </div>
+
+        <button id="submit" class="btn-stripe-submit"> 
+          <div class="spinner hidden" id="spinner"></div> 
+          <span id="button-text">Pagar ahora</span> 
+        </button> 
+
+        <p id="card-error" role="alert" class="error-msg"></p> 
+
+        <p class="result-message hidden"> 
+          Pago completado con éxito. 
+          <a href="" target="_blank">Ver en Stripe dashboard.</a>
+        </p> 
+      </form>
+
+    </div>
+  </div>
+</div>

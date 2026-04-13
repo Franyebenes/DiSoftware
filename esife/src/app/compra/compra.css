@@ -1,0 +1,133 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #f0f7ff;
+  padding-bottom: 50px;
+}
+
+.header-wrapper {
+  background: white;
+  padding: 25px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.main-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cabecera h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.compra-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+/* Estilos específicos para el input de Stripe */
+.stripe-container {
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+
+/* Cuando Stripe detecta foco o error (puedes manejarlo por JS) */
+.stripe-container:focus-within {
+  border-color: #3b82f6;
+}
+
+.btn-stripe-submit {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-stripe-submit:hover {
+  background: #059669;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Estilos para el spinner de Stripe */
+.spinner, .spinner:after {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.hidden {
+  display: none;
+}
+
+.divider {
+  margin: 40px 0;
+  border: 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Reutilización de estilos de input de importe */
+.input-with-symbol input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.btn-pay-main {
+  width: 100%;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+/* botón volver bonito */
+.btn-back {
+  background: transparent;
+  color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-back:hover {
+  background: #1e3a8a;
+  color: white;
+}
+.btn-back .icon {
+  font-size: 1.1rem;
+}

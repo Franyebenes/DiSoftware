@@ -1,0 +1,61 @@
+<div class="page-container">
+  <div class="header-wrapper">
+    <div class="main-container">
+      <div class="cabecera">
+        <h1>Escenarios</h1>
+        <button class="btn-refresh" (click)="getEscenarios()">
+          Actualizar Lista
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="lista-contenedor">
+      <div class="escenario-card" *ngFor="let escenario of escenarios">
+        
+        <div class="escenario-header-bg" 
+             [style.backgroundImage]="'linear-gradient(to right, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.3) 100%), url(assets/images/' + getImagenEscenario(escenario.nombre) + ')'">
+          
+          <div class="info">
+            <span class="escenario-name">{{ escenario.nombre }}</span>
+            <span class="escenario-desc">{{ escenario.descripcion }}</span>
+          </div>
+
+          <div class="header-actions">
+            <span class="event-badge" *ngIf="escenario.espectaculos?.length > 0 && escenario.visible">
+              {{ escenario.espectaculos.length }} Eventos
+            </span>
+            <button class="btn-view" (click)="getEspectaculos(escenario)">
+              {{ escenario.visible ? 'Cerrar' : 'Ver Espectáculos' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="espectaculos-list" *ngIf="escenario.espectaculos && escenario.visible">
+          <div class="espectaculo-row" *ngFor="let espectaculo of escenario.espectaculos">
+            
+            <div class="main-info">
+              <div class="artista-name">{{ espectaculo.artista }}</div>
+              <div class="fecha-label">{{ espectaculo.fecha }}</div>
+            </div>
+
+            <div class="action-zone">
+              <button class="btn-check" *ngIf="!espectaculo.entradas" (click)="getNumeroDeEntradas(espectaculo)">
+                Consultar Disponibilidad
+              </button>
+
+              <div class="tickets-badge" *ngIf="espectaculo.entradas">
+                <span class="total-count">Total: {{ espectaculo.entradas.total }}</span>
+                <button class="btn-buy" (click)="irAComprarEntradas()">
+                  {{ espectaculo.entradas.libres }} libres
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
