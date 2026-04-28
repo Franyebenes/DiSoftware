@@ -2,31 +2,43 @@
   <div class="header-wrapper">
     <div class="main-container">
       <div class="cabecera">
-        <h1>Escenarios</h1>
-        <button class="btn-refresh" (click)="getEscenarios()">
-          Actualizar Lista
-        </button>
-      </div>
+  <div class="logo-container">
+    <img src="assets/images/logo.png" alt="Logo ESI" class="logo-image" height="45">
+    <h1 class="logo-title">esientradas</h1>
+  </div>
+  <div class="nav-links">
+    <span>INICIO</span>
+    <span>ESPECTÁCULOS</span>
+    <span class="active">ESCENARIOS</span>
+    <span>ENTRADAS</span>
+    <span>CUENTA</span>
+  </div>
+</div>
     </div>
   </div>
 
   <div class="main-container">
+    <div class="section-header">
+      <h2>Interfaz de Escenarios</h2>
+      <button class="btn-refresh" (click)="getEscenarios()">
+        Actualizar Lista
+      </button>
+    </div>
+
     <div class="lista-contenedor">
       <div class="escenario-card" *ngFor="let escenario of escenarios">
         
         <div class="escenario-header-bg" 
-             [style.backgroundImage]="'linear-gradient(to right, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.3) 100%), url(assets/images/' + getImagenEscenario(escenario.nombre) + ')'">
+             [style.backgroundImage]="'linear-gradient(to right, rgba(255,255,255,1) 30%, rgba(255,255,255,0.1) 100%), url(assets/images/' + getImagenEscenario(escenario.nombre) + ')'">
           
           <div class="info">
             <span class="escenario-name">{{ escenario.nombre }}</span>
-            <span class="escenario-desc">{{ escenario.descripcion }}</span>
+            <span class="escenario-detail">Capacidad: {{ escenario.plazas }} plazas</span>
+            <span class="escenario-detail">Locación: {{ escenario.descripcion }}</span>
           </div>
 
           <div class="header-actions">
-            <span class="event-badge" *ngIf="escenario.espectaculos?.length > 0 && escenario.visible">
-              {{ escenario.espectaculos.length }} Eventos
-            </span>
-            <button class="btn-view" (click)="getEspectaculos(escenario)">
+            <button class="btn-view-main" (click)="getEspectaculos(escenario)">
               {{ escenario.visible ? 'Cerrar' : 'Ver Espectáculos' }}
             </button>
           </div>
@@ -36,22 +48,34 @@
           <div class="espectaculo-row" *ngFor="let espectaculo of escenario.espectaculos">
             
             <div class="main-info">
-              <div class="artista-name">{{ espectaculo.artista }}</div>
+              <div class="artista-name">{{ espectaculo.artista || 'Espectáculo Programado' }}</div>
               <div class="fecha-label">{{ espectaculo.fecha }}</div>
             </div>
 
             <div class="action-zone">
-              <button class="btn-check" *ngIf="!espectaculo.entradas" (click)="getNumeroDeEntradas(espectaculo)">
-                Consultar Disponibilidad
-              </button>
+  
+  <button class="btn-check" *ngIf="!espectaculo.entradas" (click)="getNumeroDeEntradas(espectaculo)">
+    Ver Disponibilidad
+  </button>
 
-              <div class="tickets-badge" *ngIf="espectaculo.entradas">
-                <span class="total-count">Total: {{ espectaculo.entradas.total }}</span>
-                <button class="btn-buy" (click)="irAComprarEntradas()">
-                  {{ espectaculo.entradas.libres }} libres
-                </button>
-              </div>
-            </div>
+  <div class="availability-container" *ngIf="espectaculo.entradas">
+    <div class="stats-box">
+      <div class="stat-item">
+        <span class="stat-label">TOTALES</span>
+        <span class="stat-value">{{ espectaculo.entradas.total }}</span>
+      </div>
+      <div class="divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">LIBRES</span>
+        <span class="stat-value highlight">{{ espectaculo.entradas.libres }}</span>
+      </div>
+    </div>
+    
+    <button class="btn-buy-new" (click)="irAComprarEntradas()">
+      Comprar entrada
+    </button>
+  </div>
+  </div>
 
           </div>
         </div>

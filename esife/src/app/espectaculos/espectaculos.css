@@ -1,17 +1,15 @@
-/* Fondo general con imagen que cubre toda la página */
 .page-container {
   min-height: 100vh;
-  background-image: url("/assets/images/FondoEspectaculos.png");
-  background-size: cover;
-  background-position: center;
+  background-color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-bottom: 50px;
 }
 
 .header-wrapper {
-  background: white; /* cabecera limpia sobre imagen */
-  padding: 25px 0;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background: white;
+  padding: 15px 0;
+  border-bottom: 1px solid #cbd5e1;
+  margin-bottom: 40px;
 }
 
 .cabecera {
@@ -20,52 +18,65 @@
   align-items: center;
 }
 
-.cabecera h1 {
-  font-size: 2.8rem;
+.logo-title {
+  color: #1e3a8a;
   font-weight: 900;
-  color: #ffffff;
-  background: linear-gradient(90deg, #1e40af, #3b82f6);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  padding: 16px 32px;
-  border-radius: 12px;
   margin: 0;
-  border: none;
+  letter-spacing: -1px;
 }
 
-/* Botón Actualizar */
-.btn-refresh {
-  background: #1e3a8a;
-  color: white;
-  border: 2px solid #0c4a6e; /* borde oscuro para contraste */
-  padding: 12px 25px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.btn-refresh:hover {
-  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
+.nav-links {
+  display: flex;
+  gap: 25px;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-/* Tarjeta Escenario */
-.escenario-card {
-  background: white;
-  border-radius: 15px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
+.nav-links .active {
+  color: #1e3a8a;
+  border-bottom: 3px solid #1e3a8a;
 }
 
-.escenario-header-bg {
-  padding: 30px;
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.btn-refresh {
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-refresh:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.escenario-card {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.escenario-header-bg {
+  min-height: 140px;
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
 }
 
 .escenario-name {
@@ -75,103 +86,150 @@
   display: block;
 }
 
-/* Badge de Eventos y Botón Ver */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.escenario-detail {
+  color: #475569;
+  display: block;
+  font-weight: 600;
 }
 
-.event-badge {
-  background: #dbeafe;
-  color: #1e40af;
-  padding: 8px 16px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.btn-view {
-  background: #1e40af;
+.btn-view-main {
+  background: #2563eb;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 28px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
 }
 
-/* FILA DE ESPECTÁCULO (REDISEÑADA) */
 .espectaculos-list {
   background: #f8fafc;
-  padding: 20px;
+  padding: 20px 40px;
 }
 
 .espectaculo-row {
   background: white;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
-  margin-bottom: 15px;
-  border-radius: 12px;
   border: 1px solid #e2e8f0;
-  transition: transform 0.2s;
-}
-
-.espectaculo-row:hover {
-  transform: scale(1.01);
 }
 
 .artista-name {
-  font-size: 1.4rem; /* Más grande como pedías */
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 4px;
-}
-
-.fecha-label {
-  color: #64748b;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-/* BOTÓN DISPONIBILIDAD BONITO */
-.btn-check {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 50px; /* Estilo píldora */
+  font-size: 1.3rem;
   font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-  transition: all 0.3s;
+  color: #0f172a;
 }
 
-.btn-check:hover {
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
-  filter: brightness(1.1);
-}
-
-.btn-buy {
-  background: #10b981;
+.btn-check {
+  background: #1e40af;
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 800;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
-  margin-left: 15px;
-}
-
-.total-count {
-  font-weight: 700;
-  color: #64748b;
 }
 
 .main-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.logo-container {
+  display: flex !important; /* El !important asegura que no lo pise otro estilo */
+  align-items: center;
+  gap: 12px;
+  /* Añadimos esto para asegurar que sea visible */
+  visibility: visible;
+  opacity: 1;
+}
+
+.logo-image {
+  height: 45px;
+  width: auto;
+  display: block; /* Evita espacios extraños debajo de la imagen */
+}
+
+.logo-title {
+  margin: 0;
+  line-height: 1; /* Alinea mejor el texto con el centro de la imagen */
+}
+
+/* Contenedor principal que alinea la info y el botón de compra */
+.availability-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* La cajita gris con los números */
+.stats-box {
+  display: flex;
+  background: #f1f5f9; /* Gris muy clarito */
+  padding: 6px 16px;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: #64748b; /* Color suave para la etiqueta */
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Resaltamos las plazas libres en verde pero sin ser un botón */
+.stat-value.highlight {
+  color: #10b981; 
+}
+
+/* La línea vertical separadora */
+.divider {
+  width: 1px;
+  height: 25px;
+  background: #cbd5e1;
+  margin: 0 15px;
+}
+
+/* EL NUEVO BOTÓN DE COMPRA (Elegante y azul) */
+.btn-buy-new {
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.1);
+}
+
+.btn-buy-new:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2);
+}
+
+.btn-buy-new:active {
+  transform: scale(0.98);
 }

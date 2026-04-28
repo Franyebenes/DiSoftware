@@ -1,10 +1,13 @@
 <div class="page-container">
   <div class="header-wrapper">
-    <div class="main-container">
-      <div class="cabecera">
-        <h1>Finalizar Compra</h1>
-        <button class="btn-back" (click)="irAtras()">Volver</button>
+    <div class="main-container header-flex">
+      <div class="logo-area" (click)="irAtras()">
+        <span class="logo-text">esientradas</span>
+        <span class="page-subtitle">/ Finalizar Compra</span>
       </div>
+      <button class="btn-back" (click)="irAtras()">
+        <span class="icon">←</span> Volver
+      </button>
     </div>
   </div>
 
@@ -13,11 +16,13 @@
       
       <div class="section-header">
         <span class="step-number">1</span>
-        <h2>Importe de la entrada</h2>
+        <div>
+          <h2>Importe de la entrada</h2>
+          <p class="step-desc">Confirma el total antes de proceder al pago seguro.</p>
+        </div>
       </div>
 
       <div class="input-group">
-        <label for="importe">Confirmar cantidad</label>
         <div class="input-with-symbol">
           <input type="number" id="importe" [(ngModel)]="importe" placeholder="0.00">
           <span class="symbol">€</span>
@@ -25,34 +30,39 @@
       </div>
 
       <button class="btn-pay-main" (click)="irAlPago()" [disabled]="!importe || importe <= 0">
-        Confirmar e ir al pago
+        Confirmar e ir al pago seguro
       </button>
 
-      <hr class="divider">
-
-      <div class="section-header">
-        <span class="step-number">2</span>
-        <h2>Datos de pago</h2>
+      <div class="divider-wrapper">
+        <hr class="divider">
+        <span class="divider-text">PASARELA CIFRADA</span>
       </div>
 
-      <form id="payment-form" class="stripe-form"> 
-        
+      <div class="section-header" [class.disabled-step]="!clientSecret">
+        <span class="step-number">2</span>
+        <div>
+          <h2>Datos de pago</h2>
+          <p class="step-desc">Introduzca los datos de su tarjeta de crédito o débito.</p>
+        </div>
+      </div>
+
+      <form id="payment-form" class="stripe-form" [style.display]="clientSecret ? 'block' : 'none'"> 
         <div class="stripe-container">
           <div id="card-element"></div> 
         </div>
 
         <button id="submit" class="btn-stripe-submit"> 
           <div class="spinner hidden" id="spinner"></div> 
-          <span id="button-text">Pagar ahora</span> 
+          <span id="button-text">Pagar {{ importe | number:'1.2-2' }} € ahora</span> 
         </button> 
 
         <p id="card-error" role="alert" class="error-msg"></p> 
-
-        <p class="result-message hidden"> 
-          Pago completado con éxito. 
-          <a href="" target="_blank">Ver en Stripe dashboard.</a>
-        </p> 
       </form>
+
+      <div class="secure-footer">
+        <img src="https://img.icons8.com/ios-filled/50/64748b/lock.png" alt="lock" width="12">
+        <span>Pago procesado por Stripe con cifrado SSL de 256 bits</span>
+      </div>
 
     </div>
   </div>

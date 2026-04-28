@@ -1,0 +1,11 @@
+# Angular
+**/node_modules/
+**/.angular/
+**/dist/
+
+# VS Code
+.vscode/
+
+# Varios
+.DS_Store
+Thumbs.db
