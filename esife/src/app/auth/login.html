@@ -1,0 +1,32 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Identifícate</h2>
+      <p>Necesitas iniciar sesión para comprar entradas</p>
+    </div>
+
+    <div class="login-body">
+      <div class="input-group">
+        <label>Usuario</label>
+        <input type="text" [(ngModel)]="userName" name="userName" placeholder="Tu nombre de usuario">
+      </div>
+
+      <div class="input-group">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="pwd" name="pwd" placeholder="••••••••">
+      </div>
+
+      <button class="btn-login" (click)="login()">
+        Entrar ahora
+      </button>
+
+      <p *ngIf="errorMessage" class="error-msg">
+        {{ errorMessage }}
+      </p>
+    </div>
+    
+    <div class="login-footer">
+      <p>¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+    </div>
+  </div>
+</div>

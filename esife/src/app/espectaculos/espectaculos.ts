@@ -85,7 +85,12 @@ export class Espectaculos {
   }
 
   irAComprarEntradas() {
-    this.router.navigate(['/comprar']);
+    const token = localStorage.getItem('userToken');
+    if (token) {
+      this.router.navigate(['/comprar']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   getImagenEscenario(nombre: string): string {
