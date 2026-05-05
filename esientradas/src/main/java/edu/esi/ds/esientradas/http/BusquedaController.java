@@ -56,6 +56,9 @@ public class BusquedaController {
             dto.setArtista(e.getArtista());
             dto.setFecha(e.getFecha());
             dto.setEscenario(e.getEscenario().getNombre());
+            dto.setTaquillaVirtual(e.isTaquillaVirtual());
+            dto.setAperturaTaquilla(e.getAperturaTaquilla());
+            dto.setTiempoTurnoMinutos(e.getTiempoTurnoMinutos());
             return dto;
         }).toList();
         return dtos;
@@ -70,6 +73,9 @@ public class BusquedaController {
             dto.setArtista(e.getArtista());
             dto.setFecha(e.getFecha());
             dto.setEscenario(e.getEscenario().getNombre());
+            dto.setTaquillaVirtual(e.isTaquillaVirtual());
+            dto.setAperturaTaquilla(e.getAperturaTaquilla());
+            dto.setTiempoTurnoMinutos(e.getTiempoTurnoMinutos());
             return dto;
         }).toList();
         return dtos;
@@ -85,6 +91,9 @@ public class BusquedaController {
             dto.setArtista(e.getArtista());
             dto.setFecha(e.getFecha());
             dto.setEscenario(e.getEscenario().getNombre());
+            dto.setTaquillaVirtual(e.isTaquillaVirtual());
+            dto.setAperturaTaquilla(e.getAperturaTaquilla());
+            dto.setTiempoTurnoMinutos(e.getTiempoTurnoMinutos());
             return dto;
         }).toList();
         return dtos;

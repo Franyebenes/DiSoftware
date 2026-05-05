@@ -15,4 +15,12 @@ export class Pagos {
     // envia el clientSecret al backend para que verifique con Stripe
     return this.http.post('http://localhost:8080/pago/confirmarPago', info, { responseType: 'text' });
   }
+
+  reservarMultiples(info: any) {
+    return this.http.post('http://localhost:8080/reservas/reservar-multiples', info, { responseType: 'text' });
+  }
+
+  comprar(info: any, token: string) {
+    return this.http.post(`http://localhost:8080/compras/comprar?userToken=${encodeURIComponent(token)}`, info, { responseType: 'text' });
+  }
 }

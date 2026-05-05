@@ -14,5 +14,7 @@ public interface EspectaculoDao extends JpaRepository<Espectaculo, Long> {
 
     @Query("SELECT e FROM Espectaculo e WHERE DATE(e.fecha) = :fecha")
     List<Espectaculo> findByFecha(@Param("fecha") LocalDate fecha);
+
+    List<Espectaculo> findByTaquillaVirtualTrue();
 }
 

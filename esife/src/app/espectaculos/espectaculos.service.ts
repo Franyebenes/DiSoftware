@@ -24,6 +24,10 @@ export class EspectaculosService {
     return this.http.get(`http://localhost:8080/busqueda/getEspectaculosByFecha?fecha=${fecha}`);
   }
 
+  getEntradas(espectaculoId: any) {
+    return this.http.get(`http://localhost:8080/busqueda/getEntradas?espectaculoId=${espectaculoId}`);
+  }
+
   getNumeroDeEntradas(id: any) {
     return this.http.get(`http://localhost:8080/busqueda/getNumeroDeEntradas?idEspectaculo=${id}`);
   }

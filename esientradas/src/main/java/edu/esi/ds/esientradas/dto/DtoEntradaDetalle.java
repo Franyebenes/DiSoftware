@@ -3,10 +3,13 @@ package edu.esi.ds.esientradas.dto;
 public record DtoEntradaDetalle(
     Long id,
     Long precioCentimos,
-    String precio,
-    String tipo,
-    String ubicacion,
+    String precioEuros,
     String estado,
-    Boolean disponible
+    Boolean disponible,
+    String tipo,
+    Integer fila,
+    Integer columna,
+    Integer planta,
+    Integer zona
 ) {
 }

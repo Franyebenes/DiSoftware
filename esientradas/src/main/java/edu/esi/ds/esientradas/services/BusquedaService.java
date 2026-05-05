@@ -44,37 +44,47 @@ public class BusquedaService {
         return this.espectuloDao.findByFecha(fecha);
     }
 
-    public List<Entrada> getEntradas(Long espectaculoId) {
-        return this.entradaDao.findByEspectaculoIdAndEstado(espectaculoId, Estado.DISPONIBLE);
-    }
-
     public List<DtoEntradaDetalle> getEntradasDisponibles(Long espectaculoId) {
         return this.entradaDao.findByEspectaculoIdAndEstado(espectaculoId, Estado.DISPONIBLE).stream()
             .map(entrada -> {
-                String tipo = entrada instanceof edu.esi.ds.esientradas.model.Precisa ? "Ubicación precisa" : "Zona";
-                String ubicacion;
+                String precioEuros = String.format("%.2f €", entrada.getPrecio() / 100.0);
+                String tipo = null;
+                Integer fila = null;
+                Integer columna = null;
+                Integer planta = null;
+                Integer zona = null;
+
                 if (entrada instanceof edu.esi.ds.esientradas.model.Precisa precisa) {
-                    ubicacion = String.format("Fila %d, Columna %d, Planta %d", precisa.getFila(), precisa.getColumna(), precisa.getPlanta());
+                    tipo = "Precisa";
+                    fila = precisa.getFila();
+                    columna = precisa.getColumna();
+                    planta = precisa.getPlanta();
                 } else if (entrada instanceof edu.esi.ds.esientradas.model.DeZona deZona) {
-                    ubicacion = "Zona " + deZona.getZona();
-                } else {
-                    ubicacion = "Ubicación genérica";
+                    tipo = "Zona";
+                    zona = deZona.getZona();
                 }
-                String precio = String.format("%.2f €", entrada.getPrecio() / 100.0);
+
                 return new DtoEntradaDetalle(
                     entrada.getId(),
                     entrada.getPrecio(),
-                    precio,
-                    tipo,
-                    ubicacion,
+                    precioEuros,
                     entrada.getEstado().name(),
-                    entrada.getEstado() == Estado.DISPONIBLE
+                    entrada.getEstado() == Estado.DISPONIBLE,
+                    tipo,
+                    fila,
+                    columna,
+                    planta,
+                    zona
                 );
             }).toList();
     }
 
     public Integer getNumeroDeEntradas(Long espectaculoId) {
         return this.entradaDao.countByEspectaculoId(espectaculoId);
+    }
+
+    public List<Entrada> getEntradas(Long espectaculoId) {
+        return this.entradaDao.findByEspectaculoId(espectaculoId);
     }
 
     public Integer getEntradasLibres(Long espectaculoId) {

@@ -30,6 +30,11 @@ public class Espectaculo {
     @OneToMany(mappedBy = "espectaculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Entrada> entradas = new ArrayList<>();
 
+    // Campos para taquilla virtual
+    private boolean taquillaVirtual = false;
+    private LocalDateTime aperturaTaquilla;
+    private Integer tiempoTurnoMinutos = 5; // tiempo para seleccionar entradas
+
     public Long getId() {
         return id;
     }
@@ -72,4 +77,27 @@ public class Espectaculo {
         this.entradas = entradas;
     }
 
+    public boolean isTaquillaVirtual() {
+        return taquillaVirtual;
+    }
+
+    public void setTaquillaVirtual(boolean taquillaVirtual) {
+        this.taquillaVirtual = taquillaVirtual;
+    }
+
+    public LocalDateTime getAperturaTaquilla() {
+        return aperturaTaquilla;
+    }
+
+    public void setAperturaTaquilla(LocalDateTime aperturaTaquilla) {
+        this.aperturaTaquilla = aperturaTaquilla;
+    }
+
+    public Integer getTiempoTurnoMinutos() {
+        return tiempoTurnoMinutos;
+    }
+
+    public void setTiempoTurnoMinutos(Integer tiempoTurnoMinutos) {
+        this.tiempoTurnoMinutos = tiempoTurnoMinutos;
+    }
 }

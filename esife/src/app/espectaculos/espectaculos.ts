@@ -18,6 +18,8 @@ export class Espectaculos {
   searchFecha: string = '';
   searchResults: any[] = [];
   isSearching: boolean = false;
+  selectedEntryIds: number[] = [];
+  selectedEspectaculo: any = null;
 
   constructor(private espectaculosService: EspectaculosService, private router: Router, private cdr: ChangeDetectorRef) {
     this.getEscenarios();
@@ -96,13 +98,55 @@ export class Espectaculos {
     );
   }
 
-  irAComprarEntradas() {
-    const token = localStorage.getItem('userToken');
-    if (token) {
-      this.router.navigate(['/comprar']);
+  getEntradas(espectaculo: any) {
+    this.espectaculosService.getEntradas(espectaculo.id).subscribe(
+      (response: any) => {
+        espectaculo.entradasDisponibles = response;
+        espectaculo.selectedEntradas = espectaculo.selectedEntradas || [];
+        this.cdr.detectChanges();
+      },
+      (error: any) => {
+        console.error('Error al obtener entradas disponibles', error);
+      }
+    );
+  }
+
+  toggleEntradaSeleccionada(espectaculo: any, entrada: any) {
+    espectaculo.selectedEntradas = espectaculo.selectedEntradas || [];
+    if (entrada.seleccionada) {
+      if (this.selectedEntryIds.length >= 5) {
+        entrada.seleccionada = false;
+        alert('Solo puedes seleccionar hasta 5 entradas.');
+        return;
+      }
+      this.selectedEntryIds.push(entrada.id);
+      espectaculo.selectedEntradas.push(entrada);
+      this.selectedEspectaculo = espectaculo;
     } else {
-      this.router.navigate(['/login']);
+      this.selectedEntryIds = this.selectedEntryIds.filter((id) => id !== entrada.id);
+      espectaculo.selectedEntradas = espectaculo.selectedEntradas.filter((item: any) => item.id !== entrada.id);
+      if (this.selectedEntryIds.length === 0) {
+        this.selectedEspectaculo = null;
+      }
     }
+  }
+
+  irAComprarEntradas(espectaculo: any) {
+    if (!espectaculo.selectedEntradas || espectaculo.selectedEntradas.length === 0) {
+      alert('Selecciona al menos una entrada antes de continuar con la compra.');
+      return;
+    }
+
+    const token = localStorage.getItem('userToken');
+    localStorage.setItem('selectedEntries', JSON.stringify(espectaculo.selectedEntradas));
+    localStorage.setItem('selectedEspectaculo', JSON.stringify({ artista: espectaculo.artista, fecha: espectaculo.fecha, escenario: espectaculo.escenario }));
+
+    if (!token) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.router.navigate(['/comprar']);
   }
 
   searchByArtista() {

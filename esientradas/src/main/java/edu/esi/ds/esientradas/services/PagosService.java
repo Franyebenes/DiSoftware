@@ -59,21 +59,19 @@ public class PagosService {
      * la entidad en la base de datos. Se espera recibir el clientSecret
      * que se guardó al crear el PaymentIntent.
      */
-    public void confirmarPago(String clientSecret) throws StripeException {
+    public Pago confirmarPago(String clientSecret) throws StripeException {
         Stripe.apiKey = configuracionDao.findByClave("privateKey");
 
-        // buscamos el pago local correspondiente
         Pago pago = pagoDao.findByClientSecret(clientSecret);
         if (pago == null) {
             throw new IllegalArgumentException("Pago desconocido: " + clientSecret);
         }
 
-        // recuperamos el intent desde Stripe para verificar el estado real
         PaymentIntent intent = PaymentIntent.retrieve(pago.getStripeIntentId());
         String status = intent.getStatus();
-
-        // actualizamos la entidad y persistimos
         pago.setStatus(status);
         pagoDao.save(pago);
+
+        return pago;
     }
 }

@@ -42,7 +42,15 @@ export class Login {
     this.authService.login(this.email, this.password).subscribe({
       next: (token) => {
         localStorage.setItem('userToken', token);
-        this.router.navigate(['/comprar']);
+
+        const selectedEntriesJson = localStorage.getItem('selectedEntries');
+        const selectedEntries = selectedEntriesJson ? JSON.parse(selectedEntriesJson) : [];
+        if (Array.isArray(selectedEntries) && selectedEntries.length > 0) {
+          this.router.navigate(['/comprar']);
+        } else {
+          this.router.navigate(['/']);
+        }
+
         this.cdr.detectChanges(); 
       },
       error: (err) => {

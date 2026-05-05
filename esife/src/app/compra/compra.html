@@ -17,14 +17,29 @@
       <div class="section-header">
         <span class="step-number">1</span>
         <div>
-          <h2>Importe de la entrada</h2>
+          <h2>Importe de la compra</h2>
           <p class="step-desc">Confirma el total antes de proceder al pago seguro.</p>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <div class="summary-item">
+          <strong>Espectáculo:</strong> {{ selectedEspectaculo?.artista || 'N/A' }}
+        </div>
+        <div class="summary-item">
+          <strong>Fecha:</strong> {{ selectedEspectaculo?.fecha || 'N/A' }}
+        </div>
+        <div class="summary-item">
+          <strong>Escenario:</strong> {{ selectedEspectaculo?.escenario || 'N/A' }}
+        </div>
+        <div class="summary-item">
+          <strong>Entradas seleccionadas:</strong> {{ selectedEntries.length }}
         </div>
       </div>
 
       <div class="input-group">
         <div class="input-with-symbol">
-          <input type="number" id="importe" [(ngModel)]="importe" placeholder="0.00">
+          <input type="text" id="importe" [value]="importe | number:'1.2-2'" readonly>
           <span class="symbol">€</span>
         </div>
       </div>
