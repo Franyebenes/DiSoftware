@@ -18,15 +18,15 @@ public class ExternalController {
     private UserService service;
 
     @GetMapping("/checkToken/{token}")
-    public String chekToken(@PathVariable String token) {
+    public String checkToken(@PathVariable String token) {
         if (token == null || token.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Se necesita el token");
         }
-        String userName = this.service.checkToken(token);
-        if (userName == null) {
+        String userEmail = this.service.checkToken(token);
+        if (userEmail == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Token inválido");
         }
-        return userName;
+        return userEmail;
     }
-
 }
+
