@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EspectaculosService } from './espectaculos.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-espectaculos',
@@ -12,7 +13,9 @@ import { Router } from '@angular/router';
 })
 export class Espectaculos {
   escenarios: any[] = [];
-  constructor(private espectaculosService: EspectaculosService, private router: Router) { }
+  constructor(private espectaculosService: EspectaculosService, private router: Router, private cdr: ChangeDetectorRef) {
+    this.getEscenarios();
+   }
 
   getEscenarios() {
     this.espectaculosService.getEscenarios().subscribe(
@@ -27,21 +30,23 @@ export class Espectaculos {
   }
 
   getEspectaculos(escenario: any) {
-    // si ya hemos cargado y está visible, lo ocultamos
     if (escenario.visible) {
       escenario.visible = false;
       return;
     }
-    // si ya existen datos pero están ocultos, solo los mostramos
+    
     if (escenario.espectaculos) {
       escenario.visible = true;
       return;
     }
+    
     // carga inicial
     this.espectaculosService.getEspectaculos(escenario).subscribe(
       (response: any) => {
         escenario.espectaculos = response;
-        escenario.visible = true; // marcamos como visibles tras la carga
+        escenario.visible = true; 
+        
+        this.cdr.detectChanges(); 
       },
       (error: any) => {
         console.error('Error al obtener los espectáculos', error);
@@ -77,6 +82,7 @@ export class Espectaculos {
     this.espectaculosService.getNumeroDeEntradasComoDto(espectaculo).subscribe(
       (response: any) => {
         espectaculo.entradas = response;
+        this.cdr.detectChanges();
       },
       (error: any) => {
         console.error('Error al obtener las entradas', error);
