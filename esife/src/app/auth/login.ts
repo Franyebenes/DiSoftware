@@ -21,6 +21,13 @@ export class Login {
   registerPassword2: string = '';
   registerErrorMessage: string = '';
   registerSuccessMessage: string = '';
+  showForgotPassword: boolean = false;
+  forgotEmail: string = '';
+  forgotMessage: string = '';
+  showResetPassword: boolean = false;
+  resetToken: string = '';
+  newPassword: string = '';
+  resetMessage: string = '';
 
   
   constructor(
@@ -77,5 +84,78 @@ export class Login {
     this.showRegister = !this.showRegister;
     this.registerErrorMessage = '';
     this.registerSuccessMessage = '';
+  }
+
+  toggleForgotPassword() {
+    this.showForgotPassword = !this.showForgotPassword;
+    this.forgotMessage = '';
+    this.forgotEmail = '';
+  }
+
+  forgotPassword() {
+    this.forgotMessage = '';
+
+    this.authService.forgotPassword(this.forgotEmail).subscribe({
+      next: (response) => {
+        this.forgotMessage = response;
+        this.forgotEmail = '';
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.forgotMessage = "Error al enviar el email de recuperación.";
+        console.error('Error en forgot password:', err);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  toggleResetPassword() {
+    this.showResetPassword = !this.showResetPassword;
+    this.resetMessage = '';
+    this.resetToken = '';
+    this.newPassword = '';
+  }
+
+  resetPassword() {
+    this.resetMessage = '';
+
+    this.authService.resetPassword(this.resetToken, this.newPassword).subscribe({
+      next: (response) => {
+        this.resetMessage = response;
+        this.resetToken = '';
+        this.newPassword = '';
+        this.showResetPassword = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.resetMessage = "Error al resetear la contraseña. Verifique el token.";
+        console.error('Error en reset password:', err);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  deleteAccount() {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+      this.errorMessage = "No hay sesión activa.";
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+      this.authService.deleteAccount(token).subscribe({
+        next: (response) => {
+          localStorage.removeItem('userToken');
+          this.router.navigate(['/']);
+          this.cdr.detectChanges();
+        },
+        error: (err) => {
+          this.errorMessage = "Error al eliminar la cuenta.";
+          console.error('Error al eliminar cuenta:', err);
+          this.cdr.detectChanges();
+        }
+      });
+    }
   }
 }

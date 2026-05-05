@@ -34,7 +34,7 @@ public class ComprasController {
     public ResponseEntity<?> comprar(@RequestBody DtoCompra dto,
                                      @RequestParam String userToken) throws StripeException {
         // validar token
-        String user = usuarioService.checkToken(userToken);
+        String user = usuarioService.validateToken(userToken);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

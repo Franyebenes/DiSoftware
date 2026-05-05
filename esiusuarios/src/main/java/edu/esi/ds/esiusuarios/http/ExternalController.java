@@ -22,7 +22,7 @@ public class ExternalController {
         if (token == null || token.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Se necesita el token");
         }
-        String userEmail = this.service.checkToken(token);
+        String userEmail = this.service.validateTokenForEsientradas(token);
         if (userEmail == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Token inválido");
         }

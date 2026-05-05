@@ -29,6 +29,8 @@
       
       <div class="login-footer">
         <p>¿No tienes cuenta? <a href="javascript:void(0)" (click)="toggleRegister()">Regístrate aquí</a></p>
+        <p><a href="javascript:void(0)" (click)="toggleForgotPassword()">¿Olvidaste tu contraseña?</a></p>
+        <p *ngIf="localStorage.getItem('userToken')"><a href="javascript:void(0)" (click)="deleteAccount()" style="color: red;">Eliminar cuenta</a></p>
       </div>
     </div>
 
@@ -71,6 +73,66 @@
       
       <div class="login-footer">
         <p>¿Ya tienes cuenta? <a href="javascript:void(0)" (click)="toggleRegister()">Inicia sesión aquí</a></p>
+      </div>
+    </div>
+
+    <!-- FORGOT PASSWORD FORM -->
+    <div *ngIf="showForgotPassword">
+      <div class="login-header">
+        <h2>Recuperar contraseña</h2>
+        <p>Ingresa tu email para recibir instrucciones</p>
+      </div>
+
+      <div class="login-body">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="forgotEmail" name="forgotEmail" placeholder="tu@email.com">
+        </div>
+
+        <button class="btn-login" (click)="forgotPassword()">
+          Enviar instrucciones
+        </button>
+
+        <p *ngIf="forgotMessage" class="success-msg">
+          {{ forgotMessage }}
+        </p>
+      </div>
+      
+      <div class="login-footer">
+        <p><a href="javascript:void(0)" (click)="toggleForgotPassword()">Volver al login</a></p>
+        <p><a href="javascript:void(0)" (click)="toggleResetPassword()">Ya tengo un token de reset</a></p>
+      </div>
+    </div>
+
+    <!-- RESET PASSWORD FORM -->
+    <div *ngIf="showResetPassword">
+      <div class="login-header">
+        <h2>Resetear contraseña</h2>
+        <p>Ingresa el token recibido y tu nueva contraseña</p>
+      </div>
+
+      <div class="login-body">
+        <div class="input-group">
+          <label>Token de reset</label>
+          <input type="text" [(ngModel)]="resetToken" name="resetToken" placeholder="Token recibido por email">
+        </div>
+
+        <div class="input-group">
+          <label>Nueva contraseña</label>
+          <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
+        </div>
+
+        <button class="btn-login" (click)="resetPassword()">
+          Cambiar contraseña
+        </button>
+
+        <p *ngIf="resetMessage" class="success-msg">
+          {{ resetMessage }}
+        </p>
+      </div>
+      
+      <div class="login-footer">
+        <p><a href="javascript:void(0)" (click)="toggleResetPassword()">Volver al login</a></p>
       </div>
     </div>
   </div>

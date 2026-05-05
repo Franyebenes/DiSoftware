@@ -16,6 +16,14 @@ export class EspectaculosService {
     return this.http.get(`http://localhost:8080/busqueda/getEspectaculos/${escenario.id}`);
   }
 
+  searchEspectaculosByArtista(artista: string) {
+    return this.http.get(`http://localhost:8080/busqueda/getEspectaculos?artista=${encodeURIComponent(artista)}`);
+  }
+
+  searchEspectaculosByFecha(fecha: string) {
+    return this.http.get(`http://localhost:8080/busqueda/getEspectaculosByFecha?fecha=${fecha}`);
+  }
+
   getNumeroDeEntradas(id: any) {
     return this.http.get(`http://localhost:8080/busqueda/getNumeroDeEntradas?idEspectaculo=${id}`);
   }

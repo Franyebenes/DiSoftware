@@ -1,5 +1,6 @@
 package edu.esi.ds.esientradas.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import edu.esi.ds.esientradas.model.Estado;
 import edu.esi.ds.esientradas.dao.EscenarioDao;
 import edu.esi.ds.esientradas.dao.EspectaculoDao;
 import edu.esi.ds.esientradas.dto.DtoEntrada;
+import edu.esi.ds.esientradas.dto.DtoEntradaDetalle;
 import edu.esi.ds.esientradas.dao.EntradaDao;
 
 @Service
@@ -38,8 +40,37 @@ public class BusquedaService {
         return this.espectuloDao.findByEscenarioId(idEscenario);
     }
 
+    public List<Espectaculo> getEspectaculosByFecha(LocalDate fecha) {
+        return this.espectuloDao.findByFecha(fecha);
+    }
+
     public List<Entrada> getEntradas(Long espectaculoId) {
-        return this.entradaDao.findByEspectaculoId(espectaculoId);
+        return this.entradaDao.findByEspectaculoIdAndEstado(espectaculoId, Estado.DISPONIBLE);
+    }
+
+    public List<DtoEntradaDetalle> getEntradasDisponibles(Long espectaculoId) {
+        return this.entradaDao.findByEspectaculoIdAndEstado(espectaculoId, Estado.DISPONIBLE).stream()
+            .map(entrada -> {
+                String tipo = entrada instanceof edu.esi.ds.esientradas.model.Precisa ? "Ubicación precisa" : "Zona";
+                String ubicacion;
+                if (entrada instanceof edu.esi.ds.esientradas.model.Precisa precisa) {
+                    ubicacion = String.format("Fila %d, Columna %d, Planta %d", precisa.getFila(), precisa.getColumna(), precisa.getPlanta());
+                } else if (entrada instanceof edu.esi.ds.esientradas.model.DeZona deZona) {
+                    ubicacion = "Zona " + deZona.getZona();
+                } else {
+                    ubicacion = "Ubicación genérica";
+                }
+                String precio = String.format("%.2f €", entrada.getPrecio() / 100.0);
+                return new DtoEntradaDetalle(
+                    entrada.getId(),
+                    entrada.getPrecio(),
+                    precio,
+                    tipo,
+                    ubicacion,
+                    entrada.getEstado().name(),
+                    entrada.getEstado() == Estado.DISPONIBLE
+                );
+            }).toList();
     }
 
     public Integer getNumeroDeEntradas(Long espectaculoId) {

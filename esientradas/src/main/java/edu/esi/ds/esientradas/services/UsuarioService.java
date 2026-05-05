@@ -9,17 +9,17 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class UsuarioService {
 
-    public String checkToken(String userToken) {
-        String endpoint = "http://localhost:8001/external/checkToken";
+    public String validateToken(String userToken) {
+        String endpoint = "http://localhost:8081/users/validate-token";
         RestTemplate rest = new RestTemplate();
         try{
-            String userName =rest.getForObject(endpoint +"/" + userToken, String.class);
-            if(userName == null || userName.isEmpty()){
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token Invalido");
+            String userEmail = rest.getForObject(endpoint + "?token=" + userToken, String.class);
+            if(userEmail == null || userEmail.isEmpty()){
+                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token Inválido");
             }
-            return userName;
+            return userEmail;
         } catch (RestClientException ex){
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No se puede validad el token", ex);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No se puede validar el token", ex);
         }
     }
 }

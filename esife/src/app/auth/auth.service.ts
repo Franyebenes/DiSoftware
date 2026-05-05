@@ -32,3 +32,33 @@
       params: { token: token },
       responseType: 'text'
     });
+  }
+
+  forgotPassword(email: string) {
+    const body = { email: email };
+    return this.http.post(`${this.URL}/forgot-password`, body, { responseType: 'text' });
+  }
+
+  resetPassword(resetToken: string, newPassword: string) {
+    const body = { 
+      resetToken: resetToken, 
+      newPassword: newPassword 
+    };
+    return this.http.post(`${this.URL}/reset-password`, body, { responseType: 'text' });
+  }
+
+  deleteAccount(token: string) {
+    const headers = { 'Authorization': `Bearer ${token}` };
+    return this.http.delete(`${this.URL}/account`, { 
+      headers: headers, 
+      responseType: 'text' 
+    });
+  }
+
+  validateToken(token: string) {
+    return this.http.get(`${this.URL}/validate-token`, {
+      params: { token: token },
+      responseType: 'text'
+    });
+  }
+}

@@ -5,8 +5,10 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,6 +80,72 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Token inválido o expirado");
         }
         return result;
+    }
+
+    @PostMapping("/forgot-password")
+    public String forgotPassword(@RequestBody Map<String, String> request) {
+        JSONObject jsonRequest = new JSONObject(request);
+        String email = jsonRequest.optString("email");
+        
+        if (email.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email requerido");
+        }
+        
+        String result = this.service.forgotPassword(email);
+        return result;
+    }
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@RequestBody Map<String, String> request) {
+        JSONObject jsonRequest = new JSONObject(request);
+        String resetToken = jsonRequest.optString("resetToken");
+        String newPassword = jsonRequest.optString("newPassword");
+        
+        if (resetToken.isEmpty() || newPassword.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token de reset y nueva contraseña requeridos");
+        }
+        
+        // Validar que la contraseña cumple con los requisitos de seguridad
+        if (!isPasswordSecure(newPassword)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
+                "La contraseña debe tener al menos 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales");
+        }
+        
+        String result = this.service.resetPassword(resetToken, newPassword);
+        if (result == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token inválido o expirado");
+        }
+        return result;
+    }
+
+    @DeleteMapping("/account")
+    public String deleteAccount(@RequestHeader("Authorization") String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token de autorización requerido");
+        }
+        
+        String token = authHeader.substring(7); // Remove "Bearer " prefix
+        
+        String result = this.service.deleteAccount(token);
+        if (result == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token inválido");
+        }
+        return result;
+    }
+
+    @GetMapping("/validate-token")
+    public String validateTokenForEsientradas(@RequestParam String token) {
+        if (token == null || token.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token requerido");
+        }
+        
+        String email = this.service.validateTokenForEsientradas(token);
+        if (email == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token inválido o usuario no confirmado");
+        }
+        
+        // Retornar el email del usuario para que esientradas sepa quién está autenticado
+        return email;
     }
 
     private boolean isPasswordSecure(String password) {

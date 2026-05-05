@@ -1,6 +1,7 @@
 package edu.esi.ds.esiusuarios.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +21,12 @@ public class User {
 
     @Column(nullable = false)
     private Boolean confirmed = false;
+
+    @Column(unique = true)
+    private String resetToken;
+
+    @Column
+    private LocalDateTime resetTokenExpiry;
 
     public User() {
     }
@@ -69,6 +76,22 @@ public class User {
 
     public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public LocalDateTime getResetTokenExpiry() {
+        return resetTokenExpiry;
+    }
+
+    public void setResetTokenExpiry(LocalDateTime resetTokenExpiry) {
+        this.resetTokenExpiry = resetTokenExpiry;
     }
 }
 

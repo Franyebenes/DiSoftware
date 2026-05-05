@@ -1,18 +1,24 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EspectaculosService } from './espectaculos.service';
 import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-espectaculos',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   standalone: true,
   templateUrl: './espectaculos.html',
   styleUrl: './espectaculos.css',
 })
 export class Espectaculos {
   escenarios: any[] = [];
+  searchArtista: string = '';
+  searchFecha: string = '';
+  searchResults: any[] = [];
+  isSearching: boolean = false;
+
   constructor(private espectaculosService: EspectaculosService, private router: Router, private cdr: ChangeDetectorRef) {
     this.getEscenarios();
    }
@@ -97,6 +103,59 @@ export class Espectaculos {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+  searchByArtista() {
+    if (!this.searchArtista.trim()) {
+      this.searchResults = [];
+      this.isSearching = false;
+      return;
+    }
+
+    this.isSearching = true;
+    this.espectaculosService.searchEspectaculosByArtista(this.searchArtista).subscribe(
+      (response: any) => {
+        this.searchResults = response;
+        this.isSearching = false;
+        this.cdr.detectChanges();
+      },
+      (error: any) => {
+        console.error('Error al buscar espectáculos por artista', error);
+        this.searchResults = [];
+        this.isSearching = false;
+        this.cdr.detectChanges();
+      }
+    );
+  }
+
+  searchByFecha() {
+    if (!this.searchFecha) {
+      this.searchResults = [];
+      this.isSearching = false;
+      return;
+    }
+
+    this.isSearching = true;
+    this.espectaculosService.searchEspectaculosByFecha(this.searchFecha).subscribe(
+      (response: any) => {
+        this.searchResults = response;
+        this.isSearching = false;
+        this.cdr.detectChanges();
+      },
+      (error: any) => {
+        console.error('Error al buscar espectáculos por fecha', error);
+        this.searchResults = [];
+        this.isSearching = false;
+        this.cdr.detectChanges();
+      }
+    );
+  }
+
+  clearSearch() {
+    this.searchArtista = '';
+    this.searchFecha = '';
+    this.searchResults = [];
+    this.isSearching = false;
   }
 
   getImagenEscenario(nombre: string): string {

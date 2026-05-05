@@ -19,6 +19,80 @@
 
   <div class="main-container">
     <div class="section-header">
+      <h2>Buscar Espectáculos</h2>
+    </div>
+
+    <div class="search-container">
+      <div class="search-section">
+        <h3>Buscar por Artista</h3>
+        <div class="search-input-group">
+          <input type="text" 
+                 [(ngModel)]="searchArtista" 
+                 (input)="searchByArtista()"
+                 placeholder="Ej: Natos y Waor"
+                 class="search-input">
+          <button class="btn-search" (click)="searchByArtista()">Buscar</button>
+        </div>
+      </div>
+
+      <div class="search-section">
+        <h3>Buscar por Fecha</h3>
+        <div class="search-input-group">
+          <input type="date" 
+                 [(ngModel)]="searchFecha" 
+                 (change)="searchByFecha()"
+                 class="search-input">
+          <button class="btn-search" (click)="searchByFecha()">Buscar</button>
+        </div>
+      </div>
+
+      <div class="search-actions">
+        <button class="btn-clear" (click)="clearSearch()">Limpiar Búsqueda</button>
+      </div>
+    </div>
+
+    <!-- SEARCH RESULTS -->
+    <div *ngIf="isSearching" class="loading">
+      <p>Buscando espectáculos...</p>
+    </div>
+
+    <div *ngIf="!isSearching && searchResults.length > 0" class="search-results">
+      <h3>Resultados de Búsqueda</h3>
+      <div class="espectaculo-row" *ngFor="let espectaculo of searchResults">
+        <div class="main-info">
+          <div class="artista-name">{{ espectaculo.artista || 'Espectáculo Programado' }}</div>
+          <div class="fecha-label">{{ espectaculo.fecha }}</div>
+          <div class="escenario-label">{{ espectaculo.escenario }}</div>
+        </div>
+        <div class="action-zone">
+          <button class="btn-check" (click)="getNumeroDeEntradas(espectaculo)">
+            Ver Disponibilidad
+          </button>
+          <div class="availability-container" *ngIf="espectaculo.entradas">
+            <div class="stats-box">
+              <div class="stat-item">
+                <span class="stat-label">TOTALES</span>
+                <span class="stat-value">{{ espectaculo.entradas.total }}</span>
+              </div>
+              <div class="divider"></div>
+              <div class="stat-item">
+                <span class="stat-label">LIBRES</span>
+                <span class="stat-value highlight">{{ espectaculo.entradas.libres }}</span>
+              </div>
+            </div>
+            <button class="btn-buy-new" (click)="irAComprarEntradas()">
+              Comprar entrada
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isSearching && searchResults.length === 0 && (searchArtista || searchFecha)" class="no-results">
+      <p>No se encontraron espectáculos que coincidan con tu búsqueda.</p>
+    </div>
+
+    <div class="section-header">
       <h2>Interfaz de Escenarios</h2>
       <button class="btn-refresh" (click)="getEscenarios()">
         Actualizar Lista

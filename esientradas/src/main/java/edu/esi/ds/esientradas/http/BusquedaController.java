@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import java.time.LocalDate;
 import java.util.List;
 
 import edu.esi.ds.esientradas.dto.DtoEntrada;
+import edu.esi.ds.esientradas.dto.DtoEntradaDetalle;
 import edu.esi.ds.esientradas.dto.DtoEspectaculo;
 import edu.esi.ds.esientradas.model.Escenario;
 import edu.esi.ds.esientradas.model.Espectaculo;
@@ -25,13 +27,8 @@ public class BusquedaController {
     private BusquedaService service;
 
     @GetMapping("/getEntradas")
-    public List<DtoEntrada> getEntradas(@RequestParam Long espectaculoId) {
-        List<Entrada> entradas = this.service.getEntradas(espectaculoId);
-        List<DtoEntrada> dtos = entradas.stream().map(e -> {
-            DtoEntrada dto = new DtoEntrada(0, 0, 0, 0);
-            return dto;
-        }).toList();
-        return dtos;
+    public List<DtoEntradaDetalle> getEntradas(@RequestParam Long espectaculoId) {
+        return this.service.getEntradasDisponibles(espectaculoId);
     }
 
     @GetMapping("/getNumeroDeEntradas")
@@ -77,6 +74,21 @@ public class BusquedaController {
         }).toList();
         return dtos;
     }  
+
+    @GetMapping("/getEspectaculosByFecha")
+    public List<DtoEspectaculo> getEspectaculosByFecha(@RequestParam String fecha) {
+        LocalDate fechaParsed = LocalDate.parse(fecha); // formato esperado: YYYY-MM-DD
+        List<Espectaculo> espectaculos = this.service.getEspectaculosByFecha(fechaParsed);
+        List<DtoEspectaculo> dtos = espectaculos.stream().map(e -> {
+            DtoEspectaculo dto = new DtoEspectaculo();
+            dto.setId(e.getId());
+            dto.setArtista(e.getArtista());
+            dto.setFecha(e.getFecha());
+            dto.setEscenario(e.getEscenario().getNombre());
+            return dto;
+        }).toList();
+        return dtos;
+    }
 
     @GetMapping("/getEscenarios")
     public List<Escenario> getEscenarios() {
