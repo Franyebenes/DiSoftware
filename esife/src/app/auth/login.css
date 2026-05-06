@@ -55,6 +55,33 @@
   border-color: #007bff; /* Color azul estándar, cámbialo por el de tu web */
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+  padding-right: 2.5rem;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  padding: 0;
+  line-height: 1;
+}
+
+.eye-btn:hover {
+  color: #000;
+}
+
 /* El botón principal */
 .btn-login {
   width: 100%;

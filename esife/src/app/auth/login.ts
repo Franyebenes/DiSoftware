@@ -28,13 +28,20 @@ export class Login {
   resetToken: string = '';
   newPassword: string = '';
   resetMessage: string = '';
+  showPassword: boolean = false;
+  showRegisterPassword1: boolean = false;
+  showRegisterPassword2: boolean = false;
+  showResetNewPassword: boolean = false;
 
-  
   constructor(
     private authService: AuthService,
     private router: Router,
     private cdr: ChangeDetectorRef
   ) {}
+
+  get userToken(): string | null {
+    return typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('userToken') : null;
+  }
 
   login() {
     this.errorMessage = ''; 
@@ -81,7 +88,11 @@ export class Login {
         this.cdr.detectChanges(); 
       },
       error: (err) => {
-        this.registerErrorMessage = err.error || "Error al registrar. Verifique los datos.";
+        if (err.status === 0) {
+          this.registerErrorMessage = 'No se puede conectar con el servidor. Asegúrate de que el backend esté ejecutándose en localhost:8081.';
+        } else {
+          this.registerErrorMessage = err.error || 'Error al registrar. Verifique los datos.';
+        }
         console.error('Error en el registro:', err);
         this.cdr.detectChanges();
       }
@@ -98,6 +109,10 @@ export class Login {
     this.showForgotPassword = !this.showForgotPassword;
     this.forgotMessage = '';
     this.forgotEmail = '';
+  }
+
+  toggleResetNewPasswordVisibility() {
+    this.showResetNewPassword = !this.showResetNewPassword;
   }
 
   forgotPassword() {
@@ -165,5 +180,17 @@ export class Login {
         }
       });
     }
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleRegisterPassword1Visibility() {
+    this.showRegisterPassword1 = !this.showRegisterPassword1;
+  }
+
+  toggleRegisterPassword2Visibility() {
+    this.showRegisterPassword2 = !this.showRegisterPassword2;
   }
 }

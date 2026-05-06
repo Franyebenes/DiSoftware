@@ -15,7 +15,10 @@
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" [(ngModel)]="password" name="password" placeholder="••••••••">
+          <div class="password-container">
+            <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="••••••••">
+            <button type="button" (click)="togglePasswordVisibility()" class="eye-btn">{{ showPassword ? '🙈' : '👁️' }}</button>
+          </div>
         </div>
 
         <button class="btn-login" (click)="login()">
@@ -30,7 +33,7 @@
       <div class="login-footer">
         <p>¿No tienes cuenta? <a href="javascript:void(0)" (click)="toggleRegister()">Regístrate aquí</a></p>
         <p><a href="javascript:void(0)" (click)="toggleForgotPassword()">¿Olvidaste tu contraseña?</a></p>
-        <p *ngIf="localStorage.getItem('userToken')"><a href="javascript:void(0)" (click)="deleteAccount()" style="color: red;">Eliminar cuenta</a></p>
+        <p *ngIf="userToken"><a href="javascript:void(0)" (click)="deleteAccount()" style="color: red;">Eliminar cuenta</a></p>
       </div>
     </div>
 
@@ -49,13 +52,19 @@
 
         <div class="input-group">
           <label>Contraseña</label>
-          <input type="password" [(ngModel)]="registerPassword1" name="registerPassword1" 
-                 placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
+          <div class="password-container">
+            <input [type]="showRegisterPassword1 ? 'text' : 'password'" [(ngModel)]="registerPassword1" name="registerPassword1" 
+                   placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
+            <button type="button" (click)="toggleRegisterPassword1Visibility()" class="eye-btn">{{ showRegisterPassword1 ? '🙈' : '👁️' }}</button>
+          </div>
         </div>
 
         <div class="input-group">
           <label>Confirmar contraseña</label>
-          <input type="password" [(ngModel)]="registerPassword2" name="registerPassword2" placeholder="••••••••">
+          <div class="password-container">
+            <input [type]="showRegisterPassword2 ? 'text' : 'password'" [(ngModel)]="registerPassword2" name="registerPassword2" placeholder="••••••••">
+            <button type="button" (click)="toggleRegisterPassword2Visibility()" class="eye-btn">{{ showRegisterPassword2 ? '🙈' : '👁️' }}</button>
+          </div>
         </div>
 
         <button class="btn-login" (click)="register()">
@@ -119,7 +128,10 @@
 
         <div class="input-group">
           <label>Nueva contraseña</label>
-          <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
+          <div class="password-container">
+            <input [type]="showResetNewPassword ? 'text' : 'password'" [(ngModel)]="newPassword" name="newPassword" placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
+            <button type="button" (click)="toggleResetNewPasswordVisibility()" class="eye-btn">{{ showResetNewPassword ? '🙈' : '👁️' }}</button>
+          </div>
         </div>
 
         <button class="btn-login" (click)="resetPassword()">
