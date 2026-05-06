@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import edu.esi.ds.esiusuarios.auxiliares.Manager;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.apache.commons.validator.routines.EmailValidator;
 import edu.esi.ds.esiusuarios.dao.UserRepository;
 import edu.esi.ds.esiusuarios.model.User;
+import edu.esi.ds.esiusuarios.auxiliares.Manager;
 
 @Service
 public class UserService {
@@ -23,7 +23,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public String login(String email, String password) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+        Optional<User> optionalUser = userRepository.findActiveByEmail(email);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -45,7 +45,7 @@ public class UserService {
     }
 
     public String checkToken(String token) {
-        Optional<User> optionalUser = userRepository.findByToken(token);
+        Optional<User> optionalUser = userRepository.findActiveByToken(token);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -62,17 +62,23 @@ public class UserService {
     }
 
     public String register(String email, String pwd1) {
+        // Validar formato de email con Apache Commons Validator (RFC 5322)
+        EmailValidator validator = EmailValidator.getInstance();
+        if (!validator.isValid(email)) {
+            return null;
+        }
+
+        // Validar longitud máxima
+        if (email.length() > 255) {
+            return null;
+        }
+
         // Validar que el email no esté registrado
-        if (userRepository.findByEmail(email).isPresent()) {
+        if (userRepository.findActiveByEmail(email).isPresent()) {
             return null;
         }
-        
-        // Validar formato básico de email
-        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-            return null;
-        }
-        
-        // Validar contraseña segura: al menos 8 caracteres, mayúscula, minúscula, número
+
+        // Validar contraseña segura
         if (!isPasswordSecure(pwd1)) {
             return null;
         }
@@ -97,7 +103,7 @@ public class UserService {
     }
 
     public String confirmUser(String token) {
-        Optional<User> optionalUser = userRepository.findByToken(token);
+        Optional<User> optionalUser = userRepository.findActiveByToken(token);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -111,7 +117,7 @@ public class UserService {
     }
 
     public String forgotPassword(String email) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+        Optional<User> optionalUser = userRepository.findActiveByEmail(email);
         
         if (!optionalUser.isPresent()) {
             return "Si el email existe, recibirás instrucciones para resetear tu contraseña";
@@ -139,7 +145,7 @@ public class UserService {
     }
 
     public String resetPassword(String resetToken, String newPassword) {
-        Optional<User> optionalUser = userRepository.findByResetToken(resetToken);
+        Optional<User> optionalUser = userRepository.findActiveByResetToken(resetToken);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -171,7 +177,7 @@ public class UserService {
     }
 
     public String deleteAccount(String token) {
-        Optional<User> optionalUser = userRepository.findByToken(token);
+        Optional<User> optionalUser = userRepository.findActiveByToken(token);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -179,14 +185,18 @@ public class UserService {
         
         User user = optionalUser.get();
         
-        // Eliminar usuario
-        userRepository.delete(user);
+        // Soft delete del usuario (no eliminación física)
+        int updatedRows = userRepository.softDeleteById(user.getId(), LocalDateTime.now());
         
-        return "Cuenta eliminada exitosamente";
+        if (updatedRows > 0) {
+            return "Cuenta eliminada exitosamente (soft delete)";
+        } else {
+            return null; // Usuario ya estaba eliminado o no encontrado
+        }
     }
 
     public String validateTokenForEsientradas(String token) {
-        Optional<User> optionalUser = userRepository.findByToken(token);
+        Optional<User> optionalUser = userRepository.findActiveByToken(token);
         
         if (!optionalUser.isPresent()) {
             return null;
@@ -201,6 +211,34 @@ public class UserService {
         
         // Retornar email del usuario para que esientradas sepa quién es
         return user.getEmail();
+    }
+
+    // Método adicional para reactivar usuario eliminado (útil para administración)
+    public String reactivateAccount(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email); // Buscar incluyendo eliminados
+        
+        if (!optionalUser.isPresent()) {
+            return null;
+        }
+        
+        User user = optionalUser.get();
+        
+        if (!user.getIsDeleted()) {
+            return "La cuenta ya está activa";
+        }
+        
+        // Reactivar usuario
+        user.setIsDeleted(false);
+        user.setUpdatedAt(LocalDateTime.now());
+        userRepository.save(user);
+        
+        return "Cuenta reactivada exitosamente";
+    }
+
+    // Método para verificar si un usuario está eliminado
+    public boolean isUserDeleted(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        return optionalUser.isPresent() && optionalUser.get().getIsDeleted();
     }
 
     private boolean isPasswordSecure(String password) {

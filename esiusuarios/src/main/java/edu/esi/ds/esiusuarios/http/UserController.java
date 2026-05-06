@@ -16,24 +16,36 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import edu.esi.ds.esiusuarios.services.UserService;
+import edu.esi.ds.esiusuarios.security.RateLimitingService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    
+
     @Autowired
     private UserService service;
+
+    @Autowired
+    private RateLimitingService rateLimitingService;
 
     @PostMapping("/login")
     public String login(@RequestBody Map<String, String> credentials) {
         JSONObject jsonCredentials = new JSONObject(credentials);
         String email = jsonCredentials.optString("email");
         String password = jsonCredentials.optString("password");
-        
+
+        // Rate limiting para prevenir fuerza bruta
+        if (!rateLimitingService.isAllowed(email)) {
+            throw new ResponseStatusException(
+                HttpStatus.TOO_MANY_REQUESTS,
+                "Demasiados intentos de login. Intenta más tarde en 15 minutos."
+            );
+        }
+
         if (email.isEmpty() || password.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email y contraseña requeridos");
         }
-        
+
         String token = this.service.login(email, password);
         if (token == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email o contraseña incorrectos, o cuenta no confirmada");

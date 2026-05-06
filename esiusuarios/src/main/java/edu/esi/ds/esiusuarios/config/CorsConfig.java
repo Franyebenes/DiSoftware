@@ -9,11 +9,12 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Esto le dice al servidor que acepte peticiones de tu Angular
-        registry.addMapping("/**") 
-                .allowedOrigins("http://localhost:4200") 
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // El OPTIONS arregla el error actual
-                .allowedHeaders("*")
-                .allowCredentials(true);
+        // Configuración CORS más segura
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:4200", "https://localhost:4200")  // Permitir HTTP y HTTPS
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Content-Type", "Authorization")  // Headers específicos
+                .allowCredentials(true)
+                .maxAge(3600);  // Cache preflight por 1 hora
     }
 }

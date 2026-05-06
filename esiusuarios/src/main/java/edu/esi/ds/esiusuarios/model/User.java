@@ -1,6 +1,7 @@
 package edu.esi.ds.esiusuarios.model;
 
 import jakarta.persistence.*;
+import edu.esi.ds.esiusuarios.utils.EmailEncryptor;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,23 +11,35 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 500)
+    @Convert(converter = EmailEncryptor.class)  // Encriptación de email
     private String email;
 
     @Column(nullable = false)
     private String passwordHash;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 100)
+    @Convert(converter = EmailEncryptor.class)  // Encriptación de token
     private String token;
 
     @Column(nullable = false)
     private Boolean confirmed = false;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 100)
+    @Convert(converter = EmailEncryptor.class)  // Encriptación de reset token
     private String resetToken;
 
     @Column
     private LocalDateTime resetTokenExpiry;
+
+    @Column(name = "is_deleted", nullable = false)
+    private Boolean isDeleted = false;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column
+    private LocalDateTime updatedAt = LocalDateTime.now();
 
     public User() {
     }
@@ -36,6 +49,9 @@ public class User {
         this.passwordHash = passwordHash;
         this.token = token;
         this.confirmed = false;
+        this.isDeleted = false;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -92,6 +108,30 @@ public class User {
 
     public void setResetTokenExpiry(LocalDateTime resetTokenExpiry) {
         this.resetTokenExpiry = resetTokenExpiry;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
 
