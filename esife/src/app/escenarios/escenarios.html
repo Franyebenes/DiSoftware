@@ -1,0 +1,83 @@
+<div class="section-header">
+  <h2>Interfaz de Escenarios</h2>
+  <button class="btn-refresh" (click)="getEscenarios()">
+    Actualizar Lista
+  </button>
+</div>
+
+<div class="lista-contenedor">
+  <div class="escenario-card" *ngFor="let escenario of escenarios">
+    
+    <div class="escenario-header-bg" 
+         [style.backgroundImage]="'linear-gradient(to right, rgba(255,255,255,1) 30%, rgba(255,255,255,0.1) 100%), url(assets/images/' + getImagenEscenario(escenario.nombre) + ')'">
+      
+      <div class="info">
+        <span class="escenario-name">{{ escenario.nombre }}</span>
+        <span class="escenario-detail">Capacidad: {{ escenario.plazas }} plazas</span>
+        <span class="escenario-detail">Locación: {{ escenario.descripcion }}</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-view-main" (click)="getEspectaculos(escenario)">
+          {{ escenario.visible ? 'Cerrar' : 'Ver Espectáculos' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="espectaculos-list" *ngIf="escenario.espectaculos && escenario.visible">
+      <div class="espectaculo-row" *ngFor="let espectaculo of escenario.espectaculos">
+        
+        <div class="main-info">
+          <div class="artista-name">{{ espectaculo.artista || 'Espectáculo Programado' }}</div>
+          <div class="fecha-label">{{ espectaculo.fecha }}</div>
+        </div>
+
+        <div class="action-zone">
+  
+          <button class="btn-check" *ngIf="!espectaculo.entradas" (click)="getNumeroDeEntradas(espectaculo)">
+            Ver Disponibilidad
+          </button>
+          <button class="btn-check" *ngIf="!espectaculo.entradasDisponibles" (click)="getEntradas(espectaculo)">
+            Ver Entradas Detalladas
+          </button>
+
+          <div class="availability-container" *ngIf="espectaculo.entradas">
+            <div class="stats-box">
+              <div class="stat-item">
+                <span class="stat-label">TOTALES</span>
+                <span class="stat-value">{{ espectaculo.entradas.total }}</span>
+              </div>
+              <div class="divider"></div>
+              <div class="stat-item">
+                <span class="stat-label">LIBRES</span>
+                <span class="stat-value highlight">{{ espectaculo.entradas.libres }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="entries-list" *ngIf="espectaculo.entradasDisponibles">
+            <h4>Entradas disponibles</h4>
+            <div class="entry-row header-row">
+              <span></span>
+              <span>ID</span>
+              <span>Precio</span>
+              <span>Tipo</span>
+              <span>Ubicación</span>
+            </div>
+            <div class="entry-row" *ngFor="let entrada of espectaculo.entradasDisponibles">
+              <input type="checkbox" [(ngModel)]="entrada.seleccionada" (change)="toggleEntradaSeleccionada(espectaculo, entrada)">
+              <span>{{ entrada.id }}</span>
+              <span>{{ entrada.precioEuros }}</span>
+              <span>{{ entrada.tipo }}</span>
+              <span *ngIf="entrada.tipo === 'Precisa'">Fila {{ entrada.fila }}, Col {{ entrada.columna }}, Planta {{ entrada.planta }}</span>
+              <span *ngIf="entrada.tipo === 'Zona'">Zona {{ entrada.zona }}</span>
+            </div>
+            <button class="btn-buy-new" (click)="irAComprarEntradas(espectaculo)">
+              Comprar seleccionadas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

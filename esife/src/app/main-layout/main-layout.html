@@ -1,0 +1,38 @@
+<div class="page-container">
+  <div class="header-wrapper">
+    <div class="main-container">
+      <div class="cabecera">
+        <div class="logo-container">
+          <img src="assets/images/logo.png" alt="Logo ESI" class="logo-image" height="45">
+          <h1 class="logo-title">esientradas</h1>
+        </div>
+        <div class="nav-links">
+          <span 
+            [class.active]="activeTab === 'escenarios'" 
+            (click)="setActiveTab('escenarios')"
+            class="nav-link">ESCENARIOS</span>
+          <span 
+            [class.active]="activeTab === 'espectaculos'" 
+            (click)="setActiveTab('espectaculos')"
+            class="nav-link">ESPECTÁCULOS</span>
+          <span 
+            (click)="setActiveTab('cuenta')"
+            class="nav-link">CUENTA</span>
+          <button *ngIf="isUserAuthenticated()" (click)="logout()" class="btn-logout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <!-- SECCIÓN DE ESCENARIOS -->
+    <div *ngIf="activeTab === 'escenarios'" class="content-section">
+      <app-escenarios></app-escenarios>
+    </div>
+
+    <!-- SECCIÓN DE ESPECTÁCULOS (BÚSQUEDA) -->
+    <div *ngIf="activeTab === 'espectaculos'" class="content-section">
+      <app-espectaculos></app-espectaculos>
+    </div>
+  </div>
+</div>

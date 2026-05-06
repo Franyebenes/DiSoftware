@@ -12,124 +12,90 @@
   margin: 0;
 }
 
-/* ESTILOS PARA BÚSQUEDA */
-.search-container {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-}
-
-.search-section {
-  margin-bottom: 25px;
-}
-
-.search-section h3 {
-  color: #1e293b;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  margin-top: 0;
-}
-
-.search-input-group {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.search-input {
-  flex: 1;
-  padding: 12px 16px;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #1e3a8a;
-  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
-}
-
-.btn-search {
+.btn-refresh {
   background: #1e3a8a;
   color: white;
   border: none;
   padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition: all 0.2s;
 }
 
-.btn-search:hover {
+.btn-refresh:hover {
   background: #2563eb;
   transform: translateY(-1px);
 }
 
-.btn-clear {
-  background: #64748b;
+.lista-contenedor {
+  width: 100%;
+}
+
+.escenario-card {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.escenario-header-bg {
+  min-height: 140px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.escenario-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.escenario-detail {
+  color: #475569;
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-view-main {
+  background: #2563eb;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.btn-clear:hover {
-  background: #475569;
+.btn-view-main:hover {
+  background: #1e40af;
   transform: translateY(-1px);
 }
 
-.search-actions {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* RESULTADOS DE BÚSQUEDA */
-.search-results {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-}
-
-.search-results h3 {
-  color: #1e293b;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-  margin-top: 0;
-}
-
-.loading {
-  text-align: center;
-  padding: 40px;
-  color: #64748b;
-  font-size: 1.1rem;
-}
-
-.no-results {
-  text-align: center;
-  padding: 40px;
-  color: #64748b;
-  font-size: 1.1rem;
-  background: white;
-  border-radius: 12px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+.espectaculos-list {
+  background: #f8fafc;
+  padding: 20px 40px;
 }
 
 .espectaculo-row {
@@ -164,19 +130,13 @@
   font-weight: 600;
 }
 
-.escenario-label {
-  font-size: 0.85rem;
-  color: #64748b;
-  font-weight: 600;
-  margin-top: 4px;
-}
-
 .action-zone {
   display: flex;
   gap: 15px;
   align-items: center;
   flex-wrap: wrap;
   flex: 1;
+  justify-content: flex-end;
 }
 
 .btn-check {
@@ -193,6 +153,52 @@
 .btn-check:hover {
   background: #1e3a8a;
   transform: translateY(-1px);
+}
+
+.availability-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats-box {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px 16px;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stat-value.highlight {
+  color: #10b981;
+}
+
+.divider {
+  width: 1px;
+  height: 25px;
+  background: #cbd5e1;
+  margin: 0 15px;
 }
 
 .entries-list {
