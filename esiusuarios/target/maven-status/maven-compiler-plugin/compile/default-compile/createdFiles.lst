@@ -5,10 +5,10 @@ edu\esi\ds\esiusuarios\EsiusuariosApplication.class
 edu\esi\ds\esiusuarios\config\CorsConfig.class
 edu\esi\ds\esiusuarios\services\EmailService.class
 edu\esi\ds\esiusuarios\utils\EmailEncryptor.class
-edu\esi\ds\esiusuarios\config\SecurityConfig.class
 edu\esi\ds\esiusuarios\dao\UserRepository.class
 edu\esi\ds\esiusuarios\services\EmailServiceFalso.class
 edu\esi\ds\esiusuarios\services\UserService.class
+edu\esi\ds\esiusuarios\security\SecurityConfig.class
 edu\esi\ds\esiusuarios\http\ExternalController.class
 edu\esi\ds\esiusuarios\security\SecurityAuditService.class
 edu\esi\ds\esiusuarios\auxiliares\Manager.class
