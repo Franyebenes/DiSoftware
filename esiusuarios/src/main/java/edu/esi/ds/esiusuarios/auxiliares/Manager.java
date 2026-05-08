@@ -1,22 +1,24 @@
 package edu.esi.ds.esiusuarios.auxiliares;
 
 import edu.esi.ds.esiusuarios.services.EmailService;
-import edu.esi.ds.esiusuarios.services.EmailServiceFalso;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Manager {
 
     private static Manager yo;
+
+    @Autowired
     private EmailService emailService;
 
-    private Manager() {
-        this.emailService= new EmailServiceFalso();
+    @Autowired
+    public void init(EmailService emailService) {
+        this.emailService = emailService;
         yo = this;
     }
 
     public synchronized static Manager getInstance() {
-        if (yo == null) {
-            new Manager();
-        }
         return yo;
     }
 

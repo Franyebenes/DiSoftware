@@ -19,14 +19,12 @@ public class User {
     private String passwordHash;
 
     @Column(nullable = false, unique = true, length = 100)
-    @Convert(converter = EmailEncryptor.class)  // Encriptación de token
     private String token;
 
     @Column(nullable = false)
     private Boolean confirmed = false;
 
     @Column(unique = true, length = 100)
-    @Convert(converter = EmailEncryptor.class)  // Encriptación de reset token
     private String resetToken;
 
     @Column

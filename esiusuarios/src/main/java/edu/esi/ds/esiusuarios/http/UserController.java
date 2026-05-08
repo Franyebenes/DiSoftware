@@ -5,7 +5,6 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,6 @@ import edu.esi.ds.esiusuarios.services.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:4200") // Permitir CORS para Angular
 public class UserController {
 
     @Autowired
@@ -57,6 +55,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@RequestBody Map<String, String> credentials) {
+        System.out.println("ENTRANDO EN REGISTER");
         JSONObject jsonCredentials = new JSONObject(credentials);
         String email = jsonCredentials.optString("email");
         String pwd1 = jsonCredentials.optString("pwd1");

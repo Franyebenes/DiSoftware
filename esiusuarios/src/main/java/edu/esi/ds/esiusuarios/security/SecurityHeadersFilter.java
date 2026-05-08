@@ -22,7 +22,12 @@ public class SecurityHeadersFilter implements Filter {
         httpResponse.setHeader("X-Content-Type-Options", "nosniff");
         httpResponse.setHeader("X-Frame-Options", "DENY");
         httpResponse.setHeader("X-XSS-Protection", "1; mode=block");
-        httpResponse.setHeader("Content-Security-Policy", "default-src 'self'");
+        httpResponse.setHeader(
+            "Content-Security-Policy",
+            "default-src 'self'; " +
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+            "font-src 'self' https://fonts.gstatic.com;"
+        );
         httpResponse.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
 
         chain.doFilter(request, response);
