@@ -41,32 +41,29 @@ export class Espectaculos {
     if (entrada.seleccionada) {
       if ((espectaculo.selectedEntradas || []).length >= 5) {
         entrada.seleccionada = false;
-        alert('Solo puedes seleccionar hasta 5 entradas.');
+        espectaculo.maxEntradasMessage = 'Ya has seleccionado el máximo de 5 entradas.';
         return;
       }
+      espectaculo.maxEntradasMessage = '';
       espectaculo.selectedEntradas.push(entrada);
     } else {
       espectaculo.selectedEntradas = espectaculo.selectedEntradas.filter(
         (item: any) => item.id !== entrada.id
       );
     }
-  }
+}
 
   irAComprarEntradas(espectaculo: any) {
     if (!espectaculo.selectedEntradas || espectaculo.selectedEntradas.length === 0) {
-      alert('Selecciona al menos una entrada antes de continuar con la compra.');
       return;
     }
 
     localStorage.setItem('selectedEntries', JSON.stringify(espectaculo.selectedEntradas));
-    localStorage.setItem(
-      'selectedEspectaculo',
-      JSON.stringify({
+    localStorage.setItem('selectedEspectaculo', JSON.stringify({
         artista: espectaculo.artista,
         fecha: espectaculo.fecha,
         escenario: espectaculo.escenario,
-      })
-    );
+    }));
 
     const token = localStorage.getItem('userToken');
     if (!token) {
@@ -75,7 +72,7 @@ export class Espectaculos {
     }
 
     this.router.navigate(['/comprar']);
-  }
+}
 
   searchByArtista() {
     if (!this.searchArtista.trim()) {
@@ -127,5 +124,42 @@ export class Espectaculos {
     this.searchArtista = '';
     this.searchFecha = '';
     this.searchResults = [];
+  }
+
+  getNumeroDeEntradas(espectaculo: any) {
+      this.espectaculosService.getNumeroDeEntradasComoDto(espectaculo).subscribe(
+        (response: any) => {
+          espectaculo.entradas = response;
+          this.cdr.detectChanges();
+        },
+        (error: any) => {
+          console.error('Error al obtener las entradas', error);
+        }
+      );
+    }
+
+    getEntradasFiltradas(espectaculo: any): any[] {
+    if (!espectaculo.entradasDisponibles) return [];
+  
+    return espectaculo.entradasDisponibles.filter((entrada: any) => {
+        const zonaMatch = !espectaculo.filtroZona || 
+            espectaculo.filtroTipo !== 'Zona' ||
+            (entrada.zona && entrada.zona.toString().toLowerCase()
+            .includes(espectaculo.filtroZona.toLowerCase()));
+      
+        const tipoMatch = !espectaculo.filtroTipo || 
+            entrada.tipo === espectaculo.filtroTipo;
+      
+        const precioNumerico = parseFloat(
+            entrada.precioEuros?.toString()
+                .replace(' €', '')
+                .replace(',', '.')
+                .trim()
+        );
+        const precioMatch = !espectaculo.filtroPrecioMax || 
+            precioNumerico <= espectaculo.filtroPrecioMax;
+      
+        return zonaMatch && tipoMatch && precioMatch;
+    });
   }
 }

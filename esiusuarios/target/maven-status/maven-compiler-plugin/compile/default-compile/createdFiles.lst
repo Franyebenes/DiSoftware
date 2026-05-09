@@ -2,7 +2,6 @@ edu\esi\ds\esiusuarios\http\UserController.class
 edu\esi\ds\esiusuarios\security\RateLimitingService.class
 edu\esi\ds\esiusuarios\services\EmailServiceBrevo.class
 edu\esi\ds\esiusuarios\EsiusuariosApplication.class
-edu\esi\ds\esiusuarios\config\CorsConfig.class
 edu\esi\ds\esiusuarios\services\EmailService.class
 edu\esi\ds\esiusuarios\utils\EmailEncryptor.class
 edu\esi\ds\esiusuarios\dao\UserRepository.class

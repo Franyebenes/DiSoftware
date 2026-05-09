@@ -45,11 +45,42 @@
       <div class="escenario-label">{{ espectaculo.escenario }}</div>
     </div>
     <div class="action-zone">
-      <button class="btn-check" (click)="getEntradas(espectaculo)">
+      <button class="btn-check" *ngIf="!espectaculo.entradas" (click)="getNumeroDeEntradas(espectaculo)">
+        Ver Disponibilidad
+      </button>
+
+      <div class="availability-container" *ngIf="espectaculo.entradas">
+        <div class="stats-box">
+          <div class="stat-item">
+            <span class="stat-label">TOTALES</span>
+            <span class="stat-value">{{ espectaculo.entradas.total }}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat-item">
+            <span class="stat-label">LIBRES</span>
+            <span class="stat-value highlight">{{ espectaculo.entradas.libres }}</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-check" *ngIf="!espectaculo.entradasDisponibles" (click)="getEntradas(espectaculo)">
         Ver Entradas Detalladas
       </button>
+
       <div class="entries-list" *ngIf="espectaculo.entradasDisponibles">
         <h4>Entradas disponibles</h4>
+        <div class="filters-bar">
+          <input type="number" [(ngModel)]="espectaculo.filtroPrecioMax" 
+              placeholder="Precio máximo €..." class="filter-input">
+          <select [(ngModel)]="espectaculo.filtroTipo" class="filter-select">
+            <option value="">Todos los tipos</option>
+            <option value="Zona">Zona</option>
+            <option value="Precisa">Precisa</option>
+          </select>
+          <input type="text" [(ngModel)]="espectaculo.filtroZona" 
+              placeholder="Filtrar por zona..." class="filter-input"
+              [disabled]="espectaculo.filtroTipo !== 'Zona'">
+        </div>
         <div class="entry-row header-row">
           <span></span>
           <span>ID</span>
@@ -57,15 +88,25 @@
           <span>Tipo</span>
           <span>Ubicación</span>
         </div>
-        <div class="entry-row" *ngFor="let entrada of espectaculo.entradasDisponibles">
-          <input type="checkbox" [(ngModel)]="entrada.seleccionada" (change)="toggleEntradaSeleccionada(espectaculo, entrada)">
+        <div class="entry-row" *ngFor="let entrada of getEntradasFiltradas(espectaculo)">
+          <input type="checkbox" 
+                 [(ngModel)]="entrada.seleccionada" 
+                 (change)="toggleEntradaSeleccionada(espectaculo, entrada)"
+                 [disabled]="!entrada.seleccionada && espectaculo.selectedEntradas && espectaculo.selectedEntradas.length >= 5">
           <span>{{ entrada.id }}</span>
           <span>{{ entrada.precioEuros }}</span>
           <span>{{ entrada.tipo }}</span>
           <span *ngIf="entrada.tipo === 'Precisa'">Fila {{ entrada.fila }}, Col {{ entrada.columna }}, Planta {{ entrada.planta }}</span>
           <span *ngIf="entrada.tipo === 'Zona'">Zona {{ entrada.zona }}</span>
         </div>
-        <button class="btn-buy-new" (click)="irAComprarEntradas(espectaculo)">
+        <p *ngIf="espectaculo.maxEntradasMessage" class="max-entradas-msg">
+          {{ espectaculo.maxEntradasMessage }}
+        </p>
+        <button class="btn-buy-new" 
+                (click)="irAComprarEntradas(espectaculo)"
+                [disabled]="!espectaculo.selectedEntradas || espectaculo.selectedEntradas.length === 0"
+                [style.opacity]="(!espectaculo.selectedEntradas || espectaculo.selectedEntradas.length === 0) ? '0.5' : '1'"
+                [style.cursor]="(!espectaculo.selectedEntradas || espectaculo.selectedEntradas.length === 0) ? 'not-allowed' : 'pointer'">
           Comprar seleccionadas
         </button>
       </div>

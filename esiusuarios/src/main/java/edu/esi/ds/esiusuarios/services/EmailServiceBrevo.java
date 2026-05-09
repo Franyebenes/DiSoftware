@@ -3,6 +3,7 @@ package edu.esi.ds.esiusuarios.services;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import brevo.ApiClient;
@@ -13,6 +14,7 @@ import brevoModel.SendSmtpEmail;
 import brevoModel.SendSmtpEmailSender;
 import brevoModel.SendSmtpEmailTo;
 
+@Primary
 @Service
 public class EmailServiceBrevo extends EmailService {
 
@@ -54,9 +56,15 @@ public class EmailServiceBrevo extends EmailService {
 
             apiInstance.sendTransacEmail(sendSmtpEmail);
             System.out.println("Email enviado profesionalmente vía Brevo API a " + destinatario);
-
+        
+        } catch (brevo.ApiException e) {
+            System.err.println("Fallo en el envío - código: " + e.getCode());
+            System.err.println("Fallo en el envío - body: " + e.getResponseBody());
+            e.printStackTrace();
+        
         } catch (Exception e) {
             System.err.println("Fallo en el envío: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

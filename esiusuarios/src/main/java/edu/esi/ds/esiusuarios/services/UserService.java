@@ -89,8 +89,7 @@ public class UserService {
         try {
             ((EmailService) Manager.getInstance().getEmailService()).sendEmail(email,
                 "asunto", "Bienvenido a esiusuarios",
-                "texto", "Bienvenido al sistema, confirma tu registro aqui: http://localhost:4200/confirm?token=" + newUser.getToken()
-            );
+                "texto", buildConfirmationEmail(newUser.getToken()));
         } catch (Exception e) {
             System.err.println("Error enviando email de confirmación: " + e.getMessage());
         }
@@ -236,5 +235,17 @@ public class UserService {
         boolean hasSpecialChar = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\",./<>?].*");
 
         return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
+    }
+
+    //Método para construir el correo en html (tambien se puede con plantillas en Brevo)
+    private String buildConfirmationEmail(String token) {
+        return "<div style='font-family: Arial; padding: 20px;'>" +
+           "<h2>Bienvenido a EsiEntradas 🎟️</h2>" +
+           "<p>Gracias por registrarte. Confirma tu cuenta haciendo clic en el botón:</p>" +
+           "<a href='http://localhost:4200/confirm?token=" + token + "' " +
+           "style='background-color: #007bff; color: white; padding: 10px 20px; " +
+           "text-decoration: none; border-radius: 5px;'>Confirmar cuenta</a>" +
+           "<p>Si no te registraste, ignora este email.</p>" +
+           "</div>";
     }
 }

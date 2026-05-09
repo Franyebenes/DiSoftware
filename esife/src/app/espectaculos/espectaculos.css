@@ -177,6 +177,7 @@
   align-items: center;
   flex-wrap: wrap;
   flex: 1;
+  justify-content: flex-end;
 }
 
 .btn-check {
@@ -195,6 +196,52 @@
   transform: translateY(-1px);
 }
 
+.availability-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats-box {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px 16px;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stat-value.highlight {
+  color: #10b981;
+}
+
+.divider {
+  width: 1px;
+  height: 25px;
+  background: #cbd5e1;
+  margin: 0 15px;
+}
+
 .entries-list {
   background: white;
   border: 1px solid #e2e8f0;
@@ -202,6 +249,8 @@
   padding: 15px;
   margin-top: 10px;
   width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .entries-list h4 {
@@ -218,6 +267,45 @@
   border-radius: 4px;
   color: #1e40af;
   font-weight: 600;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.filter-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  min-width: 130px;
+  background: white;
+}
+
+.filter-input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #f1f5f9;
+}
+
+.filter-select {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+  min-width: 130px;
 }
 
 .entry-row {
@@ -267,4 +355,23 @@
 
 .btn-buy-new:active {
   transform: scale(0.98);
+}
+
+.btn-buy-new:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.max-entradas-msg {
+  color: orange;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
