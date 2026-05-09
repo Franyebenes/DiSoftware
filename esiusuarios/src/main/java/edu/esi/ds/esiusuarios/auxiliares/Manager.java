@@ -1,16 +1,16 @@
 package edu.esi.ds.esiusuarios.auxiliares;
 
-import edu.esi.ds.esiusuarios.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import edu.esi.ds.esiusuarios.services.EmailService;
 
 @Component
 public class Manager {
 
     private static Manager yo;
-
-    @Autowired
-    private EmailService emailService;
+    
+    private EmailService emailService; 
 
     @Autowired
     public void init(EmailService emailService) {
@@ -22,7 +22,7 @@ public class Manager {
         return yo;
     }
 
-    public Object getEmailService() {
+    public EmailService getEmailService() { 
         return this.emailService;
     }
 }

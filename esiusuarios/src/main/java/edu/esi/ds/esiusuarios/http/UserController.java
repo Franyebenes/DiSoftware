@@ -53,7 +53,7 @@ public class UserController {
         return token;
     }
 
-    @PostMapping("/register")
+   @PostMapping("/register")
     public String register(@RequestBody Map<String, String> credentials) {
         System.out.println("ENTRANDO EN REGISTER");
         JSONObject jsonCredentials = new JSONObject(credentials);
@@ -64,22 +64,13 @@ public class UserController {
         if (email.isEmpty() || pwd1.isEmpty() || pwd2.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email y contraseñas requeridas");
         }
-        
+    
         if (!pwd1.equals(pwd2)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Las contraseñas no coinciden");
         }
-        
-        // Validar que la contraseña cumple con los requisitos de seguridad
-        if (!isPasswordSecure(pwd1)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
-                "La contraseña debe tener al menos 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales");
-        }
-        
-        String result = this.service.register(email, pwd1);
-        if (result == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya está registrado o es inválido");
-        }
-        return result;
+
+        // El servicio lanza sus propias excepciones con mensajes específicos
+        return this.service.register(email, pwd1);
     }
 
     @GetMapping("/confirm")

@@ -1,17 +1,20 @@
 package edu.esi.ds.esiusuarios.services;
 
-import java.util.Optional;
-import java.util.UUID;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
+import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import edu.esi.ds.esiusuarios.auxiliares.Manager;
 import edu.esi.ds.esiusuarios.dao.UserRepository;
 import edu.esi.ds.esiusuarios.model.User;
-import edu.esi.ds.esiusuarios.auxiliares.Manager;
 
 @Service
 public class UserService {
@@ -61,19 +64,20 @@ public class UserService {
     public String register(String email, String pwd1) {
         EmailValidator validator = EmailValidator.getInstance();
         if (!validator.isValid(email)) {
-            return null;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email no es válido");
         }
 
         if (email.length() > 255) {
-            return null;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email es demasiado largo");
         }
 
         if (userRepository.findActiveByEmail(email).isPresent()) {
-            return null;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya está registrado.");
         }
 
         if (!isPasswordSecure(pwd1)) {
-            return null;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
+            "La contraseña debe tener al menos 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales");
         }
 
         String passwordHash = passwordEncoder.encode(pwd1);
@@ -85,7 +89,7 @@ public class UserService {
         try {
             ((EmailService) Manager.getInstance().getEmailService()).sendEmail(email,
                 "asunto", "Bienvenido a esiusuarios",
-                "texto", "Bienvenido al sistema, confirma tu registro aqui: http://localhost:3000/confirm?token=" + newUser.getToken()
+                "texto", "Bienvenido al sistema, confirma tu registro aqui: http://localhost:4200/confirm?token=" + newUser.getToken()
             );
         } catch (Exception e) {
             System.err.println("Error enviando email de confirmación: " + e.getMessage());
@@ -127,7 +131,7 @@ public class UserService {
         try {
             ((EmailService) Manager.getInstance().getEmailService()).sendEmail(email,
                 "asunto", "Recuperación de contraseña - esiusuarios",
-                "texto", "Para resetear tu contraseña, haz clic en el siguiente enlace: http://localhost:3000/reset-password?token=" + resetToken
+                "texto", "Para resetear tu contraseña, haz clic en el siguiente enlace: http://localhost:4200/reset-password?token=" + resetToken
             );
         } catch (Exception e) {
             System.err.println("Error enviando email de recuperación: " + e.getMessage());

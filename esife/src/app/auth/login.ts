@@ -85,17 +85,24 @@ export class Login {
         this.registerPassword1 = '';
         this.registerPassword2 = '';
         this.showRegister = false;
+        this.email = '';        
+        this.password = '';    
+        this.errorMessage = '';
         this.cdr.detectChanges(); 
       },
       error: (err) => {
         if (err.status === 0) {
-          this.registerErrorMessage = 'No se puede conectar con el servidor. Asegúrate de que el backend esté ejecutándose en localhost:8081.';
+          this.registerErrorMessage = 'No se puede conectar con el servidor.';
         } else {
-          this.registerErrorMessage = err.error || 'Error al registrar. Verifique los datos.';
-        }
-        console.error('Error en el registro:', err);
-        this.cdr.detectChanges();
+          try {
+              const errorBody = typeof err.error === 'string' ? JSON.parse(err.error) : err.error; //Para que se pueda ver en pantalla (de String a JSON)
+              this.registerErrorMessage = errorBody.message || 'Error al registrar. Verifique los datos.';
+          } catch {
+              this.registerErrorMessage = 'Error al registrar. Verifique los datos.';
+          }
       }
+      this.cdr.detectChanges();
+    }
     });
   }
 
@@ -103,6 +110,9 @@ export class Login {
     this.showRegister = !this.showRegister;
     this.registerErrorMessage = '';
     this.registerSuccessMessage = '';
+    this.email = '';     
+    this.password = '';     
+    this.errorMessage = ''; 
   }
 
   toggleForgotPassword() {
