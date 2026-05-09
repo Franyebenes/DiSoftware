@@ -1,9 +1,7 @@
 package edu.esi.ds.esientradas.services;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +20,6 @@ import edu.esi.ds.esientradas.model.Pago;
 
 import jakarta.transaction.Transactional;
 
-/**
- * Servicio encargado de procesar las compras definitivas. Se apoya en el
- * {@link PagosService} para comprobar con Stripe el estado real del pago y en
- * el {@link EntradaDao} para actualizar el estado de las entradas.
- */
 @Service
 public class ComprasService {
 
@@ -39,53 +32,49 @@ public class ComprasService {
     @Autowired
     private CompraDao compraDao;
 
-    @Autowired
-    private EmailService emailService;
-    
     @Transactional
     public void realizarCompra(String usuario, DtoCompra dto) throws StripeException {
+
+        // 1. Validar que vienen entradas
         if (dto.idEntradas() == null || dto.idEntradas().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Debe seleccionar al menos una entrada");
         }
 
+        // 2. Verificar el pago con Stripe y obtener estado actualizado
         Pago pago = pagosService.confirmarPago(dto.clientSecret());
         if (!"succeeded".equalsIgnoreCase(pago.getStatus())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El pago no se ha completado correctamente");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "El pago no se ha completado. Estado actual: " + pago.getStatus());
         }
 
-        List<Entrada> entradas = StreamSupport.stream(this.entradaDao.findAllById(dto.idEntradas()).spliterator(), false)
-            .toList();
+        // 3. Recuperar entradas y verificar que existen todas
+        List<Entrada> entradas = (List<Entrada>) entradaDao.findAllById(dto.idEntradas());
         if (entradas.size() != dto.idEntradas().size()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Alguna de las entradas solicitadas no existe");
         }
 
-        long total = 0;
+        // 4. Verificar disponibilidad y calcular total
+        long totalCentimos = 0;
         for (Entrada entrada : entradas) {
             if (entrada.getEstado() != Estado.DISPONIBLE && entrada.getEstado() != Estado.RESERVADA) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entrada no disponible para compra: " + entrada.getId());
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                        "Entrada no disponible: " + entrada.getId());
             }
-            total += entrada.getPrecio();
-            this.entradaDao.updateEstado(entrada.getId(), Estado.VENDIDA);
+            totalCentimos += entrada.getPrecio();
         }
 
+        // 5. Marcar entradas como VENDIDAS
+        for (Entrada entrada : entradas) {
+            entradaDao.updateEstado(entrada.getId(), Estado.VENDIDA);
+        }
+
+        // 6. Guardar la compra en BD
         Compra compra = new Compra();
         compra.setUsuarioEmail(usuario);
         compra.setClientSecret(dto.clientSecret());
-        compra.setCreatedAt(Instant.now());
-        compra.setTotalCentimos(total);
+        compra.setCreatedAt(LocalDateTime.now());
+        compra.setTotalCentimos(totalCentimos);
         compra.setEntradas(entradas);
         compraDao.save(compra);
-
-        String entradaLista = entradas.stream().map(e -> String.valueOf(e.getId())).collect(Collectors.joining(", "));
-        emailService.enviar(
-            usuario,
-            dto.clientSecret(),
-            total,
-            "Compra de entradas en Esientradas",
-            "Tu compra se ha confirmado.",
-            "Entradas compradas: " + entradaLista,
-            "Importe total: " + String.format("%.2f €", total / 100.0)
-        );
     }
 }
-

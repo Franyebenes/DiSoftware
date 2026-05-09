@@ -1,10 +1,21 @@
+/* ── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── LAYOUT ────────────────────────────────────────────────── */
 .page-container {
   min-height: 100vh;
-  background-color: #f8fafc; /* Gris azulado muy suave */
+  background-color: #f8fafc;
   padding-bottom: 50px;
   font-family: 'Inter', -apple-system, sans-serif;
 }
 
+.main-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── CABECERA ──────────────────────────────────────────────── */
 .header-wrapper {
   background: white;
   padding: 15px 0;
@@ -30,31 +41,46 @@
   margin-left: 5px;
 }
 
+.btn-back {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.btn-back:hover { border-color: #1e3a8a; color: #1e3a8a; }
+
+/* ── TARJETA PRINCIPAL ─────────────────────────────────────── */
 .compra-card {
   background: white;
   border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
   border: 1px solid #f1f5f9;
 }
 
+/* ── STEPS ─────────────────────────────────────────────────── */
 .section-header {
   display: flex;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  align-items: flex-start;
 }
 
 .section-header h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
 }
 
 .step-desc {
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: #64748b;
-  margin: 4px 0 0 0;
+  margin: 3px 0 0;
 }
 
 .step-number {
@@ -68,44 +94,130 @@
   border-radius: 50%;
   font-weight: 800;
   font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: background 0.3s;
 }
 
-/* El input del importe Pro */
+.step-number.step-done {
+  background: #10b981;
+}
+
+.step-number.step-active {
+  background: #1e3a8a;
+  box-shadow: 0 0 0 4px rgba(30,58,138,0.15);
+}
+
+.disabled-step {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── SUMMARY ───────────────────────────────────────────────── */
+.summary-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #475569;
+  gap: 8px;
+}
+
+.summary-item strong {
+  color: #1e293b;
+  flex-shrink: 0;
+}
+
+/* ── LISTA DE ENTRADAS ─────────────────────────────────────── */
+.entradas-lista {
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entrada-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 0.87rem;
+}
+
+.entrada-desc { color: #334155; font-weight: 500; }
+.entrada-asiento { color: #64748b; font-weight: 400; }
+
+.entrada-precio {
+  font-weight: 700;
+  color: #1e3a8a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── TOTAL ─────────────────────────────────────────────────── */
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #e2e8f0;
+  padding-top: 16px;
+  margin-bottom: 24px;
+}
+
+.total-label {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
 .input-with-symbol {
   position: relative;
-  max-width: 250px;
 }
 
 .input-with-symbol input {
-  width: 100%;
-  padding: 12px 40px 12px 15px;
+  width: 160px;
+  padding: 10px 36px 10px 14px;
   border: 2px solid #e2e8f0;
   border-radius: 10px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: #1e3a8a;
   outline: none;
+  background: #f8fafc;
+  text-align: right;
 }
 
 .input-with-symbol .symbol {
   position: absolute;
-  right: 15px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   font-weight: 700;
   color: #94a3b8;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
+/* ── BOTÓN PASO 1 ──────────────────────────────────────────── */
 .btn-pay-main {
   width: 100%;
   background: #1e3a8a;
   color: white;
   border: none;
-  padding: 16px;
+  padding: 15px;
   border-radius: 10px;
   font-weight: 700;
-  margin-top: 25px;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -113,18 +225,20 @@
 .btn-pay-main:hover:not(:disabled) {
   background: #1e40af;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30,58,138,0.3);
 }
 
 .btn-pay-main:disabled {
   background: #cbd5e1;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Divisores elegantes */
+/* ── DIVISOR ───────────────────────────────────────────────── */
 .divider-wrapper {
   position: relative;
   text-align: center;
-  margin: 40px 0;
+  margin: 36px 0;
 }
 
 .divider {
@@ -138,46 +252,118 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 0 15px;
+  padding: 0 14px;
   color: #94a3b8;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
-/* Stripe Form */
+/* ── HINT TEST ─────────────────────────────────────────────── */
+.test-hint {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #1e3a8a;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #1e40af;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.test-hint code {
+  background: #dbeafe;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: monospace;
+  font-size: 0.88rem;
+  color: #1e3a8a;
+}
+
+/* ── FORMULARIO STRIPE ─────────────────────────────────────── */
+#payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .stripe-container {
-  padding: 18px;
+  padding: 16px;
   border: 2px solid #e2e8f0;
   border-radius: 12px;
   background: #ffffff;
-  margin-bottom: 20px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* Stripe inyecta un iframe; cuando está en foco, resaltamos el borde */
+.stripe-container:focus-within {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 3px rgba(30,58,138,0.1);
+}
+
+.stripe-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Stripe monta su iframe aquí — necesita al menos 1px de alto */
+#card-element {
+  min-height: 24px;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 0.83rem;
+  min-height: 1.2em;
+}
+
+/* ── BOTÓN PAGAR ───────────────────────────────────────────── */
 .btn-stripe-submit {
   width: 100%;
   background: #10b981;
   color: white;
   border: none;
-  padding: 18px;
+  padding: 16px;
   border-radius: 12px;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 12px rgba(16,185,129,0.25);
+  transition: all 0.2s;
 }
 
+.btn-stripe-submit:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16,185,129,0.35);
+}
+
+.btn-stripe-submit:disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ── FOOTER ────────────────────────────────────────────────── */
 .secure-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 30px;
+  margin-top: 28px;
   color: #94a3b8;
   font-size: 0.75rem;
 }
 
-.disabled-step {
-  opacity: 0.4;
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .compra-card { padding: 24px 16px; }
+  .input-with-symbol input { width: 130px; font-size: 1.1rem; }
 }

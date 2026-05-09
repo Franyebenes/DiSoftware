@@ -1,7 +1,10 @@
 package edu.esi.ds.esientradas.services;
 
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.stripe.Stripe;
@@ -9,67 +12,77 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 
-import edu.esi.ds.esientradas.dao.ConfiguracionDao;
 import edu.esi.ds.esientradas.dao.PagoDao;
 import edu.esi.ds.esientradas.model.Pago;
-import java.time.Instant;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class PagosService {
 
-    @Autowired
-    private ConfiguracionDao configuracionDao;
+    // Se inyecta desde application.properties: stripe.secret-key=sk_test_...
+    @Value("${stripe.secret-key}")
+    private String stripeSecretKey;
 
-    @Autowired
-    private PagoDao pagoDao;
+    private final PagoDao pagoDao;
 
-    public String prepararPago(Long centimos) throws StripeException {
+    public PagosService(PagoDao pagoDao) {
+        this.pagoDao = pagoDao;
+    }
 
-        Stripe.apiKey = configuracionDao.findByClave("privateKey");
-
-        PaymentIntentCreateParams params = new PaymentIntentCreateParams.Builder()
-            .setCurrency("eur")
-            .setAmount(centimos)
-            .build();
-
-        PaymentIntent intent = PaymentIntent.create(params);
-
-        // parse the JSON so we can pick the fields we care about
-        JSONObject jso = new JSONObject(intent.toJson());
-        String clientSecret = jso.getString("client_secret");
-        long createdAtSeconds = jso.getLong("created");
-        Instant createdAt = Instant.ofEpochSecond(createdAtSeconds);
-
-        // save a Pago including the stripe identifiers and metadata using setters
-        Pago pago = new Pago();
-        pago.setStripeIntentId(jso.getString("id"));
-        pago.setClientSecret(jso.getString("client_secret"));
-        pago.setCreatedAt(createdAt);
-        pago.setAmount(jso.getLong("amount"));
-        pago.setStatus(jso.getString("status"));
-        pago.setPaymentMethodId(jso.optString("payment_method", null));
-        pago.setLivemode(jso.getBoolean("livemode"));
-        pagoDao.save(pago);
-
-        return clientSecret;
+    // Configura la clave de Stripe una sola vez al arrancar, no en cada llamada
+    @PostConstruct
+    public void init() {
+        Stripe.apiKey = stripeSecretKey;
     }
 
     /**
-     * Comprueba con Stripe el estado de un pago ya iniciado y actualiza
-     * la entidad en la base de datos. Se espera recibir el clientSecret
-     * que se guardó al crear el PaymentIntent.
+     * Crea un PaymentIntent en Stripe, persiste el pago en BD
+     * y devuelve el clientSecret que necesita el frontend.
+     */
+    public String prepararPago(Long centimos) throws StripeException {
+
+        PaymentIntentCreateParams params = new PaymentIntentCreateParams.Builder()
+                .setCurrency("eur")
+                .setAmount(centimos)
+                .addPaymentMethodType("card")
+                .build();
+
+        PaymentIntent intent = PaymentIntent.create(params);
+
+        Pago pago = new Pago();
+        pago.setStripeIntentId(intent.getId());
+        pago.setClientSecret(intent.getClientSecret());
+        pago.setCreatedAt(
+            LocalDateTime.ofInstant(
+                Instant.ofEpochSecond(intent.getCreated()),
+                ZoneId.systemDefault()
+            )
+        );
+        pago.setAmount(intent.getAmount());
+        pago.setStatus(intent.getStatus());
+        pago.setPaymentMethodId(intent.getPaymentMethod());
+        pago.setLivemode(intent.getLivemode());
+        pagoDao.save(pago);
+
+        return intent.getClientSecret();
+    }
+
+    /**
+     * Consulta Stripe con el stripeIntentId guardado en BD,
+     * actualiza el estado del pago y devuelve la entidad actualizada.
      */
     public Pago confirmarPago(String clientSecret) throws StripeException {
-        Stripe.apiKey = configuracionDao.findByClave("privateKey");
 
         Pago pago = pagoDao.findByClientSecret(clientSecret);
         if (pago == null) {
-            throw new IllegalArgumentException("Pago desconocido: " + clientSecret);
+            throw new IllegalArgumentException("Pago desconocido para el clientSecret proporcionado");
         }
 
+        // Consulta el estado real en Stripe
         PaymentIntent intent = PaymentIntent.retrieve(pago.getStripeIntentId());
-        String status = intent.getStatus();
-        pago.setStatus(status);
+        pago.setStatus(intent.getStatus());
+        pago.setPaymentMethodId(intent.getPaymentMethod());
         pagoDao.save(pago);
 
         return pago;

@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.esi.ds.esientradas.services.ReservasService;
 import jakarta.servlet.http.HttpSession;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reservas")
 public class ReservasController {

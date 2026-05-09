@@ -1,7 +1,9 @@
 <div class="page-container">
+
+  <!-- CABECERA -->
   <div class="header-wrapper">
     <div class="main-container header-flex">
-      <div class="logo-area" (click)="irAtras()">
+      <div class="logo-area" (click)="irAtras()" style="cursor:pointer">
         <span class="logo-text">esientradas</span>
         <span class="page-subtitle">/ Finalizar Compra</span>
       </div>
@@ -13,69 +15,113 @@
 
   <div class="main-container">
     <div class="compra-card">
-      
+
+      <!-- ── PASO 1: RESUMEN ─────────────────────────────────── -->
       <div class="section-header">
-        <span class="step-number">1</span>
+        <span class="step-number" [class.step-done]="pagoPreparado">
+          {{ pagoPreparado ? '✓' : '1' }}
+        </span>
         <div>
-          <h2>Importe de la compra</h2>
+          <h2>Resumen de la compra</h2>
           <p class="step-desc">Confirma el total antes de proceder al pago seguro.</p>
         </div>
       </div>
 
       <div class="summary-group">
         <div class="summary-item">
-          <strong>Espectáculo:</strong> {{ selectedEspectaculo?.artista || 'N/A' }}
+          <strong>Espectáculo:</strong>
+          <span>{{ selectedEspectaculo?.artista || selectedEspectaculo?.nombre || 'N/A' }}</span>
         </div>
         <div class="summary-item">
-          <strong>Fecha:</strong> {{ selectedEspectaculo?.fecha || 'N/A' }}
+          <strong>Fecha:</strong>
+          <span>{{ selectedEspectaculo?.fecha || 'N/A' }}</span>
         </div>
         <div class="summary-item">
-          <strong>Escenario:</strong> {{ selectedEspectaculo?.escenario || 'N/A' }}
+          <strong>Escenario:</strong>
+          <span>{{ selectedEspectaculo?.escenario || 'N/A' }}</span>
         </div>
         <div class="summary-item">
-          <strong>Entradas seleccionadas:</strong> {{ selectedEntries.length }}
+          <strong>Entradas:</strong>
+          <span>{{ selectedEntries.length }} entrada{{ selectedEntries.length !== 1 ? 's' : '' }}</span>
         </div>
       </div>
 
-      <div class="input-group">
+      <!-- Lista detallada de entradas -->
+      <ul class="entradas-lista" *ngIf="selectedEntries.length > 0">
+        <li class="entrada-row" *ngFor="let e of selectedEntries">
+          <span class="entrada-desc">
+            {{ e.tipo || 'Entrada' }}
+            <span class="entrada-asiento" *ngIf="e.fila && e.columna">
+              · Fila {{ e.fila }}, Asiento {{ e.columna }}
+            </span>
+          </span>
+          <span class="entrada-precio">
+            {{ (e.precioCentimos ? e.precioCentimos / 100 : (e.precioEuros || 0)) | number:'1.2-2' }} €
+          </span>
+        </li>
+      </ul>
+
+      <!-- Total -->
+      <div class="total-row">
+        <span class="total-label">Total a pagar</span>
         <div class="input-with-symbol">
-          <input type="text" id="importe" [value]="importe | number:'1.2-2'" readonly>
+          <input type="text" [value]="importe | number:'1.2-2'" readonly>
           <span class="symbol">€</span>
         </div>
       </div>
 
-      <button class="btn-pay-main" (click)="irAlPago()" [disabled]="!importe || importe <= 0">
-        Confirmar e ir al pago seguro
+      <!-- Botón paso 1 -->
+      <button class="btn-pay-main"
+              (click)="irAlPago()"
+              [disabled]="!importe || importe <= 0 || cargando || pagoPreparado">
+        <span *ngIf="!cargando && !pagoPreparado">Confirmar e ir al pago seguro →</span>
+        <span *ngIf="cargando">⏳ Preparando pago...</span>
+        <span *ngIf="!cargando && pagoPreparado">✓ Pago preparado</span>
       </button>
 
+      <!-- ── DIVISOR ──────────────────────────────────────────── -->
       <div class="divider-wrapper">
         <hr class="divider">
         <span class="divider-text">PASARELA CIFRADA</span>
       </div>
 
-      <div class="section-header" [class.disabled-step]="!clientSecret">
-        <span class="step-number">2</span>
+      <!-- ── PASO 2: STRIPE ──────────────────────────────────── -->
+      <div class="section-header" [class.disabled-step]="!pagoPreparado">
+        <span class="step-number" [class.step-active]="pagoPreparado">2</span>
         <div>
           <h2>Datos de pago</h2>
-          <p class="step-desc">Introduzca los datos de su tarjeta de crédito o débito.</p>
+          <p class="step-desc">Introduce los datos de tu tarjeta de crédito o débito.</p>
         </div>
       </div>
 
-      <form id="payment-form" class="stripe-form" [style.display]="clientSecret ? 'block' : 'none'"> 
+      <!-- Pista tarjeta de test (solo en modo test) -->
+      <div class="test-hint" *ngIf="pagoPreparado">
+        🧪 <strong>Modo test —</strong> tarjeta:
+        <code>4242 4242 4242 4242</code> · fecha: <code>12/28</code> · CVC: <code>123</code>
+      </div>
+
+      <!-- Formulario Stripe — se renderiza cuando pagoPreparado=true,
+           el TS monta el card element en el siguiente tick con setTimeout -->
+      <form id="payment-form" *ngIf="pagoPreparado">
+
         <div class="stripe-container">
-          <div id="card-element"></div> 
+          <label class="stripe-label">Número de tarjeta, caducidad y CVC</label>
+          <!-- Stripe inyecta aquí su iframe con los campos de tarjeta -->
+          <div id="card-element"></div>
         </div>
 
-        <button id="submit" class="btn-stripe-submit"> 
-          <div class="spinner hidden" id="spinner"></div> 
-          <span id="button-text">Pagar {{ importe | number:'1.2-2' }} € ahora</span> 
-        </button> 
+        <!-- Mensaje de error de Stripe -->
+        <p id="card-error" role="alert" class="error-msg"></p>
 
-        <p id="card-error" role="alert" class="error-msg"></p> 
+        <button id="submit" type="submit" class="btn-stripe-submit" disabled>
+          🔒 Pagar {{ importe | number:'1.2-2' }} € ahora
+        </button>
+
       </form>
 
+      <!-- FOOTER -->
       <div class="secure-footer">
-        <img src="https://img.icons8.com/ios-filled/50/64748b/lock.png" alt="lock" width="12">
+        <span>🔒</span>
         <span>Pago procesado por Stripe con cifrado SSL de 256 bits</span>
       </div>
 

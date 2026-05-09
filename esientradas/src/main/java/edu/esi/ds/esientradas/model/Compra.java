@@ -1,89 +1,58 @@
 package edu.esi.ds.esientradas.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import java.time.Instant;
-import java.util.ArrayList;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "compra")
 public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_compra")
+    private Long idCompra;
 
-    @Column(name = "usuario_email")
+    // Email del usuario autenticado
+    @Column(name = "usuario_email", nullable = false)
     private String usuarioEmail;
 
-    @Column(name = "total_centimos")
-    private Long totalCentimos;
-
-    @Column(name = "created_at")
-    private Instant createdAt;
-
-    @Column(name = "client_secret")
+    // Client secret del pago de Stripe asociado
+    @Column(name = "client_secret", nullable = false, length = 500)
     private String clientSecret;
 
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    // Importe total en céntimos (suma de precios de las entradas)
+    @Column(name = "total_centimos", nullable = false)
+    private Long totalCentimos;
+
+    // Relación con las entradas compradas
     @ManyToMany
     @JoinTable(
-        name = "compra_entradas",
-        joinColumns = @JoinColumn(name = "compra_id"),
-        inverseJoinColumns = @JoinColumn(name = "entrada_id")
+        name = "compra_entrada",
+        joinColumns = @JoinColumn(name = "id_compra"),
+        inverseJoinColumns = @JoinColumn(name = "id_entrada")
     )
-    private List<Entrada> entradas = new ArrayList<>();
+    private List<Entrada> entradas;
 
-    public Long getId() {
-        return id;
-    }
+    public Compra() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // --- Getters ---
 
-    public String getUsuarioEmail() {
-        return usuarioEmail;
-    }
+    public Long getIdCompra()           { return idCompra; }
+    public String getUsuarioEmail()     { return usuarioEmail; }
+    public String getClientSecret()     { return clientSecret; }
+    public LocalDateTime getCreatedAt()       { return createdAt; }
+    public Long getTotalCentimos()      { return totalCentimos; }
+    public List<Entrada> getEntradas()  { return entradas; }
 
-    public void setUsuarioEmail(String usuarioEmail) {
-        this.usuarioEmail = usuarioEmail;
-    }
+    // --- Setters ---
 
-    public Long getTotalCentimos() {
-        return totalCentimos;
-    }
-
-    public void setTotalCentimos(Long totalCentimos) {
-        this.totalCentimos = totalCentimos;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getClientSecret() {
-        return clientSecret;
-    }
-
-    public void setClientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
-    }
-
-    public List<Entrada> getEntradas() {
-        return entradas;
-    }
-
-    public void setEntradas(List<Entrada> entradas) {
-        this.entradas = entradas;
-    }
+    public void setUsuarioEmail(String usuarioEmail)    { this.usuarioEmail = usuarioEmail; }
+    public void setClientSecret(String clientSecret)    { this.clientSecret = clientSecret; }
+    public void setCreatedAt(LocalDateTime createdAt)         { this.createdAt = createdAt; }
+    public void setTotalCentimos(Long totalCentimos)    { this.totalCentimos = totalCentimos; }
+    public void setEntradas(List<Entrada> entradas)     { this.entradas = entradas; }
 }
