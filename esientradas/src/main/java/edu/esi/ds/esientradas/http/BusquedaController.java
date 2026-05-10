@@ -15,7 +15,6 @@ import edu.esi.ds.esientradas.dto.DtoEntradaDetalle;
 import edu.esi.ds.esientradas.dto.DtoEspectaculo;
 import edu.esi.ds.esientradas.model.Escenario;
 import edu.esi.ds.esientradas.model.Espectaculo;
-import edu.esi.ds.esientradas.model.Entrada;
 import edu.esi.ds.esientradas.services.BusquedaService;
 
 @RestController

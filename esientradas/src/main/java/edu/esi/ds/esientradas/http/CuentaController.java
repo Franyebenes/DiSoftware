@@ -53,7 +53,7 @@ public class CuentaController {
             }).collect(Collectors.toList());
 
             return new DtoCompraHistorial(
-                compra.getId(),                                              // ← getId()
+                compra.getId(),
                 compra.getCreatedAt(),
                 compra.getTotalCentimos(),
                 String.format("%.2f €", compra.getTotalCentimos() / 100.0),

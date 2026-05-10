@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import edu.esi.ds.esientradas.dao.ColaUsuarioDao;
 import edu.esi.ds.esientradas.dao.EntradaDao;
 import edu.esi.ds.esientradas.dao.TokenDao;
 import edu.esi.ds.esientradas.model.Entrada;
@@ -21,7 +20,6 @@ public class ReservasService {
 
     @Autowired private EntradaDao    dao;
     @Autowired private TokenDao      tokenDao;
-    @Autowired private ColaUsuarioDao colaDao;
     @Autowired private ColaService   colaService;
 
     @Transactional

@@ -230,6 +230,7 @@ export class CompraComponent implements OnInit, OnDestroy {
           next: () => {
             this.compraRealizada = true;
             this.mensajeExito = '✅ Compra realizada correctamente. ¡Disfruta del espectáculo!';
+            this.cdr.detectChanges();
             localStorage.removeItem('selectedEntries');
             localStorage.removeItem('selectedEspectaculo');
             setTimeout(() => this.router.navigate(['/']), 3000);

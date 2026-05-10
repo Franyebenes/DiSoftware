@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import edu.esi.ds.esiusuarios.dao.UserRepository;
-import edu.esi.ds.esiusuarios.model.User;
 import edu.esi.ds.esiusuarios.security.RateLimitingService;
 import edu.esi.ds.esiusuarios.security.SecurityAuditService;
 import edu.esi.ds.esiusuarios.services.UserService;
