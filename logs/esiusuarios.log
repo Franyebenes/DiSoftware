@@ -813,3 +813,67 @@ This generated password is for development use only. Your security configuration
 2026-05-10T18:26:07.818+02:00  INFO 36852 --- [esiusuarios] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-10T18:26:07.820+02:00  INFO 36852 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-05-10T18:26:07.825+02:00  INFO 36852 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T18:28:48.007+02:00  INFO 27812 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 27812 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T18:28:48.009+02:00  INFO 27812 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T18:28:48.733+02:00  INFO 27812 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T18:28:48.821+02:00  INFO 27812 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interface.
+2026-05-10T18:28:49.137+02:00  INFO 27812 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T18:28:49.137+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T18:28:49.144+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:28:49.332+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T18:28:49.351+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T18:28:49.355+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T18:28:49.684+02:00  INFO 27812 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T18:28:49.705+02:00  INFO 27812 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T18:28:49.706+02:00  INFO 27812 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T18:28:49.783+02:00  INFO 27812 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T18:28:49.783+02:00  INFO 27812 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1726 ms
+2026-05-10T18:28:50.135+02:00  INFO 27812 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T18:28:50.215+02:00  INFO 27812 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T18:28:50.276+02:00  INFO 27812 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T18:28:50.627+02:00  INFO 27812 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T18:28:50.669+02:00  INFO 27812 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T18:28:51.057+02:00  INFO 27812 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 307dc192-608c-4583-a266-c8f8d68aadac
+2026-05-10T18:28:51.063+02:00  INFO 27812 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T18:28:51.089+02:00  WARN 27812 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T18:28:51.092+02:00  WARN 27812 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T18:28:51.946+02:00  INFO 27812 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T18:28:52.046+02:00  INFO 27812 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T18:28:52.519+02:00  INFO 27812 --- [esiusuarios] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-10T18:28:53.159+02:00  WARN 27812 --- [esiusuarios] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-10T18:28:53.204+02:00  WARN 27812 --- [esiusuarios] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d7d188ab-4605-4b96-91e6-e48c63931dfc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-10T18:28:53.222+02:00  INFO 27812 --- [esiusuarios] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-10T18:28:53.362+02:00 DEBUG 27812 --- [esiusuarios] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-05-10T18:28:54.026+02:00  INFO 27812 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] u.j.c.RefreshScopeRefreshedEventListener : Refreshing cached encryptable property sources on ServletWebServerInitializedEvent
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemProperties refreshed
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemEnvironment refreshed
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source random refreshed
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' refreshed
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:28:54.029+02:00  INFO 27812 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource servletContextInitParams [org.springframework.web.context.support.ServletContextPropertySource] to EncryptableEnumerablePropertySourceWrapper
+2026-05-10T18:28:54.043+02:00  INFO 27812 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Started EsiusuariosApplication in 6.584 seconds (process running for 7.218)
+2026-05-10T18:29:44.016+02:00  INFO 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-10T18:29:44.016+02:00  INFO 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-10T18:29:44.018+02:00  INFO 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-05-10T18:29:44.035+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /users/validate-token?token=6151da61-c73f-4739-b2e9-9044dd4d5ae1
+2026-05-10T18:29:44.049+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /users/validate-token?token=6151da61-c73f-4739-b2e9-9044dd4d5ae1
+2026-05-10T18:29:44.194+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T18:33:03.041+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T18:33:03.052+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T18:33:03.052+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T18:33:03.659+02:00 DEBUG 27812 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T18:40:28.593+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T18:40:28.596+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T18:40:28.599+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
