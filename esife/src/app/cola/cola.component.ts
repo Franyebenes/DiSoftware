@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ColaService } from './cola.service';
@@ -12,24 +12,22 @@ import { ColaService } from './cola.service';
 })
 export class ColaComponent implements OnInit, OnDestroy {
 
-  // Datos del contexto
-  usuarioEmail  = '';
-  espectaculoId = 0;
+  usuarioEmail      = '';
+  espectaculoId     = 0;
   espectaculoNombre = '';
 
-  // Estado de la cola
-  enCola       = false;
-  posicion      = 0;
-  esTurno       = false;
-  cargando      = false;
-  error         = '';
+  enCola   = false;
+  posicion = 0;
+  esTurno  = false;
+  cargando = false;
+  error    = '';
 
-  // Polling — intervalo en ms (5 segundos)
   private readonly INTERVALO_POLLING = 5000;
   private pollingTimer: any = null;
 
   constructor(
     private colaService: ColaService,
+    private cdr:         ChangeDetectorRef,
     private router:      Router,
     private route:       ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -38,53 +36,71 @@ export class ColaComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    // Recuperar datos del espectáculo pasados por queryParams o localStorage
     this.route.queryParams.subscribe(params => {
       this.espectaculoId     = Number(params['espectaculoId']) || 0;
       this.espectaculoNombre = params['nombre'] || 'Espectáculo';
     });
 
     this.usuarioEmail = localStorage.getItem('userEmail') || '';
+    if (!this.usuarioEmail) { this.router.navigate(['/login']); return; }
+    if (!this.espectaculoId) { this.router.navigate(['/']); return; }
 
-    if (!this.usuarioEmail) {
-      this.router.navigate(['/login']);
-      return;
-    }
-
-    if (!this.espectaculoId) {
-      this.router.navigate(['/']);
-      return;
-    }
+    // Comprobar si ya estaba en la cola (recarga de página)
+    this.comprobarSiYaEnCola();
   }
 
   ngOnDestroy(): void {
     this.detenerPolling();
   }
 
-  // ── UNIRSE A LA COLA ─────────────────────────────────────────────────────
+  private comprobarSiYaEnCola(): void {
+    this.colaService.obtenerPosicion(this.usuarioEmail, this.espectaculoId).subscribe({
+      next: (posicion) => {
+        this.enCola   = true;
+        this.posicion = posicion;
+        this.cdr.detectChanges();
+        this.iniciarPolling();
+      },
+      error: () => {
+        // No está en la cola aún — mostrar botón de unirse
+        this.enCola = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
 
   unirseCola(): void {
     this.error    = '';
     this.cargando = true;
+    this.cdr.detectChanges();
 
     this.colaService.unirseCola(this.usuarioEmail, this.espectaculoId).subscribe({
       next: () => {
         this.enCola   = true;
         this.cargando = false;
-        // Consultar posición inmediatamente y luego iniciar polling
+        this.cdr.detectChanges();
         this.consultarEstado();
         this.iniciarPolling();
       },
       error: (err) => {
-        this.error    = err.error || 'Error al unirse a la cola.';
-        this.cargando = false;
+        const msg = err.error || '';
+        if (msg.includes('Ya estás en la cola')) {
+          this.enCola   = true;
+          this.cargando = false;
+          this.cdr.detectChanges();
+          this.consultarEstado();
+          this.iniciarPolling();
+        } else {
+          this.error    = msg || 'Error al unirse a la cola.';
+          this.cargando = false;
+          this.cdr.detectChanges();
+        }
       }
     });
   }
 
-  // ── POLLING ──────────────────────────────────────────────────────────────
-
   private iniciarPolling(): void {
+    this.detenerPolling();
     this.pollingTimer = setInterval(() => {
       this.consultarEstado();
     }, this.INTERVALO_POLLING);
@@ -98,38 +114,40 @@ export class ColaComponent implements OnInit, OnDestroy {
   }
 
   private consultarEstado(): void {
-    // 1. Consultar si es su turno
     this.colaService.esTurnoUsuario(this.usuarioEmail, this.espectaculoId).subscribe({
       next: (esTurno) => {
         this.esTurno = esTurno;
+        this.cdr.detectChanges();
 
         if (esTurno) {
-          // Es su turno — detener polling y redirigir a compra
+          // Es el turno — detener polling y mostrar botón de compra
           this.detenerPolling();
         } else {
-          // Aún esperando — consultar posición
+          // Aún esperando — actualizar posición
           this.colaService.obtenerPosicion(this.usuarioEmail, this.espectaculoId).subscribe({
             next: (posicion) => {
               this.posicion = posicion;
+              this.cdr.detectChanges();
             },
-            error: () => {}
+            error: (err) => {
+              // Si devuelve 404 es que ya no está en la cola (fue eliminado)
+              console.warn('Posición no encontrada:', err.status);
+            }
           });
         }
       },
-      error: () => {}
+      error: (err) => {
+        // Error de red — el polling sigue, se reintentará en 5 segundos
+        console.warn('Error consultando turno:', err.status);
+      }
     });
   }
 
-  // ── CUANDO LE LLEGA EL TURNO ─────────────────────────────────────────────
-
   irAComprar(): void {
-    // Navegar a la selección de entradas del espectáculo
-    // El turno se libera automáticamente cuando el backend detecta que ha expirado,
-    // o cuando se llama a liberarTurno al completar/cancelar la compra
-    this.router.navigate(['/espectaculos', this.espectaculoId]);
+    // Las entradas ya están guardadas en localStorage desde escenarios.component.ts
+    // Navegamos directamente a la página de compra
+    this.router.navigate(['/comprar']);
   }
-
-  // ── SALIR DE LA COLA ─────────────────────────────────────────────────────
 
   salirCola(): void {
     this.detenerPolling();

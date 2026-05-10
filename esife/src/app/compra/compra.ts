@@ -3,6 +3,7 @@ import {
   Inject,
   PLATFORM_ID,
   OnInit,
+  OnDestroy,
   ChangeDetectorRef
 } from '@angular/core';
 
@@ -11,8 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Pagos } from '../pagos';
+import { ColaService } from '../cola/cola.service';
 
 declare var Stripe: any;
+
 
 @Component({
   selector: 'app-compra',
@@ -21,7 +24,7 @@ declare var Stripe: any;
   templateUrl: './compra.html',
   styleUrl: './compra.css',
 })
-export class CompraComponent implements OnInit {
+export class CompraComponent implements OnInit, OnDestroy {
 
   importe = 0;
   totalCentimos = 0;
@@ -33,22 +36,24 @@ export class CompraComponent implements OnInit {
 
   pagoPreparado = false;
   cargando = false;
-  mensajeExito: string = '';
+  compraRealizada = false; // true cuando el backend confirma la compra
+  mensajeExito = '';
 
   stripe: any;
   card: any;
 
   constructor(
-    private service: Pagos,
-    private router: Router,
-    private cdr: ChangeDetectorRef,           // ← fuerza detección de cambios
+    private service:      Pagos,
+    private colaService:  ColaService,
+    private router:       Router,
+    private cdr:          ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    const entriesJson    = localStorage.getItem('selectedEntries');
+    const entriesJson     = localStorage.getItem('selectedEntries');
     const espectaculoJson = localStorage.getItem('selectedEspectaculo');
 
     if (!entriesJson || !espectaculoJson) {
@@ -67,20 +72,44 @@ export class CompraComponent implements OnInit {
     this.importe = this.totalCentimos / 100;
 
     if (typeof Stripe === 'undefined') {
-      console.error('Stripe.js no está cargado. Añade el script en index.html.');
+      console.error('Stripe.js no está cargado.');
       return;
     }
 
-    //Clave de STRIPE pública
     this.stripe = Stripe(
       'pk_test_51T57EhRer5FYzgoYICR8epqmn0lfWbgROUQSdBryko5ajUTHQ52ox5Vk64fz8XhsWnV1EoinINhc5XsokWxd6ntr000yJmorn9'
     );
+  }
+
+  // ── Al destruirse el componente (navegar a otra página) ──────────────────
+  ngOnDestroy(): void {
+    // Si el usuario sale sin haber completado la compra, liberar su turno en la cola
+    if (isPlatformBrowser(this.platformId) && !this.compraRealizada) {
+      this.liberarTurnoCola();
+    }
+  }
+
+  private liberarTurnoCola(): void {
+    const email        = localStorage.getItem('userEmail') || '';
+    const espectaculo  = this.selectedEspectaculo;
+    // El id del espectáculo puede venir en el objeto o en las entradas
+    const espectaculoId = espectaculo?.id
+      ?? this.selectedEntries[0]?.espectaculoId
+      ?? null;
+
+    if (!email || !espectaculoId) return;
+
+    this.colaService.liberarTurno(email, espectaculoId).subscribe({
+      next: () => console.log('Turno liberado al salir de compra'),
+      error: () => {} // silencioso — puede que no estuviera en cola
+    });
   }
 
   irAtras(): void {
     this.router.navigate(['/']);
   }
 
+  // ── PASO 1: reservar + preparar pago ─────────────────────────────────────
   irAlPago(): void {
     const token = localStorage.getItem('userToken');
     if (!token) { this.router.navigate(['/login']); return; }
@@ -96,12 +125,8 @@ export class CompraComponent implements OnInit {
             this.clientSecret  = clientSecret;
             this.pagoPreparado = true;
             this.cargando      = false;
-
-            // 1) Forzamos que Angular procese el *ngIf y añada #card-element al DOM
             this.cdr.detectChanges();
-
-            // 2) Ahora el elemento ya existe — montamos Stripe
-            this.mountStripeElement();
+            setTimeout(() => this.mountStripeElement(), 0);
           },
           error: (err: any) => {
             console.error('Error preparando pago', err);
@@ -118,14 +143,12 @@ export class CompraComponent implements OnInit {
     });
   }
 
+  // ── PASO 2: montar Stripe Elements ───────────────────────────────────────
   mountStripeElement(): void {
     if (!isPlatformBrowser(this.platformId) || !this.stripe || this.card) return;
 
     const container = document.getElementById('card-element');
-    if (!container) {
-      console.error('#card-element no existe en el DOM');
-      return;
-    }
+    if (!container) { console.error('#card-element no existe'); return; }
 
     const elements = this.stripe.elements();
 
@@ -139,17 +162,14 @@ export class CompraComponent implements OnInit {
           '::placeholder': { color: '#94a3b8' },
           iconColor: '#1e3a8a',
         },
-        invalid: {
-          color: '#ef4444',
-          iconColor: '#ef4444',
-        },
+        invalid: { color: '#ef4444', iconColor: '#ef4444' },
       },
     });
 
     this.card.mount('#card-element');
 
     this.card.on('change', (event: any) => {
-      const errorEl  = document.getElementById('card-error');
+      const errorEl   = document.getElementById('card-error');
       const submitBtn = document.getElementById('submit') as HTMLButtonElement;
       if (submitBtn) submitBtn.disabled = event.empty || !!event.error;
       if (errorEl)   errorEl.textContent = event.error?.message || '';
@@ -162,6 +182,7 @@ export class CompraComponent implements OnInit {
     });
   }
 
+  // ── PASO 3: confirmar pago con Stripe ────────────────────────────────────
   payWithCard(): void {
     if (!this.clientSecret || !this.card) return;
 
@@ -191,6 +212,7 @@ export class CompraComponent implements OnInit {
     });
   }
 
+  // ── PASO 4: registrar compra en BD ───────────────────────────────────────
   confirmarCompra(): void {
     if (!this.clientSecret) return;
 
@@ -206,15 +228,15 @@ export class CompraComponent implements OnInit {
 
         this.service.comprar(compraInfo, token).subscribe({
           next: () => {
-            this.mensajeExito = 'Compra realizada correctamente. ¡Disfruta del espectáculo!';
-            this.cdr.detectChanges();
+            this.compraRealizada = true;
+            this.mensajeExito = '✅ Compra realizada correctamente. ¡Disfruta del espectáculo!';
             localStorage.removeItem('selectedEntries');
             localStorage.removeItem('selectedEspectaculo');
             setTimeout(() => this.router.navigate(['/']), 3000);
           },
           error: (err: any) => {
             console.error(err);
-            alert('El pago se realizó, pero hubo un problema al registrar la compra. Contacta con soporte.');
+            alert('El pago se realizó, pero hubo un problema al registrar la compra.');
           }
         });
       },
