@@ -33,6 +33,7 @@ export class CompraComponent implements OnInit {
 
   pagoPreparado = false;
   cargando = false;
+  mensajeExito: string = '';
 
   stripe: any;
   card: any;
@@ -71,7 +72,7 @@ export class CompraComponent implements OnInit {
     }
 
     this.stripe = Stripe(
-      'pk_test_51T57EhRer5FYzgoYICR8epqmn0lfWbgROUQSdBryko5ajUTHQ52ox5Vk64fz8XhsWnV1EoinINhc5XsokWxd6ntr000yJmorn9'
+      'pk_test_51T92n2Rt2Zfbnh2q96wYcwcUd4hso7cKQyYxI2MpAU6liGjlRAQEwHznp0qCV5iEC04emYr4OH6PYgjZi7SAC7hX00kaO2ldJ2'
     );
   }
 
@@ -204,10 +205,11 @@ export class CompraComponent implements OnInit {
 
         this.service.comprar(compraInfo, token).subscribe({
           next: () => {
-            alert('✅ Compra realizada correctamente. ¡Disfruta del espectáculo!');
+            this.mensajeExito = 'Compra realizada correctamente. ¡Disfruta del espectáculo!';
+            this.cdr.detectChanges();
             localStorage.removeItem('selectedEntries');
             localStorage.removeItem('selectedEspectaculo');
-            this.router.navigate(['/']);
+            setTimeout(() => this.router.navigate(['/']), 3000);
           },
           error: (err: any) => {
             console.error(err);

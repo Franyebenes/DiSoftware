@@ -100,24 +100,22 @@
         <code>4242 4242 4242 4242</code> · fecha: <code>12/28</code> · CVC: <code>123</code>
       </div>
 
-      <!-- Formulario Stripe — se renderiza cuando pagoPreparado=true,
-           el TS monta el card element en el siguiente tick con setTimeout -->
+      <!-- Formulario Stripe -->
       <form id="payment-form" *ngIf="pagoPreparado">
-
         <div class="stripe-container">
           <label class="stripe-label">Número de tarjeta, caducidad y CVC</label>
-          <!-- Stripe inyecta aquí su iframe con los campos de tarjeta -->
           <div id="card-element"></div>
         </div>
-
-        <!-- Mensaje de error de Stripe -->
         <p id="card-error" role="alert" class="error-msg"></p>
-
         <button id="submit" type="submit" class="btn-stripe-submit" disabled>
           🔒 Pagar {{ importe | number:'1.2-2' }} € ahora
         </button>
-
       </form>
+
+      <!-- MENSAJE DE ÉXITO -->
+      <div *ngIf="mensajeExito" class="success-message">
+        {{ mensajeExito }}
+      </div>
 
       <!-- FOOTER -->
       <div class="secure-footer">
