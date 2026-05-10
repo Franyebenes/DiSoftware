@@ -367,3 +367,14 @@
   .compra-card { padding: 24px 16px; }
   .input-with-symbol input { width: 130px; font-size: 1.1rem; }
 }
+
+.success-message {
+    background: #dcfce7;
+    border: 1px solid #16a34a;
+    color: #15803d;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
