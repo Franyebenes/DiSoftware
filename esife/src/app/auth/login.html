@@ -1,151 +1,139 @@
 <div class="login-page">
-  <div class="login-card">
-    <!-- LOGIN FORM -->
-    <div *ngIf="!showRegister">
-      <div class="login-header">
-        <h2>Identifícate</h2>
-        <p>Necesitas iniciar sesión para comprar entradas</p>
-      </div>
 
-      <div class="login-body">
+  <!-- CABECERA -->
+  <div class="login-header-bar">
+    <span class="logo-text">esientradas</span>
+  </div>
+
+  <div class="login-center">
+    <div class="login-card">
+
+      <!-- ── LOGIN ──────────────────────────────────────────────── -->
+      <div *ngIf="!showRegister && !showForgotPassword">
+
+        <div class="card-header">
+          <h2>Identifícate</h2>
+          <p>Necesitas iniciar sesión para comprar entradas</p>
+        </div>
+
         <div class="input-group">
           <label>Email</label>
-          <input type="email" [(ngModel)]="email" name="email" placeholder="tu@email.com">
+          <input type="email" [(ngModel)]="email" placeholder="tu@email.com">
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
           <div class="password-container">
-            <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="••••••••">
-            <button type="button" (click)="togglePasswordVisibility()" class="eye-btn">{{ showPassword ? '🙈' : '👁️' }}</button>
+            <input [type]="showPassword ? 'text' : 'password'"
+                   [(ngModel)]="password" placeholder="••••••••">
+            <button type="button" class="eye-btn" (click)="togglePasswordVisibility()" [title]="showPassword ? 'Ocultar' : 'Mostrar'">
+              <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <button class="btn-login" (click)="login()">
-          Entrar ahora
-        </button>
+        <div class="alert alert-success" *ngIf="loginSuccessMessage">{{ loginSuccessMessage }}</div>
 
-        <p *ngIf="errorMessage" class="error-msg">
-          {{ errorMessage }}
-        </p>
-      </div>
-      
-      <div class="login-footer">
-        <p>¿No tienes cuenta? <a href="javascript:void(0)" (click)="toggleRegister()">Regístrate aquí</a></p>
-        <p><a href="javascript:void(0)" (click)="toggleForgotPassword()">¿Olvidaste tu contraseña?</a></p>
-        <p *ngIf="userToken"><a href="javascript:void(0)" (click)="deleteAccount()" style="color: red;">Eliminar cuenta</a></p>
-      </div>
-    </div>
+        <div class="alert alert-error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
-    <!-- REGISTER FORM -->
-    <div *ngIf="showRegister">
-      <div class="login-header">
-        <h2>Crea tu cuenta</h2>
-        <p>Regístrate para empezar a comprar entradas</p>
+        <button class="btn-primary" (click)="login()">Entrar ahora</button>
+
+        <div class="card-footer">
+          <p>¿No tienes cuenta? <a (click)="toggleRegister()">Regístrate aquí</a></p>
+          <p><a (click)="toggleForgotPassword()">¿Olvidaste tu contraseña?</a></p>
+          <p *ngIf="userToken"><a (click)="deleteAccount()" class="link-danger">Eliminar cuenta</a></p>
+        </div>
       </div>
 
-      <div class="login-body">
+      <!-- ── REGISTRO ───────────────────────────────────────────── -->
+      <div *ngIf="showRegister">
+
+        <div class="card-header">
+          <h2>Crea tu cuenta</h2>
+          <p>Regístrate para empezar a comprar entradas</p>
+        </div>
+
         <div class="input-group">
           <label>Email</label>
-          <input type="email" [(ngModel)]="registerEmail" name="registerEmail" placeholder="tu@email.com">
+          <input type="email" [(ngModel)]="registerEmail" placeholder="tu@email.com">
         </div>
 
         <div class="input-group">
           <label>Contraseña</label>
           <div class="password-container">
-            <input [type]="showRegisterPassword1 ? 'text' : 'password'" [(ngModel)]="registerPassword1" name="registerPassword1" 
-                   placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
-            <button type="button" (click)="toggleRegisterPassword1Visibility()" class="eye-btn">{{ showRegisterPassword1 ? '🙈' : '👁️' }}</button>
+            <input [type]="showRegisterPassword1 ? 'text' : 'password'"
+                   [(ngModel)]="registerPassword1"
+                   placeholder="Mín. 8 caracteres, mayús, número, símbolo">
+            <button type="button" class="eye-btn" (click)="toggleRegisterPassword1Visibility()" [title]="showRegisterPassword1 ? 'Ocultar' : 'Mostrar'">
+              <svg *ngIf="!showRegisterPassword1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showRegisterPassword1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
           </div>
         </div>
 
         <div class="input-group">
           <label>Confirmar contraseña</label>
           <div class="password-container">
-            <input [type]="showRegisterPassword2 ? 'text' : 'password'" [(ngModel)]="registerPassword2" name="registerPassword2" placeholder="••••••••">
-            <button type="button" (click)="toggleRegisterPassword2Visibility()" class="eye-btn">{{ showRegisterPassword2 ? '🙈' : '👁️' }}</button>
+            <input [type]="showRegisterPassword2 ? 'text' : 'password'"
+                   [(ngModel)]="registerPassword2" placeholder="••••••••">
+            <button type="button" class="eye-btn" (click)="toggleRegisterPassword2Visibility()" [title]="showRegisterPassword2 ? 'Ocultar' : 'Mostrar'">
+              <svg *ngIf="!showRegisterPassword2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showRegisterPassword2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <button class="btn-login" (click)="register()">
-          Registrarse
-        </button>
+        <div class="alert alert-error"   *ngIf="registerErrorMessage">{{ registerErrorMessage }}</div>
+        <div class="alert alert-success" *ngIf="registerSuccessMessage">{{ registerSuccessMessage }}</div>
 
-        <p *ngIf="registerErrorMessage" class="error-msg">
-          {{ registerErrorMessage }}
-        </p>
+        <button class="btn-primary" (click)="register()">Registrarse</button>
 
-        <p *ngIf="registerSuccessMessage" class="success-msg">
-          {{ registerSuccessMessage }}
-        </p>
-      </div>
-      
-      <div class="login-footer">
-        <p>¿Ya tienes cuenta? <a href="javascript:void(0)" (click)="toggleRegister()">Inicia sesión aquí</a></p>
-      </div>
-    </div>
-
-    <!-- FORGOT PASSWORD FORM -->
-    <div *ngIf="showForgotPassword">
-      <div class="login-header">
-        <h2>Recuperar contraseña</h2>
-        <p>Ingresa tu email para recibir instrucciones</p>
+        <div class="card-footer">
+          <p>¿Ya tienes cuenta? <a (click)="toggleRegister()">Inicia sesión aquí</a></p>
+        </div>
       </div>
 
-      <div class="login-body">
+      <!-- ── RECUPERAR CONTRASEÑA ───────────────────────────────── -->
+      <div *ngIf="showForgotPassword">
+
+        <div class="card-header">
+          <h2>Recuperar contraseña</h2>
+          <p>Te enviaremos un enlace para restablecer tu contraseña</p>
+        </div>
+
         <div class="input-group">
           <label>Email</label>
-          <input type="email" [(ngModel)]="forgotEmail" name="forgotEmail" placeholder="tu@email.com">
+          <input type="email" [(ngModel)]="forgotEmail" placeholder="tu@email.com">
         </div>
 
-        <button class="btn-login" (click)="forgotPassword()">
-          Enviar instrucciones
-        </button>
+        <div class="alert alert-success" *ngIf="forgotMessage">{{ forgotMessage }}</div>
 
-        <p *ngIf="forgotMessage" class="success-msg">
-          {{ forgotMessage }}
-        </p>
-      </div>
-      
-      <div class="login-footer">
-        <p><a href="javascript:void(0)" (click)="toggleForgotPassword()">Volver al login</a></p>
-        <p><a href="javascript:void(0)" (click)="toggleResetPassword()">Ya tengo un token de reset</a></p>
-      </div>
-    </div>
+        <button class="btn-primary" (click)="forgotPassword()">Enviar instrucciones</button>
 
-    <!-- RESET PASSWORD FORM -->
-    <div *ngIf="showResetPassword">
-      <div class="login-header">
-        <h2>Resetear contraseña</h2>
-        <p>Ingresa el token recibido y tu nueva contraseña</p>
-      </div>
-
-      <div class="login-body">
-        <div class="input-group">
-          <label>Token de reset</label>
-          <input type="text" [(ngModel)]="resetToken" name="resetToken" placeholder="Token recibido por email">
+        <div class="card-footer">
+          <p><a (click)="toggleForgotPassword()">← Volver al login</a></p>
         </div>
-
-        <div class="input-group">
-          <label>Nueva contraseña</label>
-          <div class="password-container">
-            <input [type]="showResetNewPassword ? 'text' : 'password'" [(ngModel)]="newPassword" name="newPassword" placeholder="Mínimo 8 caracteres: mayús, minús, número, carácter especial">
-            <button type="button" (click)="toggleResetNewPasswordVisibility()" class="eye-btn">{{ showResetNewPassword ? '🙈' : '👁️' }}</button>
-          </div>
-        </div>
-
-        <button class="btn-login" (click)="resetPassword()">
-          Cambiar contraseña
-        </button>
-
-        <p *ngIf="resetMessage" class="success-msg">
-          {{ resetMessage }}
-        </p>
       </div>
-      
-      <div class="login-footer">
-        <p><a href="javascript:void(0)" (click)="toggleResetPassword()">Volver al login</a></p>
-      </div>
+
     </div>
   </div>
 </div>

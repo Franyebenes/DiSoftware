@@ -8,51 +8,64 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-reset-password',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <div style="text-align:center; margin-top: 100px;">
-      <div *ngIf="!resetDone">
-        <h2>Nueva contraseña</h2>
-        <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña" /><br><br>
-        <button (click)="reset()">Cambiar contraseña</button>
-        <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
-      </div>
-      <p *ngIf="resetDone"> Contraseña cambiada. Redirigiendo al login...</p>
-    </div>
-  `
+  templateUrl: './reset-password.html',
+  styleUrl: './reset-password.css',
 })
 export class ResetPasswordComponent implements OnInit {
-  newPassword: string = '';
-  errorMessage: string = '';
-  resetDone: boolean = false;
-  private token: string = '';
+  newPassword     = '';
+  confirmPassword = '';
+  errorMessage    = '';
+  successMessage  = '';
+  resetDone       = false;
+  showPassword    = false;
+  showConfirm     = false;
+  token   = '';
 
   constructor(
-    private route: ActivatedRoute,
+    private route:       ActivatedRoute,
     private authService: AuthService,
-    private router: Router
+    private router:      Router
   ) {}
 
   ngOnInit() {
     this.token = this.route.snapshot.queryParamMap.get('token') || '';
     if (!this.token) {
-      this.errorMessage = 'Token no válido.';
+      this.errorMessage = 'Token no válido o caducado.';
     }
   }
 
   reset() {
+    this.errorMessage   = '';
+    this.successMessage = '';
+
+    if (!this.newPassword || !this.confirmPassword) {
+      this.errorMessage = 'Por favor rellena ambos campos.';
+      return;
+    }
+
+    if (this.newPassword !== this.confirmPassword) {
+      this.errorMessage = 'Las contraseñas no coinciden.';
+      return;
+    }
+
     this.authService.resetPassword(this.token, this.newPassword).subscribe({
       next: () => {
-        this.resetDone = true;
+        this.resetDone      = true;
+        this.successMessage = 'Contraseña cambiada correctamente. Redirigiendo al login...';
         setTimeout(() => this.router.navigate(['/login']), 3000);
       },
       error: (err) => {
         try {
-          const errorBody = typeof err.error === 'string' ? JSON.parse(err.error) : err.error;
-          this.errorMessage = errorBody.message || 'Error al resetear la contraseña.';
+          const body = typeof err.error === 'string' ? JSON.parse(err.error) : err.error;
+          this.errorMessage = body.message || 'Error al cambiar la contraseña.';
         } catch {
-          this.errorMessage = 'Error al resetear la contraseña.';
+          this.errorMessage = 'Error al cambiar la contraseña.';
         }
       }
     });
   }
+
+  togglePassword()  { this.showPassword = !this.showPassword; }
+  toggleConfirm()   { this.showConfirm  = !this.showConfirm; }
+  irAlLogin()       { this.router.navigate(['/login']); }
 }

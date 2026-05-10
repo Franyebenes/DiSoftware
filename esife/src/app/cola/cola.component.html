@@ -1,0 +1,88 @@
+<div class="page-container">
+
+  <!-- CABECERA -->
+  <div class="header-wrapper">
+    <div class="main-container header-flex">
+      <span class="logo-text" (click)="irAlInicio()" style="cursor:pointer">esientradas</span>
+      <span class="page-subtitle">/ Cola de espera</span>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="cola-card">
+
+      <!-- NOMBRE DEL ESPECTÁCULO -->
+      <div class="espectaculo-nombre">
+        <span class="icono-evento">🎭</span>
+        <h2>{{ espectaculoNombre }}</h2>
+      </div>
+
+      <!-- ── ESTADO: AÚN NO EN COLA ──────────────────────────────── -->
+      <div *ngIf="!enCola && !esTurno">
+
+        <div class="info-box">
+          <p class="info-title">Taquilla virtual activa</p>
+          <p class="info-desc">
+            Este espectáculo tiene alta demanda. Pulsa el botón para unirte a la
+            cola y te informaremos periódicamente de tu posición.
+          </p>
+        </div>
+
+        <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+        <button class="btn-primary" (click)="unirseCola()" [disabled]="cargando">
+          <span *ngIf="!cargando">Unirse a la cola</span>
+          <span *ngIf="cargando">Uniéndose...</span>
+        </button>
+
+      </div>
+
+      <!-- ── ESTADO: EN COLA, ESPERANDO TURNO ───────────────────── -->
+      <div *ngIf="enCola && !esTurno">
+
+        <div class="posicion-display">
+          <p class="posicion-label">Tu posición en la cola</p>
+          <div class="posicion-numero">{{ posicion }}</div>
+          <p class="posicion-sub" *ngIf="posicion === 1">¡Eres el siguiente!</p>
+          <p class="posicion-sub" *ngIf="posicion > 1">
+            Hay {{ posicion - 1 }} persona{{ posicion - 1 !== 1 ? 's' : '' }} delante de ti
+          </p>
+        </div>
+
+        <div class="polling-info">
+          <div class="polling-dot"></div>
+          <span>Actualizando tu posición cada 5 segundos...</span>
+        </div>
+
+        <div class="aviso-box">
+          <p>
+            Cuando llegue tu turno podrás seleccionar y comprar las entradas.
+            Si no actúas a tiempo, el turno pasará al siguiente usuario.
+          </p>
+        </div>
+
+        <button class="btn-secundario" (click)="salirCola()">
+          Salir de la cola
+        </button>
+
+      </div>
+
+      <!-- ── ESTADO: ES TU TURNO ─────────────────────────────────── -->
+      <div *ngIf="esTurno" class="turno-activo">
+
+        <div class="turno-icono">🎉</div>
+        <h3 class="turno-titulo">¡Es tu turno!</h3>
+        <p class="turno-desc">
+          Tienes un tiempo limitado para seleccionar y comprar tus entradas.
+          Si no completas la compra a tiempo, el turno pasará al siguiente usuario.
+        </p>
+
+        <button class="btn-turno" (click)="irAComprar()">
+          Ir a comprar entradas →
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>

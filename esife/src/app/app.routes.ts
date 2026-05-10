@@ -6,6 +6,7 @@ import { MainLayoutComponent } from './main-layout/main-layout';
 import { ConfirmComponent } from './auth/confirm';
 import { ResetPasswordComponent } from './auth/reset-password';
 import { CuentaComponent } from './cuenta/cuenta.component';
+import { ColaComponent } from './cola/cola.component';
 
 export const routes: Routes = [
   { path: "", component: MainLayoutComponent },
@@ -14,4 +15,5 @@ export const routes: Routes = [
   { path: "confirm", component: ConfirmComponent },
   { path: "reset-password", component: ResetPasswordComponent },
   { path: 'cuenta', component: CuentaComponent },
+  { path: 'cola', component: ColaComponent },
 ];

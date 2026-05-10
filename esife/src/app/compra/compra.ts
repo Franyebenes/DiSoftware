@@ -71,8 +71,9 @@ export class CompraComponent implements OnInit {
       return;
     }
 
+    //Clave de STRIPE pública
     this.stripe = Stripe(
-      'pk_test_51T92n2Rt2Zfbnh2q96wYcwcUd4hso7cKQyYxI2MpAU6liGjlRAQEwHznp0qCV5iEC04emYr4OH6PYgjZi7SAC7hX00kaO2ldJ2'
+      'pk_test_51T57EhRer5FYzgoYICR8epqmn0lfWbgROUQSdBryko5ajUTHQ52ox5Vk64fz8XhsWnV1EoinINhc5XsokWxd6ntr000yJmorn9'
     );
   }
 

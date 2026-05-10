@@ -16,8 +16,14 @@ export class Pagos {
     return this.http.post('http://localhost:8080/pago/confirmarPago', info, { responseType: 'text' });
   }
 
-  reservarMultiples(info: any) {
-    return this.http.post('http://localhost:8080/reservas/reservar-multiples', info, { responseType: 'text' });
+  reservarMultiples(idEntradas: number[]) {
+    const token = localStorage.getItem('userToken') || '';
+    const params = token ? `?userToken=${encodeURIComponent(token)}` : '';
+    return this.http.post(
+      `http://localhost:8080/reservas/reservar-multiples${params}`,
+      idEntradas,
+      { responseType: 'text' }
+    );
   }
 
   comprar(info: any, token: string) {

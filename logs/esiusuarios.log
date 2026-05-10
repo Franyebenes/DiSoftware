@@ -877,3 +877,865 @@ This generated password is for development use only. Your security configuration
 2026-05-10T18:40:28.593+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-10T18:40:28.596+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-05-10T18:40:28.599+02:00  INFO 27812 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T18:56:58.916+02:00  INFO 20580 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 20580 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T18:56:58.919+02:00  INFO 20580 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T18:56:59.756+02:00  INFO 20580 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T18:56:59.845+02:00  INFO 20580 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 1 JPA repository interface.
+2026-05-10T18:57:00.187+02:00  INFO 20580 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T18:57:00.187+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T18:57:00.189+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:00.191+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:00.192+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:00.192+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T18:57:00.192+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T18:57:00.192+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:00.373+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T18:57:00.391+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T18:57:00.394+02:00  INFO 20580 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T18:57:00.748+02:00  INFO 20580 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T18:57:00.772+02:00  INFO 20580 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T18:57:00.774+02:00  INFO 20580 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T18:57:00.870+02:00  INFO 20580 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T18:57:00.870+02:00  INFO 20580 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1894 ms
+2026-05-10T18:57:01.209+02:00  INFO 20580 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T18:57:01.313+02:00  INFO 20580 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T18:57:01.371+02:00  INFO 20580 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T18:57:01.796+02:00  INFO 20580 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T18:57:01.845+02:00  INFO 20580 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T18:57:02.229+02:00  INFO 20580 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 80727ec6-140f-4293-ba46-14643ed7efe6
+2026-05-10T18:57:02.235+02:00  INFO 20580 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T18:57:02.259+02:00  WARN 20580 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T18:57:02.259+02:00  WARN 20580 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T18:57:03.107+02:00  INFO 20580 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T18:57:03.202+02:00 ERROR 20580 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:03.203+02:00  WARN 20580 --- [esiusuarios] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:03.204+02:00  INFO 20580 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T18:57:03.207+02:00  INFO 20580 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T18:57:03.266+02:00  INFO 20580 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-10T18:57:03.276+02:00  INFO 20580 --- [esiusuarios] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-10T18:57:03.293+02:00 ERROR 20580 --- [esiusuarios] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at edu.esi.ds.esiusuarios.EsiusuariosApplication.main(EsiusuariosApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 15 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:148) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	... 19 common frames omitted
+
+2026-05-10T18:57:10.202+02:00  INFO 39180 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 39180 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T18:57:10.206+02:00  INFO 39180 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T18:57:10.930+02:00  INFO 39180 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T18:57:11.017+02:00  INFO 39180 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 1 JPA repository interface.
+2026-05-10T18:57:11.316+02:00  INFO 39180 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T18:57:11.319+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T18:57:11.320+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:11.494+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T18:57:11.513+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T18:57:11.516+02:00  INFO 39180 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T18:57:11.890+02:00  INFO 39180 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T18:57:11.911+02:00  INFO 39180 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T18:57:11.911+02:00  INFO 39180 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T18:57:12.028+02:00  INFO 39180 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T18:57:12.029+02:00  INFO 39180 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1778 ms
+2026-05-10T18:57:12.408+02:00  INFO 39180 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T18:57:12.496+02:00  INFO 39180 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T18:57:12.569+02:00  INFO 39180 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T18:57:12.982+02:00  INFO 39180 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T18:57:13.028+02:00  INFO 39180 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T18:57:13.449+02:00  INFO 39180 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 1e14dbe7-b69d-423f-9252-4aaab48aa5ac
+2026-05-10T18:57:13.452+02:00  INFO 39180 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T18:57:13.478+02:00  WARN 39180 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T18:57:13.479+02:00  WARN 39180 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T18:57:14.256+02:00  INFO 39180 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T18:57:14.378+02:00 ERROR 39180 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:14.378+02:00  WARN 39180 --- [esiusuarios] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:14.379+02:00  INFO 39180 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T18:57:14.381+02:00  INFO 39180 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T18:57:14.384+02:00  INFO 39180 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-10T18:57:14.394+02:00  INFO 39180 --- [esiusuarios] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-10T18:57:14.411+02:00 ERROR 39180 --- [esiusuarios] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at edu.esi.ds.esiusuarios.EsiusuariosApplication.main(EsiusuariosApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 15 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:148) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	... 19 common frames omitted
+
+2026-05-10T18:57:42.083+02:00  INFO 15448 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 15448 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T18:57:42.086+02:00  INFO 15448 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T18:57:42.827+02:00  INFO 15448 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T18:57:42.907+02:00  INFO 15448 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 1 JPA repository interface.
+2026-05-10T18:57:43.239+02:00  INFO 15448 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T18:57:43.243+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T18:57:43.243+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:43.243+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T18:57:43.245+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:43.246+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T18:57:43.246+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T18:57:43.246+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T18:57:43.405+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T18:57:43.427+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T18:57:43.427+02:00  INFO 15448 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T18:57:43.739+02:00  INFO 15448 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T18:57:43.760+02:00  INFO 15448 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T18:57:43.760+02:00  INFO 15448 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T18:57:43.838+02:00  INFO 15448 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T18:57:43.839+02:00  INFO 15448 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1705 ms
+2026-05-10T18:57:44.166+02:00  INFO 15448 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T18:57:44.242+02:00  INFO 15448 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T18:57:44.296+02:00  INFO 15448 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T18:57:44.624+02:00  INFO 15448 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T18:57:44.660+02:00  INFO 15448 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T18:57:45.034+02:00  INFO 15448 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 10595f9c-fa53-4941-8ac4-997f8daf4000
+2026-05-10T18:57:45.039+02:00  INFO 15448 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T18:57:45.069+02:00  WARN 15448 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T18:57:45.071+02:00  WARN 15448 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T18:57:45.936+02:00  INFO 15448 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T18:57:46.036+02:00 ERROR 15448 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:46.037+02:00  WARN 15448 --- [esiusuarios] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+2026-05-10T18:57:46.037+02:00  INFO 15448 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T18:57:46.037+02:00  INFO 15448 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T18:57:46.037+02:00  INFO 15448 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-10T18:57:46.050+02:00  INFO 15448 --- [esiusuarios] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-10T18:57:46.069+02:00 ERROR 15448 --- [esiusuarios] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at edu.esi.ds.esiusuarios.EsiusuariosApplication.main(EsiusuariosApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 15 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [is_deleted] in table [users]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:148) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	... 19 common frames omitted
+
+2026-05-10T19:05:14.961+02:00  INFO 13372 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 13372 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T19:05:14.964+02:00  INFO 13372 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T19:05:15.656+02:00  INFO 13372 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T19:05:15.734+02:00  INFO 13372 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 1 JPA repository interface.
+2026-05-10T19:05:16.016+02:00  INFO 13372 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T19:05:16.016+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T19:05:16.018+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T19:05:16.018+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T19:05:16.020+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T19:05:16.020+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T19:05:16.020+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T19:05:16.020+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T19:05:16.235+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T19:05:16.256+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T19:05:16.260+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T19:05:16.606+02:00  INFO 13372 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T19:05:16.624+02:00  INFO 13372 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T19:05:16.624+02:00  INFO 13372 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T19:05:16.712+02:00  INFO 13372 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T19:05:16.713+02:00  INFO 13372 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1701 ms
+2026-05-10T19:05:17.048+02:00  INFO 13372 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T19:05:17.140+02:00  INFO 13372 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T19:05:17.199+02:00  INFO 13372 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T19:05:17.604+02:00  INFO 13372 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T19:05:17.650+02:00  INFO 13372 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T19:05:18.027+02:00  INFO 13372 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 31567a4f-8679-4d00-8bf1-97976790b720
+2026-05-10T19:05:18.027+02:00  INFO 13372 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T19:05:18.056+02:00  WARN 13372 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T19:05:18.057+02:00  WARN 13372 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T19:05:18.914+02:00  INFO 13372 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T19:05:19.257+02:00  INFO 13372 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T19:05:19.641+02:00  INFO 13372 --- [esiusuarios] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-10T19:05:20.193+02:00  WARN 13372 --- [esiusuarios] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-10T19:05:20.247+02:00  WARN 13372 --- [esiusuarios] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3b9b31c9-38a7-4845-822a-cb899c9c3e72
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-10T19:05:20.264+02:00  INFO 13372 --- [esiusuarios] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-10T19:05:20.436+02:00 DEBUG 13372 --- [esiusuarios] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-05-10T19:05:21.070+02:00  INFO 13372 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] u.j.c.RefreshScopeRefreshedEventListener : Refreshing cached encryptable property sources on ServletWebServerInitializedEvent
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemProperties refreshed
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemEnvironment refreshed
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source random refreshed
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' refreshed
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T19:05:21.073+02:00  INFO 13372 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource servletContextInitParams [org.springframework.web.context.support.ServletContextPropertySource] to EncryptableEnumerablePropertySourceWrapper
+2026-05-10T19:05:21.088+02:00  INFO 13372 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Started EsiusuariosApplication in 6.56 seconds (process running for 6.954)
+2026-05-10T19:06:13.057+02:00  INFO 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-10T19:06:13.057+02:00  INFO 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-10T19:06:13.057+02:00  INFO 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-05-10T19:06:13.076+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T19:06:13.097+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T19:06:13.104+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T19:06:13.840+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:06:22.285+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=e67dbd5b-0fa3-426f-a804-bb8af7d990be
+2026-05-10T19:06:22.285+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=e67dbd5b-0fa3-426f-a804-bb8af7d990be
+2026-05-10T19:06:22.336+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:06:35.962+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:06:35.965+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:06:35.967+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:06:36.060+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:07:36.029+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/account
+2026-05-10T19:07:36.033+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing DELETE /users/account
+2026-05-10T19:07:36.034+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured DELETE /users/account
+2026-05-10T19:07:36.070+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:08:06.854+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T19:08:06.858+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T19:08:06.859+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T19:08:07.030+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:08:18.555+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=55ed72e3-6b06-4363-bf48-57bfbce6ed6b
+2026-05-10T19:08:18.555+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=55ed72e3-6b06-4363-bf48-57bfbce6ed6b
+2026-05-10T19:08:18.566+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:08:31.488+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:08:31.502+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:08:31.502+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:08:31.569+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:09:15.700+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/forgot-password
+2026-05-10T19:09:15.700+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/forgot-password
+2026-05-10T19:09:15.700+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/forgot-password
+2026-05-10T19:09:15.816+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:09:54.794+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T19:09:54.796+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T19:09:54.797+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T19:09:54.877+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:09:56.802+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T19:09:56.803+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T19:09:56.813+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:09:56.826+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:09:56.826+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:09:56.855+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:10:07.168+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:10:07.171+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:10:07.172+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:10:07.241+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:12:52.462+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T19:12:52.475+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T19:12:52.477+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T19:12:52.492+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:12:52.492+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:12:52.496+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:12:52.496+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:20:20.246+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:20:20.248+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:20:20.249+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:20:20.310+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:20:20.310+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:20:20.310+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:20:20.310+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:20:26.014+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:20:26.019+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:20:26.022+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:20:26.092+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:20:54.333+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/forgot-password
+2026-05-10T19:20:54.341+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/forgot-password
+2026-05-10T19:20:54.342+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/forgot-password
+2026-05-10T19:20:54.607+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:28:28.139+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/forgot-password
+2026-05-10T19:28:28.139+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/forgot-password
+2026-05-10T19:28:28.139+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/forgot-password
+2026-05-10T19:28:28.372+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:29:10.858+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T19:29:10.858+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T19:29:10.858+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T19:29:10.938+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:29:13.347+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T19:29:13.349+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T19:29:13.349+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:29:13.349+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:29:13.357+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:29:13.360+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:29:24.024+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:29:24.040+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:29:24.040+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:29:24.106+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:31:54.488+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T19:31:54.490+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T19:31:54.491+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T19:31:54.685+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:32:27.516+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:32:27.516+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:32:27.520+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:32:27.539+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:32:27.539+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:32:27.539+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:32:27.539+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:32:36.072+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T19:32:36.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:37:52.772+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T19:37:52.775+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T19:37:52.775+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T19:37:53.075+02:00 DEBUG 13372 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T19:39:32.523+02:00  INFO 13372 --- [esiusuarios] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T19:39:32.525+02:00  INFO 13372 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T19:39:32.526+02:00  INFO 13372 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-10T20:01:33.657+02:00  INFO 31544 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Starting EsiusuariosApplication using Java 17.0.19 with PID 31544 (C:\Users\Fran\DSoftware\esiusuarios\target\classes started by Fran in C:\Users\Fran\DSoftware)
+2026-05-10T20:01:33.660+02:00  INFO 31544 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-10T20:01:34.445+02:00  INFO 31544 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-10T20:01:34.549+02:00  INFO 31544 --- [esiusuarios] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 1 JPA repository interface.
+2026-05-10T20:01:34.989+02:00  INFO 31544 --- [esiusuarios] [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2026-05-10T20:01:34.990+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T20:01:34.995+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T20:01:34.997+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletContextInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T20:01:34.999+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T20:01:34.999+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2026-05-10T20:01:34.999+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2026-05-10T20:01:34.999+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2026-05-10T20:01:35.254+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2026-05-10T20:01:35.277+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2026-05-10T20:01:35.279+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2026-05-10T20:01:35.739+02:00  INFO 31544 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-05-10T20:01:35.766+02:00  INFO 31544 --- [esiusuarios] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-10T20:01:35.767+02:00  INFO 31544 --- [esiusuarios] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-05-10T20:01:35.890+02:00  INFO 31544 --- [esiusuarios] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-10T20:01:35.891+02:00  INFO 31544 --- [esiusuarios] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2184 ms
+2026-05-10T20:01:36.389+02:00  INFO 31544 --- [esiusuarios] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-10T20:01:36.494+02:00  INFO 31544 --- [esiusuarios] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-05-10T20:01:36.575+02:00  INFO 31544 --- [esiusuarios] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-10T20:01:37.051+02:00  INFO 31544 --- [esiusuarios] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-10T20:01:37.104+02:00  INFO 31544 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-10T20:01:37.560+02:00  INFO 31544 --- [esiusuarios] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 4d9e2631-c45e-4ee7-a4c5-03ccb9443166
+2026-05-10T20:01:37.565+02:00  INFO 31544 --- [esiusuarios] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-10T20:01:37.610+02:00  WARN 31544 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServer2016Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-10T20:01:37.610+02:00  WARN 31544 --- [esiusuarios] [main] org.hibernate.orm.deprecation            : HHH90000026: SQLServer2016Dialect has been deprecated; use org.hibernate.dialect.SQLServerDialect instead
+2026-05-10T20:01:39.144+02:00  INFO 31544 --- [esiusuarios] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-10T20:01:39.305+02:00  INFO 31544 --- [esiusuarios] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T20:01:39.861+02:00  INFO 31544 --- [esiusuarios] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-10T20:01:40.951+02:00  WARN 31544 --- [esiusuarios] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-10T20:01:41.061+02:00  WARN 31544 --- [esiusuarios] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ebf725a4-03bf-4607-9740-dbfae3cbfa6a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-10T20:01:41.083+02:00  INFO 31544 --- [esiusuarios] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-10T20:01:41.444+02:00 DEBUG 31544 --- [esiusuarios] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-05-10T20:01:42.350+02:00  INFO 31544 --- [esiusuarios] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-05-10T20:01:42.354+02:00  INFO 31544 --- [esiusuarios] [main] u.j.c.RefreshScopeRefreshedEventListener : Refreshing cached encryptable property sources on ServletWebServerInitializedEvent
+2026-05-10T20:01:42.356+02:00  INFO 31544 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemProperties refreshed
+2026-05-10T20:01:42.357+02:00  INFO 31544 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source systemEnvironment refreshed
+2026-05-10T20:01:42.357+02:00  INFO 31544 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source random refreshed
+2026-05-10T20:01:42.358+02:00  INFO 31544 --- [esiusuarios] [main] CachingDelegateEncryptablePropertySource : Property Source Config resource 'class path resource [application.properties]' via location 'optional:classpath:/' refreshed
+2026-05-10T20:01:42.361+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource configurationProperties [class org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource
+2026-05-10T20:01:42.361+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Skipping PropertySource servletConfigInitParams [class org.springframework.core.env.PropertySource$StubPropertySource
+2026-05-10T20:01:42.362+02:00  INFO 31544 --- [esiusuarios] [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource servletContextInitParams [org.springframework.web.context.support.ServletContextPropertySource] to EncryptableEnumerablePropertySourceWrapper
+2026-05-10T20:01:42.379+02:00  INFO 31544 --- [esiusuarios] [main] e.e.d.e.EsiusuariosApplication           : Started EsiusuariosApplication in 9.208 seconds (process running for 9.627)
+2026-05-10T20:02:47.598+02:00  INFO 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-10T20:02:47.598+02:00  INFO 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-10T20:02:47.600+02:00  INFO 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-10T20:02:47.618+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=1830ff7b-008c-4f67-9c80-b5b4a6c69a9e
+2026-05-10T20:02:47.631+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=1830ff7b-008c-4f67-9c80-b5b4a6c69a9e
+2026-05-10T20:02:47.820+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:04:28.030+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:04:28.036+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:04:28.040+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:04:28.149+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:04:30.274+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /users/validate-token?token=55ed72e3-6b06-4363-bf48-57bfbce6ed6b
+2026-05-10T20:04:30.274+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /users/validate-token?token=55ed72e3-6b06-4363-bf48-57bfbce6ed6b
+2026-05-10T20:04:30.282+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:03.016+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:06:03.020+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:06:03.021+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:06:03.093+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:32.512+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:06:32.512+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:06:32.512+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:06:32.526+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:32.526+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:06:32.526+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:06:32.560+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:41.376+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:06:41.379+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:06:41.379+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:06:41.384+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:41.384+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:06:41.384+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:06:41.392+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:41.953+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:06:41.954+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:06:41.961+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:41.962+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:06:41.963+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:06:41.965+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:06:54.555+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/forgot-password
+2026-05-10T20:06:54.557+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/forgot-password
+2026-05-10T20:06:54.557+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/forgot-password
+2026-05-10T20:06:55.108+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:17.910+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T20:07:17.913+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:07:17.913+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:07:17.991+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:19.410+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:07:19.411+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:07:19.417+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:19.419+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:19.420+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:19.422+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:30.805+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:07:30.814+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:30.815+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:30.820+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:30.821+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:30.822+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:30.824+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:31.381+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:31.383+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:31.389+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:31.390+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:31.390+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:31.391+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:32.225+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:32.226+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:32.227+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:32.229+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:32.229+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:32.231+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:34.615+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:34.616+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:34.617+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:34.618+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:34.618+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:34.620+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:50.783+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:07:50.785+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:50.788+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:50.788+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:50.788+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:50.788+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:50.788+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.246+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:51.247+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:51.250+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.251+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:51.251+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:51.253+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.416+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:51.417+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:51.419+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.420+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:51.420+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:51.422+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.948+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:51.949+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:51.950+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:51.951+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:51.951+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:51.953+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:52.124+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:52.125+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:52.125+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:52.125+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:52.129+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:52.129+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:52.350+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:07:52.351+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:07:52.351+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:07:52.351+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:07:52.351+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:07:52.351+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:06.396+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:08:06.398+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:06.400+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:06.400+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:06.400+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:06.400+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:06.400+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:08.534+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:08.535+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:08.535+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:08.535+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:08.535+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:08.539+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.065+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:09.066+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:09.067+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.067+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:09.067+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:09.067+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.269+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:09.269+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:09.270+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.272+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:09.272+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:09.274+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.480+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:09.481+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:09.483+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:09.484+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:09.484+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:09.486+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.526+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:08:13.529+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:13.530+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:13.533+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.533+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:13.533+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:13.539+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.680+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:13.682+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:13.682+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.682+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:13.682+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:13.682+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.844+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:13.844+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:13.846+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:13.847+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:13.847+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:13.849+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.012+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:14.013+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:14.016+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.017+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:14.017+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:14.018+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.165+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:14.166+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:14.168+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.169+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:14.169+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:14.171+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.314+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:14.316+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:14.317+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.317+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:14.317+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:14.317+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.475+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:14.475+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:14.475+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.478+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:14.478+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:14.479+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.644+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:14.644+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:14.647+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:14.648+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:14.649+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:14.651+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:45.645+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T20:08:45.662+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T20:08:45.662+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T20:08:45.679+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:45.679+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:45.679+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:45.679+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:46.813+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T20:08:46.814+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T20:08:46.820+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:46.821+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:46.821+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:46.822+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:56.880+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:08:56.894+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:08:56.894+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:08:56.897+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:08:56.897+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:08:56.897+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:08:56.901+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:26.200+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=f1c0916c-b1b9-445f-9d60-11df4e1408f4
+2026-05-10T20:10:26.200+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=f1c0916c-b1b9-445f-9d60-11df4e1408f4
+2026-05-10T20:10:26.232+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:46.889+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T20:10:46.891+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:46.892+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:46.902+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:46.903+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:46.903+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:46.904+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:50.090+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:50.091+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:50.096+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:50.097+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:50.097+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:50.100+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.515+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T20:10:52.518+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:52.518+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:52.524+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.525+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:52.525+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:52.527+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.719+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:52.720+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:52.724+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.725+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:52.725+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:52.727+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.902+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:52.903+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:52.907+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:52.908+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:52.909+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:52.910+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.086+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:53.086+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:53.091+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.092+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:53.093+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:53.094+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.260+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:53.261+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:53.265+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.266+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:53.266+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:53.268+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.704+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:53.704+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:53.708+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.709+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:53.709+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:53.711+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.864+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:53.865+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:53.869+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:53.870+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:53.870+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:53.872+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:54.034+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:54.034+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:54.039+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:54.039+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:54.040+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:54.041+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:59.798+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/reset-password
+2026-05-10T20:10:59.800+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/reset-password
+2026-05-10T20:10:59.801+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/reset-password
+2026-05-10T20:10:59.805+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:10:59.806+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:10:59.806+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:10:59.808+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:11:17.592+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:11:17.594+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:11:17.595+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:11:17.596+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:11:17.597+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:11:17.597+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:11:17.599+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:11:18.518+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:11:18.518+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:11:18.519+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:11:18.519+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:11:18.519+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:11:18.519+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:12:32.402+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T20:12:32.404+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T20:12:32.406+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T20:12:32.707+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:12:46.071+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=3aca77fe-c175-42b9-880c-ce0a726bf203
+2026-05-10T20:12:46.071+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=3aca77fe-c175-42b9-880c-ce0a726bf203
+2026-05-10T20:12:46.074+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:12:58.152+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:12:58.155+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:12:58.155+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:12:58.219+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:13:05.733+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /users/validate-token?token=3aca77fe-c175-42b9-880c-ce0a726bf203
+2026-05-10T20:13:05.733+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /users/validate-token?token=3aca77fe-c175-42b9-880c-ce0a726bf203
+2026-05-10T20:13:05.738+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:13:53.626+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/register
+2026-05-10T20:13:53.629+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/register
+2026-05-10T20:13:53.629+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/register
+2026-05-10T20:13:53.806+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:05.394+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /users/confirm?token=2e98ce2c-40b4-4c89-989c-6f60c4c90cc3
+2026-05-10T20:14:05.397+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /users/confirm?token=2e98ce2c-40b4-4c89-989c-6f60c4c90cc3
+2026-05-10T20:14:05.411+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:27.977+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:27.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:28.750+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:28.751+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:28.751+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:28.751+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:28.751+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:28.751+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:29.318+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:29.318+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:29.320+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:29.320+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:29.320+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:29.323+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:31.167+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:31.167+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:31.168+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:31.168+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:31.168+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:31.168+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:31.799+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:31.801+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:31.801+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:31.803+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:31.803+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:31.804+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.297+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:33.298+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.775+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:33.775+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:33.775+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.778+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:33.778+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:33.780+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:33.958+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:34.127+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:34.128+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:34.128+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:34.130+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:34.130+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:34.130+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:14:44.528+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:19:06.436+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:19:06.439+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:19:06.439+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:19:06.440+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:19:06.441+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:19:06.441+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:19:06.443+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:19:26.975+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /users/login
+2026-05-10T20:19:26.978+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /users/login
+2026-05-10T20:19:26.979+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /users/login
+2026-05-10T20:19:26.980+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:19:26.980+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /error
+2026-05-10T20:19:26.980+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /error
+2026-05-10T20:19:26.981+02:00 DEBUG 31544 --- [esiusuarios] [http-nio-8081-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-05-10T20:21:08.425+02:00  INFO 31544 --- [esiusuarios] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-10T20:21:08.427+02:00  INFO 31544 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-10T20:21:08.429+02:00  INFO 31544 --- [esiusuarios] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

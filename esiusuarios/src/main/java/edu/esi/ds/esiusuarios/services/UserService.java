@@ -19,69 +19,47 @@ import edu.esi.ds.esiusuarios.model.User;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    @Autowired private UserRepository userRepository;
+    @Autowired private PasswordEncoder passwordEncoder;
 
     public String login(String email, String password) {
         Optional<User> optionalUser = userRepository.findActiveByEmail(email);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        if (optionalUser.isEmpty()) return null;
 
         User user = optionalUser.get();
-
-        if (!user.getConfirmed()) {
-            return null;
-        }
-
-        if (!passwordEncoder.matches(password, user.getPasswordHash())) {
-            return null;
-        }
+        if (!user.getConfirmed()) return null;
+        if (!passwordEncoder.matches(password, user.getPasswordHash())) return null;
 
         return user.getToken();
     }
 
     public String checkToken(String token) {
         Optional<User> optionalUser = userRepository.findActiveByToken(token);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        if (optionalUser.isEmpty()) return null;
 
         User user = optionalUser.get();
-
-        if (!user.getConfirmed()) {
-            return null;
-        }
+        if (!user.getConfirmed()) return null;
 
         return user.getEmail();
     }
 
     public String register(String email, String pwd1) {
         EmailValidator validator = EmailValidator.getInstance();
-        if (!validator.isValid(email)) {
+        if (!validator.isValid(email))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email no es válido");
-        }
 
-        if (email.length() > 255) {
+        if (email.length() > 255)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email es demasiado largo");
-        }
 
-        if (userRepository.findActiveByEmail(email).isPresent()) {
+        if (userRepository.findActiveByEmail(email).isPresent())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya está registrado.");
-        }
 
-        if (!isPasswordSecure(pwd1)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
-            "La contraseña debe tener al menos 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales");
-        }
+        if (!isPasswordSecure(pwd1))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "La contraseña debe tener al menos 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales");
 
         String passwordHash = passwordEncoder.encode(pwd1);
-        String token = UUID.randomUUID().toString();
+        String token        = UUID.randomUUID().toString();
 
         User newUser = new User(email, passwordHash, token);
         userRepository.save(newUser);
@@ -99,10 +77,7 @@ public class UserService {
 
     public String confirmUser(String token) {
         Optional<User> optionalUser = userRepository.findActiveByToken(token);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        if (optionalUser.isEmpty()) return null;
 
         User user = optionalUser.get();
         user.setConfirmed(true);
@@ -113,25 +88,19 @@ public class UserService {
 
     public String forgotPassword(String email) {
         Optional<User> optionalUser = userRepository.findActiveByEmail(email);
-
-        if (!optionalUser.isPresent()) {
+        if (optionalUser.isEmpty())
             return "Si el email existe, recibirás instrucciones para resetear tu contraseña";
-        }
 
         User user = optionalUser.get();
-
         String resetToken = UUID.randomUUID().toString();
-        LocalDateTime expiry = LocalDateTime.now().plus(1, ChronoUnit.HOURS);
-
         user.setResetToken(resetToken);
-        user.setResetTokenExpiry(expiry);
+        user.setResetTokenExpiry(LocalDateTime.now().plus(1, ChronoUnit.HOURS));
         userRepository.save(user);
 
         try {
             ((EmailService) Manager.getInstance().getEmailService()).sendEmail(email,
                 "asunto", "Recuperación de contraseña - esiusuarios",
-                "texto", "Para resetear tu contraseña, haz clic en el siguiente enlace: http://localhost:4200/reset-password?token=" + resetToken
-            );
+                "texto", "Para resetear tu contraseña: http://localhost:4200/reset-password?token=" + resetToken);
         } catch (Exception e) {
             System.err.println("Error enviando email de recuperación: " + e.getMessage());
         }
@@ -141,23 +110,15 @@ public class UserService {
 
     public String resetPassword(String resetToken, String newPassword) {
         Optional<User> optionalUser = userRepository.findActiveByResetToken(resetToken);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        if (optionalUser.isEmpty()) return null;
 
         User user = optionalUser.get();
-
-        if (user.getResetTokenExpiry() == null || user.getResetTokenExpiry().isBefore(LocalDateTime.now())) {
+        if (user.getResetTokenExpiry() == null || user.getResetTokenExpiry().isBefore(LocalDateTime.now()))
             return null;
-        }
 
-        if (!isPasswordSecure(newPassword)) {
-            return null;
-        }
+        if (!isPasswordSecure(newPassword)) return null;
 
-        String newPasswordHash = passwordEncoder.encode(newPassword);
-        user.setPasswordHash(newPasswordHash);
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
         user.setResetToken(null);
         user.setResetTokenExpiry(null);
         userRepository.save(user);
@@ -165,92 +126,44 @@ public class UserService {
         return "Contraseña cambiada exitosamente";
     }
 
+    /**
+     * Elimina la cuenta del usuario de forma definitiva (hard delete).
+     */
     public String deleteAccount(String token) {
         Optional<User> optionalUser = userRepository.findActiveByToken(token);
+        if (optionalUser.isEmpty()) return null;
 
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        userRepository.delete(optionalUser.get());
 
-        User user = optionalUser.get();
-    
-        // Anonimizar el email para liberar el unique y mantener el historial
-        user.setEmail("deleted_" + user.getId() + "@deleted.com");
-        userRepository.save(user);
-
-        int updatedRows = userRepository.softDeleteById(user.getId(), LocalDateTime.now());
-
-        if (updatedRows > 0) {
-            return "Cuenta eliminada exitosamente (soft delete)";
-        } else {
-            return null;
-        }
+        return "Cuenta eliminada exitosamente";
     }
-
 
     public String validateTokenForEsientradas(String token) {
         Optional<User> optionalUser = userRepository.findActiveByToken(token);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
+        if (optionalUser.isEmpty()) return null;
 
         User user = optionalUser.get();
-
-        if (!user.getConfirmed()) {
-            return null;
-        }
+        if (!user.getConfirmed()) return null;
 
         return user.getEmail();
     }
 
-    public String reactivateAccount(String email) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
-
-        User user = optionalUser.get();
-
-        if (!user.getIsDeleted()) {
-            return "La cuenta ya está activa";
-        }
-
-        user.setIsDeleted(false);
-        user.setUpdatedAt(LocalDateTime.now());
-        userRepository.save(user);
-
-        return "Cuenta reactivada exitosamente";
-    }
-
-    public boolean isUserDeleted(String email) {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-        return optionalUser.isPresent() && optionalUser.get().getIsDeleted();
-    }
-
     private boolean isPasswordSecure(String password) {
-        if (password == null || password.length() < 8) {
-            return false;
-        }
-
-        boolean hasUppercase = password.matches(".*[A-Z].*");
-        boolean hasLowercase = password.matches(".*[a-z].*");
-        boolean hasDigit = password.matches(".*\\d.*");
-        boolean hasSpecialChar = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\",./<>?].*");
-
-        return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
+        if (password == null || password.length() < 8) return false;
+        return password.matches(".*[A-Z].*")
+            && password.matches(".*[a-z].*")
+            && password.matches(".*\\d.*")
+            && password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\",./<>?].*");
     }
 
-    //Método para construir el correo en html (tambien se puede con plantillas en Brevo)
     private String buildConfirmationEmail(String token) {
-        return "<div style='font-family: Arial; padding: 20px;'>" +
-           "<h2>Bienvenido a EsiEntradas 🎟️</h2>" +
-           "<p>Gracias por registrarte. Confirma tu cuenta haciendo clic en el botón:</p>" +
-           "<a href='http://localhost:4200/confirm?token=" + token + "' " +
-           "style='background-color: #007bff; color: white; padding: 10px 20px; " +
-           "text-decoration: none; border-radius: 5px;'>Confirmar cuenta</a>" +
-           "<p>Si no te registraste, ignora este email.</p>" +
-           "</div>";
+        return "<div style='font-family: Arial; padding: 20px;'>"
+            + "<h2>Bienvenido a EsiEntradas</h2>"
+            + "<p>Gracias por registrarte. Confirma tu cuenta haciendo clic en el botón:</p>"
+            + "<a href='http://localhost:4200/confirm?token=" + token + "' "
+            + "style='background-color:#007bff;color:white;padding:10px 20px;"
+            + "text-decoration:none;border-radius:5px;'>Confirmar cuenta</a>"
+            + "<p>Si no te registraste, ignora este email.</p>"
+            + "</div>";
     }
 }
