@@ -1,0 +1,90 @@
+<div class="page-container">
+
+  <!-- CABECERA -->
+  <div class="header-wrapper">
+    <div class="main-container header-flex">
+      <div class="logo-area" (click)="irAlInicio()" style="cursor:pointer">
+        <span class="logo-text">esientradas</span>
+        <span class="page-subtitle">/ Mi Cuenta</span>
+      </div>
+      <button class="btn-back" (click)="irAlInicio()">← Volver</button>
+    </div>
+  </div>
+
+  <div class="main-container">
+
+    <!-- PERFIL -->
+    <div class="perfil-card">
+      <div class="perfil-avatar">{{ email.charAt(0).toUpperCase() }}</div>
+      <div>
+        <p class="perfil-email">{{ email }}</p>
+        <p class="perfil-sub">{{ compras.length }} compra{{ compras.length !== 1 ? 's' : '' }} realizadas</p>
+      </div>
+    </div>
+
+    <!-- CARGANDO -->
+    <div class="estado-msg" *ngIf="cargando">
+      <span class="spinner">⏳</span> Cargando tu historial...
+    </div>
+
+    <!-- ERROR -->
+    <div class="estado-msg error" *ngIf="error">
+      ⚠️ {{ error }}
+    </div>
+
+    <!-- SIN COMPRAS -->
+    <div class="estado-msg vacio" *ngIf="!cargando && !error && compras.length === 0">
+      <span style="font-size:2.5rem">🎭</span>
+      <p>Aún no has comprado ninguna entrada.</p>
+      <button class="btn-primary" (click)="irAlInicio()">Ver espectáculos</button>
+    </div>
+
+    <!-- HISTORIAL DE COMPRAS -->
+    <div class="compras-lista" *ngIf="!cargando && !error && compras.length > 0">
+
+      <h2 class="seccion-titulo">Mis entradas</h2>
+
+      <div class="compra-card" *ngFor="let compra of compras">
+
+        <!-- CABECERA DE COMPRA -->
+        <div class="compra-header" (click)="toggleExpandida(compra.id)">
+          <div class="compra-info">
+            <span class="compra-ref">#{{ compra.id }}</span>
+            <span class="compra-fecha">{{ formatFecha(compra.fecha) }}</span>
+            <span class="compra-entradas-count">
+              {{ compra.entradas.length }} entrada{{ compra.entradas.length !== 1 ? 's' : '' }}
+            </span>
+          </div>
+          <div class="compra-derecha">
+            <span class="compra-total">{{ compra.totalEuros }}</span>
+            <span class="compra-chevron" [class.abierto]="expandida === compra.id">▾</span>
+          </div>
+        </div>
+
+        <!-- DETALLE DE ENTRADAS (expandible) -->
+        <div class="compra-detalle" *ngIf="expandida === compra.id">
+          <ul class="entradas-lista">
+            <li class="entrada-item" *ngFor="let entrada of compra.entradas">
+              <div class="entrada-icono">🎫</div>
+              <div class="entrada-info">
+                <span class="entrada-espectaculo">{{ entrada.espectaculo }}</span>
+                <span class="entrada-meta">
+                  📅 {{ entrada.fechaEspectaculo | date:'dd/MM/yyyy HH:mm' }}
+                  &nbsp;·&nbsp;
+                  📍 {{ entrada.escenario }}
+                </span>
+              </div>
+              <span class="entrada-precio">{{ entrada.precioEuros }}</span>
+            </li>
+          </ul>
+
+          <div class="compra-total-fila">
+            <span>Total pagado</span>
+            <span class="total-valor">{{ compra.totalEuros }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

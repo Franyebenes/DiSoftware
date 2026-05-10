@@ -1,0 +1,152 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.page-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 60px;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.main-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── CABECERA ── */
+.header-wrapper {
+  background: white;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo-text { font-weight: 900; color: #1e3a8a; font-size: 1.2rem; }
+.page-subtitle { color: #64748b; font-size: 0.9rem; margin-left: 5px; }
+.btn-back {
+  background: transparent; border: 1px solid #e2e8f0; color: #64748b;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.btn-back:hover { border-color: #1e3a8a; color: #1e3a8a; }
+
+/* ── PERFIL ── */
+.perfil-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.perfil-avatar {
+  width: 52px; height: 52px;
+  background: #1e3a8a; color: white;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; font-weight: 800; flex-shrink: 0;
+}
+.perfil-email { font-weight: 700; color: #1e293b; font-size: 1rem; }
+.perfil-sub   { font-size: 0.83rem; color: #64748b; margin-top: 3px; }
+
+/* ── ESTADOS ── */
+.estado-msg {
+  text-align: center; padding: 48px 20px;
+  color: #64748b; font-size: 0.95rem;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.estado-msg.error  { color: #ef4444; }
+.estado-msg.vacio  { color: #94a3b8; }
+
+.btn-primary {
+  background: #1e3a8a; color: white; border: none;
+  padding: 12px 28px; border-radius: 10px;
+  font-weight: 700; font-size: 0.95rem; cursor: pointer;
+  transition: all 0.2s; margin-top: 8px;
+}
+.btn-primary:hover { background: #1e40af; transform: translateY(-1px); }
+
+/* ── HISTORIAL ── */
+.seccion-titulo {
+  font-size: 1.1rem; font-weight: 800; color: #1e293b;
+  margin-bottom: 16px; letter-spacing: -0.02em;
+}
+
+.compras-lista { display: flex; flex-direction: column; gap: 12px; }
+
+.compra-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.compra-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+.compra-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; cursor: pointer;
+  transition: background 0.15s;
+}
+.compra-header:hover { background: #f8fafc; }
+
+.compra-info { display: flex; flex-direction: column; gap: 3px; }
+.compra-ref  { font-size: 0.75rem; font-weight: 700; color: #94a3b8; letter-spacing: 0.05em; }
+.compra-fecha { font-size: 0.88rem; font-weight: 600; color: #1e293b; }
+.compra-entradas-count { font-size: 0.8rem; color: #64748b; }
+
+.compra-derecha { display: flex; align-items: center; gap: 12px; }
+.compra-total {
+  font-size: 1.1rem; font-weight: 800; color: #1e3a8a;
+  font-variant-numeric: tabular-nums;
+}
+.compra-chevron {
+  font-size: 1.1rem; color: #94a3b8;
+  transition: transform 0.25s;
+  display: inline-block;
+}
+.compra-chevron.abierto { transform: rotate(180deg); }
+
+/* ── DETALLE ── */
+.compra-detalle {
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  background: #fafbfc;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.entradas-lista { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.entrada-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: white; border: 1px solid #e2e8f0;
+  border-radius: 10px; padding: 12px 14px;
+}
+.entrada-icono { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+.entrada-info  { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.entrada-espectaculo { font-weight: 600; color: #1e293b; font-size: 0.9rem; }
+.entrada-meta  { font-size: 0.78rem; color: #64748b; }
+.entrada-precio {
+  font-weight: 700; color: #1e3a8a; font-size: 0.92rem;
+  white-space: nowrap; align-self: center;
+}
+
+.compra-total-fila {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid #e2e8f0; margin-top: 14px; padding-top: 14px;
+  font-weight: 700; color: #1e293b;
+}
+.total-valor { font-size: 1.1rem; color: #1e3a8a; }
+
+@media (max-width: 600px) {
+  .compra-header { padding: 14px 16px; }
+  .compra-detalle { padding: 14px 16px; }
+}

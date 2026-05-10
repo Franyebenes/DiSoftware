@@ -23,37 +23,31 @@ import jakarta.transaction.Transactional;
 @Service
 public class ComprasService {
 
-    @Autowired
-    private PagosService pagosService;
-
-    @Autowired
-    private EntradaDao entradaDao;
-
-    @Autowired
-    private CompraDao compraDao;
+    @Autowired private PagosService              pagosService;
+    @Autowired private EntradaDao                entradaDao;
+    @Autowired private CompraDao                 compraDao;
+    @Autowired private EmailConfirmacionService  emailConfirmacion;
 
     @Transactional
     public void realizarCompra(String usuario, DtoCompra dto) throws StripeException {
 
-        // 1. Validar que vienen entradas
         if (dto.idEntradas() == null || dto.idEntradas().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Debe seleccionar al menos una entrada");
         }
 
-        // 2. Verificar el pago con Stripe y obtener estado actualizado
+        // 1. Verificar pago con Stripe
         Pago pago = pagosService.confirmarPago(dto.clientSecret());
         if (!"succeeded".equalsIgnoreCase(pago.getStatus())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "El pago no se ha completado. Estado actual: " + pago.getStatus());
+                    "El pago no se ha completado. Estado: " + pago.getStatus());
         }
 
-        // 3. Recuperar entradas y verificar que existen todas
+        // 2. Recuperar y validar entradas
         List<Entrada> entradas = (List<Entrada>) entradaDao.findAllById(dto.idEntradas());
         if (entradas.size() != dto.idEntradas().size()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Alguna de las entradas solicitadas no existe");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Alguna entrada solicitada no existe");
         }
 
-        // 4. Verificar disponibilidad y calcular total
         long totalCentimos = 0;
         for (Entrada entrada : entradas) {
             if (entrada.getEstado() != Estado.DISPONIBLE && entrada.getEstado() != Estado.RESERVADA) {
@@ -63,12 +57,12 @@ public class ComprasService {
             totalCentimos += entrada.getPrecio();
         }
 
-        // 5. Marcar entradas como VENDIDAS
+        // 3. Marcar entradas como VENDIDAS
         for (Entrada entrada : entradas) {
             entradaDao.updateEstado(entrada.getId(), Estado.VENDIDA);
         }
 
-        // 6. Guardar la compra en BD
+        // 4. Guardar compra en BD
         Compra compra = new Compra();
         compra.setUsuarioEmail(usuario);
         compra.setClientSecret(dto.clientSecret());
@@ -76,5 +70,12 @@ public class ComprasService {
         compra.setTotalCentimos(totalCentimos);
         compra.setEntradas(entradas);
         compraDao.save(compra);
+
+        // 5. Enviar email de confirmación (lógica separada en EmailConfirmacionService)
+        try {
+            emailConfirmacion.enviar(usuario, compra, entradas);
+        } catch (Exception e) {
+            System.err.println("⚠️  Email no enviado: " + e.getMessage());
+        }
     }
 }

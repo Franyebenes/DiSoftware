@@ -10,25 +10,21 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_compra")
-    private Long idCompra;
+    @Column(name = "id")        
+    private Long id;
 
-    // Email del usuario autenticado
     @Column(name = "usuario_email", nullable = false)
     private String usuarioEmail;
 
-    // Client secret del pago de Stripe asociado
     @Column(name = "client_secret", nullable = false, length = 500)
     private String clientSecret;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    // Importe total en céntimos (suma de precios de las entradas)
     @Column(name = "total_centimos", nullable = false)
     private Long totalCentimos;
 
-    // Relación con las entradas compradas
     @ManyToMany
     @JoinTable(
         name = "compra_entrada",
@@ -40,19 +36,17 @@ public class Compra {
     public Compra() {}
 
     // --- Getters ---
-
-    public Long getIdCompra()           { return idCompra; }
+    public Long getId()                 { return id; }
     public String getUsuarioEmail()     { return usuarioEmail; }
     public String getClientSecret()     { return clientSecret; }
-    public LocalDateTime getCreatedAt()       { return createdAt; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
     public Long getTotalCentimos()      { return totalCentimos; }
     public List<Entrada> getEntradas()  { return entradas; }
 
     // --- Setters ---
-
     public void setUsuarioEmail(String usuarioEmail)    { this.usuarioEmail = usuarioEmail; }
     public void setClientSecret(String clientSecret)    { this.clientSecret = clientSecret; }
-    public void setCreatedAt(LocalDateTime createdAt)         { this.createdAt = createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt)   { this.createdAt = createdAt; }
     public void setTotalCentimos(Long totalCentimos)    { this.totalCentimos = totalCentimos; }
     public void setEntradas(List<Entrada> entradas)     { this.entradas = entradas; }
 }

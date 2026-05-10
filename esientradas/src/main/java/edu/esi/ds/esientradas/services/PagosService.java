@@ -2,7 +2,7 @@ package edu.esi.ds.esientradas.services;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -53,12 +53,7 @@ public class PagosService {
         Pago pago = new Pago();
         pago.setStripeIntentId(intent.getId());
         pago.setClientSecret(intent.getClientSecret());
-        pago.setCreatedAt(
-            LocalDateTime.ofInstant(
-                Instant.ofEpochSecond(intent.getCreated()),
-                ZoneId.systemDefault()
-            )
-        );
+        pago.setCreatedAt(LocalDateTime.ofInstant(Instant.ofEpochSecond(intent.getCreated()), ZoneOffset.UTC));
         pago.setAmount(intent.getAmount());
         pago.setStatus(intent.getStatus());
         pago.setPaymentMethodId(intent.getPaymentMethod());
