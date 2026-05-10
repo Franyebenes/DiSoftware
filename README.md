@@ -8,13 +8,13 @@ Sistema de gestión de entradas para eventos. Arquitectura de microservicios con
 Servicio de gestión de cuentas de usuario.
 
 **Funcionalidades implementadas:**
-- ✅ Registro de usuarios con validación de contraseña segura
-- ✅ Login con autenticación BCrypt
-- ✅ Confirmación de email
-- ✅ Recuperación de contraseña (forgot password)
-- ✅ Reset de contraseña con token temporal
-- ✅ Cancelación/eliminación de cuenta
-- ✅ Validación de tokens para comunicación con otros servicios
+-  Registro de usuarios con validación de contraseña segura
+-  Login con autenticación BCrypt
+-  Confirmación de email
+-  Recuperación de contraseña (forgot password)
+-  Reset de contraseña con token temporal
+-  Cancelación/eliminación de cuenta
+-  Validación de tokens para comunicación con otros servicios
 
 **Endpoints:**
 - `POST /users/register` - Registro de usuario
@@ -30,12 +30,12 @@ Servicio de gestión de cuentas de usuario.
 Servicio de gestión de compras de entradas.
 
 **Funcionalidades:**
-- ✅ Validación de tokens de usuario con esiusuarios
-- ✅ Gestión de compras y pagos con Stripe
-- ✅ Generación de PDFs
-- ✅ Búsqueda de espectáculos por artista
-- ✅ Búsqueda de espectáculos por fecha
-- ✅ Comunicación con servicios externos
+-  Validación de tokens de usuario con esiusuarios
+-  Gestión de compras y pagos con Stripe
+-  Generación de PDFs
+-  Búsqueda de espectáculos por artista
+-  Búsqueda de espectáculos por fecha
+-  Comunicación con servicios externos
 
 **Endpoints de búsqueda:**
 - `GET /busqueda/getEscenarios` - Lista todos los escenarios
@@ -47,13 +47,13 @@ Servicio de gestión de compras de entradas.
 Frontend Angular para usuarios finales.
 
 **Funcionalidades implementadas:**
-- ✅ Formulario de login/registro
-- ✅ Recuperación de contraseña
-- ✅ Reset de contraseña
-- ✅ Eliminación de cuenta
-- ✅ Búsqueda de espectáculos por artista (ej: "Natos y Waor")
-- ✅ Búsqueda de espectáculos por fecha (ej: "2026-03-14")
-- ✅ Navegación entre formularios
+-  Formulario de login/registro
+-  Recuperación de contraseña
+-  Reset de contraseña
+-  Eliminación de cuenta
+-  Búsqueda de espectáculos por artista (ej: "Natos y Waor")
+-  Búsqueda de espectáculos por fecha (ej: "2026-03-14")
+-  Navegación entre formularios
 
 ## Base de Datos
 
