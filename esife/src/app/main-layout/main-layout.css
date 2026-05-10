@@ -95,3 +95,109 @@
     opacity: 1;
   }
 }
+
+.user-menu-container {
+  position: relative;
+}
+
+.btn-user {
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-user:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.user-email {
+  display: block;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.user-dropdown hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 10px 0;
+}
+
+.btn-logout-dropdown {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.btn-logout-dropdown:hover {
+  background: #b91c1c;
+}
+
+.btn-delete-dropdown {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-dropdown:hover {
+  background: #b91c1c;
+}
+
+.delete-confirm p {
+  font-size: 0.8rem;
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+
+.btn-cancel-dropdown {
+  background: #64748b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel-dropdown:hover {
+  background: #475569;
+}

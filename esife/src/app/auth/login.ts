@@ -49,6 +49,7 @@ export class Login {
     this.authService.login(this.email, this.password).subscribe({
       next: (token) => {
         localStorage.setItem('userToken', token);
+        localStorage.setItem('userEmail', this.email); // Guardamos el email para mostrarlo en la cuenta
 
         const selectedEntriesJson = localStorage.getItem('selectedEntries');
         const selectedEntries = selectedEntriesJson ? JSON.parse(selectedEntriesJson) : [];
