@@ -27,6 +27,7 @@
       this.espectaculosService.getEscenarios().subscribe(
         (response: any) => {
           this.escenarios = response.map((e: any) => ({ ...e, visible: false }));
+          this.cdr.detectChanges();
         },
         (error: any) => {
           console.error('Error al obtener los escenarios', error);
@@ -136,10 +137,13 @@
 
     getImagenEscenario(nombre: string): string {
       const imagenes: { [key: string]: string } = {
-        'Auditorio Municipal': 'auditorio.jpg',
-        'Teatro Metropólitan': 'teatro.jpg',
-        'Palacio de Congresos': 'palacio.jpg',
-        'default': 'escenario.jpg',
+        'Auditorio Principal': 'AuditorioPrincipal.jpg',
+        'Teatro Clásico': 'teatroclasico.jpg',
+        'Sala Experimental': 'salaexperimental.jpg',
+        'Plaza Abierta': 'plazaAbierta.jpg',
+        'Teatro Quijano': 'TeatroQuijano.jpg',
+        'Estadio Municipal': 'estadiomunicipal.jpeg',
+        'default': 'AuditorioPrincipal.jpg',
       };
       return imagenes[nombre] || imagenes['default'];
     }

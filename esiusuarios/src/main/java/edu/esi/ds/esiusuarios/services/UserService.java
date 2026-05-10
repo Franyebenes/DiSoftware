@@ -173,6 +173,10 @@ public class UserService {
         }
 
         User user = optionalUser.get();
+    
+        // Anonimizar el email para liberar el unique y mantener el historial
+        user.setEmail("deleted_" + user.getId() + "@deleted.com");
+        userRepository.save(user);
 
         int updatedRows = userRepository.softDeleteById(user.getId(), LocalDateTime.now());
 
@@ -182,6 +186,7 @@ public class UserService {
             return null;
         }
     }
+
 
     public String validateTokenForEsientradas(String token) {
         Optional<User> optionalUser = userRepository.findActiveByToken(token);

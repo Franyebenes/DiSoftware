@@ -7,30 +7,43 @@
           <h1 class="logo-title">esientradas</h1>
         </div>
         <div class="nav-links">
-          <span 
-            [class.active]="activeTab === 'escenarios'" 
-            (click)="setActiveTab('escenarios')"
-            class="nav-link">ESCENARIOS</span>
-          <span 
-            [class.active]="activeTab === 'espectaculos'" 
-            (click)="setActiveTab('espectaculos')"
-            class="nav-link">ESPECTÁCULOS</span>
-          <span 
-            (click)="setActiveTab('cuenta')"
-            class="nav-link">CUENTA</span>
-          <button *ngIf="isUserAuthenticated()" (click)="logout()" class="btn-logout">Cerrar sesión</button>
+          <span [class.active]="activeTab === 'escenarios'" 
+            (click)="setActiveTab('escenarios')" class="nav-link">ESCENARIOS</span>
+          <span [class.active]="activeTab === 'espectaculos'" 
+            (click)="setActiveTab('espectaculos')" class="nav-link">ESPECTÁCULOS</span>
+  
+          <span *ngIf="!isUserAuthenticated()" 
+            (click)="setActiveTab('cuenta')" class="nav-link">CUENTA</span>
+
+          <div *ngIf="isUserAuthenticated()" class="user-menu-container">
+            <button class="btn-user" (click)="toggleUserMenu()">
+              <img src="assets/images/logo-user.webp" alt="Usuario" height="20">
+            </button>
+            <div class="user-dropdown" *ngIf="showUserMenu">
+              <span class="user-email">{{ getUserEmail() }}</span>
+              <hr>
+              <button class="btn-logout-dropdown" (click)="logout()">Cerrar sesión</button>
+  
+              <div *ngIf="!showDeleteConfirm">
+                <button class="btn-delete-dropdown" (click)="deleteAccount()">Eliminar cuenta</button>
+              </div>
+  
+              <div *ngIf="showDeleteConfirm" class="delete-confirm">
+                <p>¿Estás seguro? Esta acción no se puede deshacer.</p>
+                <button class="btn-delete-dropdown" (click)="confirmDelete()">Sí, eliminar</button>
+                <button class="btn-cancel-dropdown" (click)="cancelDelete()">Cancelar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="main-container">
-    <!-- SECCIÓN DE ESCENARIOS -->
     <div *ngIf="activeTab === 'escenarios'" class="content-section">
       <app-escenarios></app-escenarios>
     </div>
-
-    <!-- SECCIÓN DE ESPECTÁCULOS (BÚSQUEDA) -->
     <div *ngIf="activeTab === 'espectaculos'" class="content-section">
       <app-espectaculos></app-espectaculos>
     </div>
